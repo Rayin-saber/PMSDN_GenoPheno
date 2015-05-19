@@ -1,3 +1,4 @@
+Group;Variable
 Behavior;Has.the.patient.ever.had.a.poor.eye.contact?
 Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Rarely
 Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Sometimes
@@ -60,12 +61,11 @@ Communication.Development;What.non-verbal.communication.skills.has.the.patient.u
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Icons.or.symbols.for.communication.(real.photos.or.icons.to.represent.words,.actions.or.activities)
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Voice.Output.Communication.Device
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Other
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Apraxia.of.speech.(verbal.apraxia)_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Articulation.disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Expressive.language.disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Phonological.processing.disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Receptive.language.disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Unsure_Symptoms
+Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Apraxia of speech (verbal apraxia)_Symptoms
+Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Articulation disorder_Symptoms
+Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Expressive language disorder_Symptoms
+Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Phonological processing disorder_Symptoms
+Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Receptive language disorder_Symptoms
 Communication.Development;How.many.words.are.used.in.a.typical.sentence?_ currently
 Communication.Development;What.is.the.patient's.ability.to.follow.directions?_ currently
 Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Look.at,.reach.and.grasp.objects.placed.at.a.distance
@@ -99,12 +99,11 @@ Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.m
 Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Descend.stairs.without.help
 Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Jump.with.both.feet
 Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Pedal.tricycle
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Fatigues.easily_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Floppy.baby_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Ligament.or.joint.laxity_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Poor.reflexes_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Unsure_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Weak.muscles_Symptoms
+Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Fatigues easily_Symptoms
+Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Floppy baby_Symptoms
+Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Ligament or joint laxity_Symptoms
+Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Poor reflexes_Symptoms
+Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Weak muscles_Symptoms
 Physical.Development;Does.the.patient.have.coordination.difficulties?.(excessive.clumsiness)
 Physical.Development;Does.the.patient.have.difficulties.with.motor.planning.or.motor.learning?
 Physical.Development;Does.the.patient.have.difficulties.maintaining.balance?.(the.patient.falls.without.support)
@@ -146,7 +145,7 @@ Sensory;What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.sensory
 Sensory;What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.difficulty.grading.movement.(misjudges.how.much.to.flex/extend.muscles.during.movement,.gross.or.fine)_ currently
 Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Normal_ currently
 Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Hyper-sensitive.(e.g..prefers.bland.tasting.food.with.little.texture,.gags.or.chokes.easily,.has.problems.chewing.and.swallowing)_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Hypo-sensitive.(e.g..grinds.teeth,.frequently.chews.on.fingers,.clothes,.non-food.items;.prefers.intensely.flavored.foods)_ currently
+Sensory;"What.is.the.level.of.the.patient's.response.to.oral.input?_Hypo-sensitive.(e.g..grinds.teeth,.frequently.chews.on.fingers,.clothes,.non-food.items;.prefers.intensely.flavored.foods)_ currently"
 Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Mouthing/chewing.obsessively_ currently
 Sensory;What.is.the.level.of.patient's.response.to.sound?_ currently
 Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Normal_ currently

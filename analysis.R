@@ -10,17 +10,16 @@ Demographics$Country              <- factor(Demographics$Country)
 
 Clinical          <- processFile("Clinical",      noOutput = T)
 Developmental     <- processFile("Developmental", noOutput = T)
-Adult             <- processFile("Adult",         noOutput = T)
 
 # Variable selection
 #Clinical <- Clinical[, grep("_Other",  names(Clinical), invert = T)]
 #Clinical <- Clinical[, grep("Unsure",  names(Clinical), invert = T)]
 #Clinical <- Clinical[, grep("_at age", names(Clinical), invert = T)]
-Clin_vars <- read.csv2("variables_pheno_clinical.txt",      stringsAsFactors = F)
+Clin_vars <- read.csv2("clin_vars.csv",      stringsAsFactors = F)
 #Clinical <- select(Clinical, Patient.ID, one_of(Clin_vars$Variable))
 
 #Developmental <- Developmental[, gerp("_Other", names(Developmental), invert = T)]
-Dev_vars  <- read.csv2("variables_pheno_developmental.txt", stringsAsFactors = F)
+Dev_vars  <- read.csv2("dev_vars.csv",       stringsAsFactors = F)
 
 Genetics <- read.csv("Genetics.csv", stringsAsFactors = F)
 Genetics <- filter(Genetics,Genetic.Status == "Results Verified")
