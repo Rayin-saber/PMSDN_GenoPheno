@@ -1,0 +1,13 @@
+data*
+premap*
+KEGG*
+hg*
+refGene*
+liftOver
+Genetics.csv
+functions-genes.R
+functions-loading.R
+functions-mapping.R
+functions-reformatting.R
+process.R
+
