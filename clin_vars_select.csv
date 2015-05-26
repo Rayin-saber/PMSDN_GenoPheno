@@ -5,73 +5,30 @@ Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related
 Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Food.allergy
 Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Insect.sting.allergy
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Falls.asleep.with.difficulty
-Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Falls.asleep.faster.than.expected
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Wakes.up.with.difficulty
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Wakes.up.immediately
-Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Has.a.great.deal.of.post-operative.pain
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Has.less.post-operative.pain.than.would.be.expected
-Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Needs.a.great.deal.of.post-operative.pain.medication
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Needs.less.post-operative.pain.medication.than.would.be.expected
-Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Other
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Congenital.heart.disease
-Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Non-congenital.heart.disease
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Heart.murmur
-Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Cyanosis
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Heart.rate.too.fast/slow
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Fainting.or.dizzy.spells
-Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Other
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Aortic stenosis_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Bicuspid aortic valve_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Cardiomyopathy_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Coarctation of the aorta_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Enlarged aorta_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Enlarged aortic root_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Enlarged heart_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Heart valve problems_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Hole in the heart_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Other_Diagnosis
 Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Patent Ductus Arteriosus (PDA)_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Persistent left superior vena cava_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Supraventricular Tachycardia (SVT)_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Total anomalous pulmonary venous return or connection_Diagnosis
 Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Ventricular Septal Defect (VSD)_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Atrial Arrhythmia_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Bicuspid aortic valve_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Enlarged aortic root_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Enlarged pulmonary artery_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Hole in the heart_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Patent Ductus Arteriosus (PDA)_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Supraventricular Tachycardia (SVT)_Diagnosis
-Cardiovascular;If.the.patient.has.a.non-congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Ventricular Arrhythmia_Diagnosis
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_ADHD_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Angelman Syndrome_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Asperger Syndrome_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Autism_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Autistic-like features_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Cerebral Palsy_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Fragile X Syndrome_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Mitochondrial Disorder_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Other_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Pervasive Developmental Disorder (PDD)_Condition
-Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Prader-Willi Syndrome_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.hypotonia?
 Diagnosis;Does.the.patient.have.seizures?_ currently
-Ears.-.Hearing;Has.the.patient.ever.had.any.of.the.following.hearing.problems?_Dizziness and/or vertigo_Problem
 Ears.-.Hearing;Has.the.patient.ever.had.any.of.the.following.hearing.problems?_Ear pain_Problem
-Ears.-.Hearing;Has.the.patient.ever.had.any.of.the.following.hearing.problems?_Other_Problem
 Ears.-.Hearing;Has.the.patient.ever.had.any.of.the.following.hearing.problems?_Sensorineural Hearing Loss (permanent nerve hearing loss)_Problem
 Ears.-.Hearing;What.is.the.highest.number.of.ear.infections.the.patient.has.had.in.a.given.year?
 Ears.-.Hearing;Has.the.patient.had.ear.infections.after.age.three,.which.required.recurrent.courses.of.antibiotics?
 Ears.-.Hearing;Has.the.patient.had.ear.tubes?
 Ears.-.Hearing;Were.more.than.one.set.of.ear.tubes.required?
-Endocrine.-.Metabolic;Has.the.patient.been.diagnosed.with.a.mitochondrial.disorder?_ currently
-Endocrine.-.Metabolic;If.the.patient.has.been.diagnosed.with.diabetes,.what.type?
 Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Hypothyroidism
-Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Hyperthyroidism
-Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Hashimoto's.disease
-Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Graves.disease
-Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Other
-Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Hypoglycemia.unrelated.to.diabetes
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Too.tall.for.age.(greater.than.95th.percentile)
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Too.short.for.age.(below.5th.percentile)
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Difficulty.regulating.body.temperature.(gets.too.hot/cold)
@@ -92,26 +49,17 @@ Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Dysplastic.or.unusual.toenails
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_2/3.toe.syndactyly.(second.and.third.toes.are.fused.together)
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Recurring.ingrown.toenails
-Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Other
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Astigmatism_Vision.impairments
-Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Blindness_Vision.impairments
-Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Cataract_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Cortical Vision Impairment_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Depth perception problems_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Eye alignment (strabismus)_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Eye movement abnormalities_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Farsighted_Vision.impairments
-Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Glaucoma_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Nearsighted_Vision.impairments
-Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Other_Vision.impairments
-Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Autistic enterocolitis_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Chronic constipation_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Chronic diarrhea_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Gastroesophageal reflux (GERD)_Conditions
-Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Inflammatory bowel disease (Crohn's disease, Ulcerative colitis)_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Irritable bowel syndrome (IBS)_Conditions
-Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Other_Conditions
-Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Peptic ulcers_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Silent reflux_Conditions
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Abdominal bloating_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Aspiration_Symptoms
@@ -122,7 +70,6 @@ Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Frequent vomiting_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Gagging_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Indigestion_Symptoms
-Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Other_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Overeating_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Stools with partially digested food_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Swallowing difficulty_Symptoms
@@ -131,81 +78,29 @@ Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Two.or.more.serious.sinus.infections.within.one.year
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Two.or.more.months.on.antibiotics.with.little.effect
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Two.or.more.pneumonias.within.one.year
-Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Recurrent,.deep.skin.or.organ.abscesses
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Persistent.thrush.in.mouth.or.fungal.infection.on.skin
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Need.for.intravenous.antibiotics.to.clear.infections
-Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Two.or.more.deep-seated.infections.including.septicemia
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Failure.of.infant.to.gain.weight.or.grow.properly
-Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Family.history.of.Primary.Immunodeficiency
-Immunology;If.the.patient.has.a.diagnosis.of.Autoimmune.Disorder,.indicate.what.type?
 Immunology;Please.answer.the.following.immunology.related.questions._If.not,.has.the.delay.resulted.from.immune.system.concerns?
 Immunology;Please.answer.the.following.immunology.related.questions._Has.the.patient.ever.had.a.severe.adverse.reaction.to.any.vaccines?
 Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_DTaP.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Td.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Flu.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_IPV.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_MMR.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Hib.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Varicella.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_HBV.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Pneumococcal.conjugate.vaccine
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_Meningococcal.conjugate.vaccine
-Immunology;Has.the.patient.ever.had.Autoimmune.Liver.Failure?
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.elbow
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.shoulder
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.other
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.elbow
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.shoulder
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.other
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.ankle
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.knee
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.Hip
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.ankle
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.knee
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.hip
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Other
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.hand
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.hand
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Fingers.only
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.foot
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.foot
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Toes.only
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Genitals
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Face
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Neck
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Scalp
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Chest
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.in.other.parts.of.the.body?_Back
 Lymphatics;Has.the.patient.ever.had.bloating.in.the.abdomen,.especially.following.meals?_Bloating.is.apparent.at.all.times.but.varies.in.severity
 Lymphatics;Has.the.patient.ever.had.bloating.in.the.abdomen,.especially.following.meals?_Bloating.seems.to.come.and.go.following.digestion
 Lymphatics;Has.the.patient.ever.had.bloating.in.the.abdomen,.especially.following.meals?_Bloating.is.a.rare.occurrence
 Lymphatics;Has.the.patient.ever.had.bloating.in.the.abdomen,.especially.following.meals?_Bloating.seems.worse.with.certain.foods
 Lymphatics;Has.the.patient.been.diagnosed.with.any.of.the.following?_Primary Lymphedema_Diagnosis
-Lymphatics;Has.the.patient.been.diagnosed.with.any.of.the.following?_Secondary Lymphedema_Diagnosis
 Lymphatics;Has.the.patient.ever.had.pitting.in.the.involved.areas?
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Fibrosis.(Hardening.of.the.skin.or.difficulty.pitting.tissue)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Pleural.effusions.(Fluid.in.the.lungs,.wet.sounds,.difficulty.breathing)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Ascites.(Fluid.in.the.abdomen,.bloating,.distention.and.tightness.of.belly)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Pericardial.effusions.(abnormal.accumulation.of.fluid.around.the.heart)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Intestinal.lymphangiectasia.(lymph.vessels.supplying.the.lining.of.the.small.intestine.are.enlarged.and.obstructed)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Cysts/blisters
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Weeping.(clear.fluids)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Chylous.reflux.(weeping.fluids.are.milky.white)
-Lymphatics;Has.the.patient.developed.any.of.the.following.conditions.due.to.lymphatic.problems?_Other
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Increased.nuchal.translucency
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Hydrops.fetalis
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Edema
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Effusions
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Yes,.but.am.unsure.of.the.exact.problem
-Lymphatics;Were.any.lymphatic.abnormalities.picked.up.on.scans.during.the.pregnancy.with.your.child?_Other
 Lymphatics;Has.the.patient.had.any.of.the.following.infections?_Cellulitis
 Lymphatics;Has.the.patient.had.any.of.the.following.infections?_Fungal.infections
 Lymphatics;Has.the.patient.had.any.of.the.following.infections?_Nail.infections
-Lymphatics;Has.the.patient.had.any.of.the.following.infections?_Other
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.mouth.conditions?_Tongue.tied.(Ankyloglossia)
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.mouth.conditions?_Cleft.lip
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.mouth.conditions?_Cleft.palate
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.mouth.conditions?_Other
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Widely.spaced.teeth
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Large.gap.between.two.front.teeth.on.the.top
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Malocclusion
@@ -215,26 +110,16 @@ Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Tooth.in.palate.(roof.of.mouth)
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Tooth/teeth.extraction.(pulled)
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Enamel.Hypoplasia
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Other
 Mouth.-.Dental;Has.the.patient.ever.ground.his.or.her.teeth?_Yes,.during.the.day
 Mouth.-.Dental;Has.the.patient.ever.ground.his.or.her.teeth?_Yes,.during.the.night
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Flexible Scoliosis_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Fractures_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Genu recurvatum (knee bends backwards)_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Joint swelling_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Kyphosis_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Lordosis_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Muscle/bone/joint pain_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Other_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Scoliosis_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Torticollis_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Abnormally formed bones in the leg or foot_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Abnormally formed hip bones/joints_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Flat feet (over age 4)_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Hip dysplasia – congenital (present from birth)_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Hip dysplasia – developmental_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Hyper-extended knee joints_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Other_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Over-pronated foot/feet_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Unequal leg length_Conditions
 Neck.-.Back.-.Orthopedic;Does.the.patient.have.a.sacral.dimple?
@@ -251,132 +136,64 @@ Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Emergen
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Failure.to.progress.(the.baby.was.not.coming.down.the.birth.canal)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Baby.presented.breech.or.transverse
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Problems.with.umbilical.cord.(knotted,.collapsed,.wrapped.around.baby,.other)
-Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Cephalopelvic.disproportion.(CPD)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Planned
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Concerns.about.the.mother's.ability.to.deliver.vaginally
-Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Other
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Congenital.abnormality
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Feeding.difficulty
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Trouble.transitioning.(water.in.the.lungs)
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Low.blood.sugar
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Low.blood.pressure
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Neonatal.sepsis.(whole-body.inflammatory.response.to.a.known.or.suspected.infection)
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Breathing.difficulties
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Diabetes.insipidus.(vasopressin.deficiency)
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Other
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Hypotonia
-Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Dehydration
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Feeding.problems
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Failure.to.gain.weight.normally
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Hypo-reflexia.(reduced.reflexes)
-Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Hyper-reflexia.(overactive.reflexes)
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Torticolis
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Abnormal.involuntary.movement.disorder.(e.g..chorea,.dystonia,.ballismus,.tics,.other.abnormal.movements.that.are.not.seizures)
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Holding.breath
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Teeth.grinding.(during.day.or.night)
-Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_History.of.meningitis
-Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_History.of.encephalitis
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Muscle.rigidity
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Dizziness,.faintness.or.actual.syncope
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Loss.of.consciousness
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Cyclic.vomiting
-Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Stroke
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Sensitivity.to.light
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Sensitivity.to.sound
-Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Dizziness
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Nausea/vomiting
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Motion.sickness
 Neurological;Has.the.patient.had.an.abnormal.MRI.or.CAT.scan.study?_Abnormal.MRI_Test.result
 Neurological;Has.the.patient.had.an.abnormal.MRI.or.CAT.scan.study?_Abnormal.Cranial.CAT.scan_Test.result
-Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Cortical.Dysplasia
 Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Arachnoid.Cyst
 Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Decreased.Myelination
 Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Irregular.Ventricles
 Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Decreased.Grey.Matter
-Neurological;If.the.patient.had.an.abnormal.MRI.or.CAT.scan,.did.it.show.any.of.the.following.conditions?_Other
 Neurological.-.Seizures;Has.the.patient.ever.had.febrile.seizures?
 Neurological.-.Seizures;Has.the.patient.ever.had.non-febrile.seizures?
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Absence seizures_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Atonic seizures_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Atypical absence seizures_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Clonic seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Complex partial seizures_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Myoclonic seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Not applicable_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Other_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Secondarily generalized seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Simple partial seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Tonic-clonic seizures_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Tonic seizures_Non-febrile.seizures
-Neurological.-.Seizures;Was.the.VNS.effective.at.reducing.seizures?
-Neurological.-.Seizures;Was.the.ketogenic.diet.effective.in.reducing.seizures?
-Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Loss.of.motor.skill(s).(gross.or.fine.motor)
 Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Loss.of.complex.skill(s).(e.g..toilet.training,.reading)
 Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Loss.of.speech.(e.g..individual.words,.speech.in.sentences)
-Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Other
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Ativan.(Lorazepam)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Banzel.(rufinamide,.Inovelon®)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Carbatrol®.(Carbamazepine)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Dilantin®.(Phenytoin)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Diastat_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Diazepam_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Felbatol®.(Felbamate,.Taloxa)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Frisium.(Clobazam)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Gabapentin.(Neurontin)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Keppra®.(Levetiracetam,.Keppra.XR®)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Klonopin.(Clonazepam,.Rivotril,.Epitril)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Lamictal®.(Lamotrigine)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Lyrica®.(pregabalin)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Mysoline®.(primidone)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Phenobarbital.(Luminal)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Phenytek®.(phenytoin)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Sabril.(vigabatrin)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Tegretol®.(Carbamazepine,.Tegretol.XR®)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Topamax®.(Topiramate)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Trileptal®.(Oxcarbazepine)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Valproate.(Depakote®,.Epival,.Depakote.ER®)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Valproic.Acid.(Depakene®,.Depakine,.Orfiril,.Valporal,.and.Valprosid,.Convulex)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Vimpat.(Lacosamide)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Zarontin®.(Ethosuximide)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Zonegran®.(Zonisamide)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Adrenocorticotropic.Hormone.(ACTH)_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Corticosteroids_Effective?
-Neurological.-.Seizures;Which.of.the.following.medications.has.the.affected.person.used.to.treat.seizures?_Intravenous.Immunoglobulin.(IVIG)_Effective?
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Excessive snoring_Condition
-Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Other_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Recurring nosebleeds_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Seemingly constant cold/runny nose_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Tonsillitis_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Trouble perceiving smells_Condition
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Depression
 Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Bipolar/manic.depression
 Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Anxiety.disorder
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Panic.attacks
 Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Obsessive.compulsive.disorder.(OCD)
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Schizophrenia
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Oppositional.defiant.disorder
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Conduct.disorder
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Other
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Asthma
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Recurrent.pneumonia
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Shortness.of.breath
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Chronic.bronchitis
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Apnea.(obstructive,.not.neurologic)
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Reactive.airway.syndrome.(pre-asthma)
-Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Other
-Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Duplicate or extra kidney_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Dysplastic kidney(s) (malformed kidney(s))_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Hydronephrosis (dilated renal pelvis)_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Increased kidney size_Conditions
-Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Kidney stones_Conditions
-Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Other_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Polycystic kidney(s) (multiple cysts present in one or both kidneys)_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Recurrent Urinary Tract infections_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions
-Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Blood in urine_Diagnosis
-Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Other_Diagnosis
 Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Pain urinating_Diagnosis
-Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Persistent fever related to kidney issues_Diagnosis
 Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Unusually smelling urine_Diagnosis
 Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Vomiting_Diagnosis
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Face_ currently
@@ -384,9 +201,6 @@ Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Neck_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Back_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Buttocks_ currently
-Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Chest_ currently
-Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Abdomen_ currently
-Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Upper.arms_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Forearms_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Thighs_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Lower.leg.and.calves_ currently
@@ -400,4 +214,3 @@ Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Short.nighttime.sleep.
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Night.terrors
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Sleepwalking
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Hypersomnia.(excessive.daytime.sleepiness.or.prolonged.nighttime.sleep)
-Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Other

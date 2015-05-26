@@ -57,7 +57,6 @@ delPlot <- function(genetics_ranges, depvar, noOutput = T)
   patients <- add_rownames(patients, var = "y")
 
   depvar <- filter(depvar, Patient.ID %in% patients$Patient.ID)
-  depvar[2][depvar[2] == "No (by imputation)"] <- "No"
   depvar[2] <- factor(depvar[[2]], exclude = "")
 
   min.pos <- min(genetics_ranges$Start)
