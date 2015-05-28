@@ -11,6 +11,14 @@ Demographics$Country              <- factor(Demographics$Country)
 Clinical          <- processFile("Clinical",      noOutput = T)
 Developmental     <- processFile("Developmental", noOutput = T)
 
+Genetics <- read.csv("Genetics.csv", stringsAsFactors = F)
+Genetics <- filter(Genetics,Genetic.Status == "Results Verified")
+
+patients <- intersect(unique(Genetics$Patient.ID),Clinical$Patient.ID)
+Clinical <- Clinical[Clinical$Patient.ID %in% patients,]
+Genetics <- Genetics[Genetics$Patient.ID %in% patients,]
+Developmental <- Developmental[Developmental$Patient.ID %in% patients,]
+
 # ==== Phenotypic variable selection ====
 # Clinical
 # Preselection
@@ -18,9 +26,9 @@ Clin_vars <- read.csv2("clin_vars.csv",      stringsAsFactors = F)
 Clinical <- Clinical[c("Patient.ID",Clin_vars$Variable)]
 
 # Group creation
-Clin_vars_groups <- read.csv2("clin_vars_groups.csv", stringsAsFactors = F, header = F)
+Clin_vars_groups <- read.csv2("clin_vars_groups.csv", stringsAsFactors = F)
 Clinical_groups <- select(Clinical, Patient.ID)
-for (group in Clin_vars_groups$V2)
+for (group in Clin_vars_groups$Variable)
 {
   Clinical_groups[group] <- apply(select(Clinical, starts_with(group)), 1, function(x)
     {
@@ -30,6 +38,16 @@ for (group in Clin_vars_groups$V2)
         x[1]
     })
 }
+
+for (var in Clin_vars_groups$Variable)
+{
+  Clinical_groups[[var]][Clinical_groups[[var]] == "Not applicable"] <- NA
+  for (lvl in levels(factor(Clinical_groups[[var]], exclude = "")))
+    if (!is.na(lvl))
+      Clin_vars_groups[Clin_vars_groups$Variable == var, lvl] <- summary(factor(Clinical_groups[[var]]))[lvl]
+}
+Clin_vars_groups <- filter(Clin_vars_groups, Yes > 5, No > 5)
+Clinical_groups <- Clinical_groups[c("Patient.ID", Clin_vars_groups$Variable)]
 
 # Variable and group selection
 for (var in Clin_vars$Variable)
@@ -51,25 +69,15 @@ for (var in Clin_vars$Variable)
       Clin_vars[Clin_vars$Variable == var, lvl] <- summary(factor(Clinical[[var]]))[lvl]
 }
 
-for (var in Clin_vars_groups$V2)
-{
-  Clinical_groups[[var]][Clinical_groups[[var]] == "Not applicable"] <- NA
-  for (lvl in levels(factor(Clinical_groups[[var]], exclude = "")))
-    if (!is.na(lvl))
-      Clin_vars_groups[Clin_vars_groups$V2 == var, lvl] <- summary(factor(Clinical_groups[[var]]))[lvl]
-}
-Clin_vars_groups <- filter(Clin_vars_groups, Yes > 5, No > 5)
-Clinical_groups <- Clinical_groups[c("Patient.ID", Clin_vars_groups$V2)]
-
 # Developmental
 # Preselection
 Dev_vars  <- read.csv2("dev_vars.csv",       stringsAsFactors = F)
 Developmental <- Developmental[c("Patient.ID", Dev_vars$Variable)]
 
 # Group creation
-Dev_vars_groups <- read.csv2("dev_vars_groups.csv", stringsAsFactors = F, header = F)
+Dev_vars_groups <- read.csv2("dev_vars_groups.csv", stringsAsFactors = F)
 Developmental_groups <- select(Developmental, Patient.ID)
-for (group in Dev_vars_groups$V2)
+for (group in Dev_vars_groups$Variable)
 {
   Developmental_groups[group] <- apply(select(Developmental, starts_with(group)), 1, function(x)
   {
@@ -79,6 +87,17 @@ for (group in Dev_vars_groups$V2)
       x[1]
   })
 }
+
+for (var in Dev_vars_groups$Variable)
+{
+  Developmental_groups[[var]][Developmental_groups[[var]] == "Not applicable" | Developmental_groups[[var]] == "N/A" | Developmental_groups[[var]] == "Not applicable (has severe motor impairment)"] <- NA
+  for (lvl in levels(factor(Developmental_groups[[var]], exclude = "")))
+    if (!is.na(lvl))
+      Dev_vars_groups[Dev_vars_groups$Variable == var, lvl] <- summary(factor(Developmental_groups[[var]]))[lvl]
+}
+Dev_vars_groups <- filter(Dev_vars_groups, Yes > 5, No > 5)
+Developmental_groups <- Developmental_groups[c("Patient.ID", Dev_vars_groups$Variable)]
+
 
 # Variable and group selection
 for (var in Dev_vars$Variable)
@@ -100,57 +119,137 @@ for (var in Dev_vars$Variable)
       Dev_vars[Dev_vars$Variable == var, lvl] <- summary(factor(Developmental[[var]]))[lvl]
 }
 
-for (var in Dev_vars_groups$V2)
-{
-  Developmental_groups[[var]][Developmental_groups[[var]] == "Not applicable" | Developmental_groups[[var]] == "N/A" | Developmental_groups[[var]] == "Not applicable (has severe motor impairment)"] <- NA
-  for (lvl in levels(factor(Developmental_groups[[var]], exclude = "")))
-    if (!is.na(lvl))
-      Dev_vars_groups[Dev_vars_groups$V2 == var, lvl] <- summary(factor(Developmental_groups[[var]]))[lvl]
-}
-Dev_vars_groups <- filter(Dev_vars_groups, Yes > 5, No > 5)
-Developmental_groups <- Developmental_groups[c("Patient.ID", Dev_vars_groups$V2)]
-
 # ==== Genetics ====
-Genetics <- read.csv("Genetics.csv", stringsAsFactors = F)
-Genetics <- filter(Genetics,Genetic.Status == "Results Verified")
-Genetics_ranges   <- processRanges(Genetics)
-Genetics_genes    <- processGenes(Genetics)
-Genetics_pathways <- processPathways(Genetics, Genetics_genes)
-
-for (var in Clin_vars$Variable)
-  Clin_vars$Range_p[Clin_vars$Variable == var] <- delPlot(Genetics_ranges, Clinical[c("Patient.ID",var)], noOutput = F)
-
-
-# Analyses
-Clinical <- Clinical[, grep("_Other",  names(Clinical), invert = T)]
-Clinical <- Clinical[, grep("Unsure",  names(Clinical), invert = T)]
-Clinical <- Clinical[, grep("_at age", names(Clinical), invert = T)]
-Clinical <- as.data.frame(apply(Clinical, 2, factor, exclude = ""))
-
-Clin_yes <- apply(Clinical, 2, function(x){summary(factor(x))["Yes"] < 5})
-names(Clin_yes[Clin_yes == T])[!is.na(names(Clin_yes[Clin_yes == T]))]
-summary(Clinical)
-
-Adult <- Adult[, grep("at\\.what\\.age\\?", names(Adult), invert = T)]
-Adult <- Adult[, grep("_at age",            names(Adult), invert = T)]
-Adult <- as.data.frame(apply(Adult, 2, factor, exclude = ""))
-
-Adul_yes <- apply(Adult, 2, function(x){summary(factor(x))["Yes"] < 5})
-names(Adul_yes[Adul_yes == T])[!is.na(names(Adul_yes[Adul_yes == T]))]
-summary(Adult)
-
-
-Developmental <- Developmental[, grep("_at age", names(Developmental), invert = T)]
-Developmental <- Developmental[, grep("_Other",  names(Developmental), invert = T)]
-Developmental <- as.data.frame(apply(Developmental, 2, factor, exclude = ""))
-
-Dev_yes <- apply(Developmental, 2, function(x){summary(factor(x))["Yes"] < 5})
-names(Dev_yes[Dev_yes == T])[!is.na(names(Dev_yes[Dev_yes == T]))]
-summary(Developmental[1:100])
+Genetics_ranges    <- processRanges(Genetics)
+Genetics_genes     <- processGenes(Genetics)
+Genetics_genes_bin <- processGenes(Genetics, bin = T)
+Genetics_pathways  <- processPathways(Genetics, Genetics_genes)
 
 # Genes modified in at least 5 patients
-length(which(apply(Genetics_genes, 2, function(x){summary(factor(x))["2"] <= nrow(Genetics_genes) - 5})))
+Genes <- data.frame(t(apply(Genetics_genes_bin[-(1:2)], 2, function(x){summary(factor(x))[1:2]})))
+Genes <- add_rownames(Genes, var = "Gene")
+Genes <- filter(Genes, TRUE. > 5, FALSE. > 5)
+Genetics_genes <- select(Genetics_genes, Patient.ID, one_of(Genes$Gene))
+Genetics_genes_bin <- select(Genetics_genes_bin, Patient.ID, one_of(Genes$Gene))
 
 # Pathways modified in at least 5 patients
-length(which(apply(Genetics_pathways, 2, function(x){summary(factor(x))["0"] <= nrow(Genetics_pathways) - 5})))
+Genetics_pathways_bin <- data.frame(apply(Genetics_pathways, 2, function(x){x > 0}))
+names(Genetics_pathways_bin) <- names(Genetics_pathways)
+Genetics_pathways_bin$Patient.ID <- Genetics_pathways$Patient.ID
+Pathways <- data.frame(t(apply(Genetics_pathways_bin[-1], 2, function(x){summary(factor(x))})))
+Pathways <- add_rownames(Pathways, var = "Pathway")
+Pathways <- filter(Pathways, TRUE. > 5, FALSE. > 5)
+Genetics_pathways <- select(Genetics_pathways, Patient.ID, one_of(Pathways$Pathway))
+Genetics_pathways_bin <- select(Genetics_pathways_bin, Patient.ID, one_of(Pathways$Pathway))
 
+# ==== Analyses ====
+# Deletions
+CNVplot(Genetics_ranges)
+dir.create("delplots")
+for (var in Clin_vars$Variable)
+  Clin_vars$Range_p[Clin_vars$Variable == var] <- delPlot(Genetics_ranges, Clinical[c("Patient.ID", var)], noOutput = F)
+
+for (var in Clin_vars_groups$Variable)
+  Clin_vars_groups$Range_p[Clin_vars_groups$Variable == var] <- delPlot(Genetics_ranges, Clinical_groups[c("Patient.ID", var)], noOutput = F)
+
+for (var in Dev_vars$Variable)
+  Dev_vars$Range_p[Dev_vars$Variable == var] <- delPlot(Genetics_ranges, Developmental[c("Patient.ID", var)], noOutput = F)
+
+for (var in Dev_vars_groups$Variable)
+  Dev_vars_groups$Range_p[Dev_vars_groups$Variable == var] <- delPlot(Genetics_ranges, Developmental_groups[c("Patient.ID", var)], noOutput = F)
+
+results_ranges <- rbind(Clin_vars[c("Group","Variable","Range_p")], Clin_vars_groups[c("Group","Variable","Range_p")], Dev_vars[c("Group","Variable","Range_p")], Dev_vars_groups[c("Group","Variable","Range_p")])
+results_ranges$Range_p_corrected <- p.adjust(results$Range_p, "fdr")
+results_ranges <- arrange(results, Range_p_corrected)
+write.csv2(results_ranges, "results_ranges.csv")
+
+# Genes
+results_genes <- rbind(Clin_vars[1:2], Clin_vars_groups[1:2], Dev_vars[1:2], Dev_vars_groups[1:2])
+for (var in Clin_vars$Variable)
+{
+  print(var)
+  for (gene in Genes$Gene)
+  {
+    results_genes[results_genes$Variable == var, gene] <- fisher.test(factor(Clinical[[var]], exclude = c("", NA)), factor(Genetics_genes_bin[[gene]]), workspace = 1e8)$p.value
+  }
+}
+
+for (var in Clin_vars_groups$Variable)
+{
+  print(var)
+  for (gene in Genes$Gene)
+  {
+    results_genes[results_genes$Variable == var, gene] <- fisher.test(factor(Clinical_groups[[var]], exclude = c("", NA)), factor(Genetics_genes_bin[[gene]]), workspace = 1e8)$p.value
+  }
+}
+
+Genetics_genes_bin <- filter(Genetics_genes_bin, Patient.ID %in% Developmental$Patient.ID)
+for (var in Dev_vars$Variable)
+{
+  print(var)
+  for (gene in Genes$Gene)
+  {
+    results_genes[results_genes$Variable == var, gene] <- fisher.test(factor(Developmental[[var]], exclude = c("", NA)), factor(Genetics_genes_bin[[gene]]), workspace = 1e8)$p.value
+  }
+}
+
+for (var in Dev_vars_groups$Variable)
+{
+  print(var)
+  for (gene in Genes$Gene)
+  {
+    results_genes[results_genes$Variable == var, gene] <- fisher.test(factor(Developmental_groups[[var]], exclude = c("", NA)), factor(Genetics_genes_bin[[gene]]), workspace = 1e8)$p.value
+  }
+}
+results_genes_mat <- apply(results_genes[-(1:2)], 2, p.adjust, method = "bonferroni")
+#results_genes_mat <- t(apply(results_genes_mat, 1, p.adjust, method = "fdr"))
+rownames(results_genes_mat) <- results_genes$Variable
+results_genes_mat <- results_genes_mat[which(apply(results_genes_mat, 1, function(x){min(x) < .05}) == TRUE), which(apply(results_genes_mat, 2, function(x){min(x) < .05}) == TRUE)]
+results_genes_mat <- -log(results_genes_mat)
+heatmap(results_genes_mat, col = colorRampPalette(c("white","blue"))(100))
+
+# Pathways
+results_pathways <- rbind(Clin_vars[1:2], Clin_vars_groups[1:2], Dev_vars[1:2], Dev_vars_groups[1:2])
+for (var in Clin_vars$Variable)
+{
+  print(var)
+  for (pathway in Pathways$Pathway)
+  {
+    results_pathways[results_pathways$Variable == var, pathway] <- fisher.test(factor(Clinical[[var]], exclude = c("", NA)), factor(Genetics_pathways_bin[[pathway]]), workspace = 1e8)$p.value
+  }
+}
+
+for (var in Clin_vars_groups$Variable)
+{
+  print(var)
+  for (pathway in Pathways$Pathway)
+  {
+    results_pathways[results_pathways$Variable == var, pathway] <- fisher.test(factor(Clinical_groups[[var]], exclude = c("", NA)), factor(Genetics_pathways_bin[[pathway]]), workspace = 1e8)$p.value
+  }
+}
+
+Genetics_pathways_bin <- filter(Genetics_pathways_bin, Patient.ID %in% Developmental$Patient.ID)
+for (var in Dev_vars$Variable)
+{
+  print(var)
+  for (pathway in Pathways$Pathway)
+  {
+    results_pathways[results_pathways$Variable == var, pathway] <- fisher.test(factor(Developmental[[var]], exclude = c("", NA)), factor(Genetics_pathways_bin[[pathway]]), workspace = 1e8)$p.value
+  }
+}
+
+for (var in Dev_vars_groups$Variable)
+{
+  print(var)
+  for (pathway in Pathways$Pathway)
+  {
+    results_pathways[results_pathways$Variable == var, pathway] <- fisher.test(factor(Developmental_groups[[var]], exclude = c("", NA)), factor(Genetics_pathways_bin[[pathway]]), workspace = 1e8)$p.value
+  }
+}
+
+results_pathways_mat <- apply(results_pathways[-(1:2)], 2, p.adjust, method = "bonferroni")
+#results_pathways_mat <- t(apply(results_pathways_mat, 1, p.adjust, method = "fdr"))
+rownames(results_pathways_mat) <- results_pathways$Variable
+results_pathways_mat <- results_pathways_mat[which(apply(results_pathways_mat, 1, function(x){min(x) < .05}) == TRUE), which(apply(results_pathways_mat, 2, function(x){min(x) < .05}) == TRUE)]
+results_pathways_mat <- -log(results_pathways_mat)
+heatmap(results_pathways_mat, col = colorRampPalette(c("white","blue"))(100))

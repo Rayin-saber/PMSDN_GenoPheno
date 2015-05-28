@@ -3,18 +3,13 @@ Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related
 Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Atopic.dermatitis.(eczema)
 Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Allergic.rhinitis.(hay.fever)
 Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Food.allergy
-Allergy;Has.the.patient.been.diagnosed.with.any.of.the.following.allergy-related.problems?_Insect.sting.allergy
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Falls.asleep.with.difficulty
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Wakes.up.with.difficulty
-Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Wakes.up.immediately
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Has.less.post-operative.pain.than.would.be.expected
 Anesthesia;Has.the.patient.ever.had.any.of.the.following.complications.from.anesthesia?_Needs.less.post-operative.pain.medication.than.would.be.expected
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Congenital.heart.disease
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Heart.murmur
 Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Heart.rate.too.fast/slow
-Cardiovascular;Has.the.patient.ever.had.any.of.the.following.cardiovascular.conditions?_Fainting.or.dizzy.spells
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Patent Ductus Arteriosus (PDA)_Diagnosis
-Cardiovascular;If.the.patient.has.a.congenital.heart.disease.what.is.the.diagnosis?.Also,.if.the.patient.had.surgery,.please.indicate.at.what.age._Ventricular Septal Defect (VSD)_Diagnosis
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_ADHD_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Autism_Condition
 Diagnosis;Has.the.patient.been.diagnosed.with.any.of.the.following.conditions?.If.yes,.did.the.diagnosis.of.each.condition.change.once.the.diagnosis.of.Phelan-McDermid.Syndrome.was.made?_Autistic-like features_Condition
@@ -28,13 +23,11 @@ Ears.-.Hearing;What.is.the.highest.number.of.ear.infections.the.patient.has.had.
 Ears.-.Hearing;Has.the.patient.had.ear.infections.after.age.three,.which.required.recurrent.courses.of.antibiotics?
 Ears.-.Hearing;Has.the.patient.had.ear.tubes?
 Ears.-.Hearing;Were.more.than.one.set.of.ear.tubes.required?
-Endocrine.-.Metabolic;Has.the.patient.ever.had.thyroid.gland.problems?_Hypothyroidism
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Too.tall.for.age.(greater.than.95th.percentile)
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Too.short.for.age.(below.5th.percentile)
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Difficulty.regulating.body.temperature.(gets.too.hot/cold)
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Lack.of.perspiration
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Excessive.sweating.in.hands.and/or.feet
-Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Unusual.body.odor
 Endocrine.-.Metabolic;Has.the.patient.ever.had.any.of.the.following.endocrine.conditions?_Unusual.smell.of.urine
 Endocrine.-.Metabolic;If.the.patient.ever.had.a.metabolic.panel.test,.was.it.abnormal?
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Hyperactive.Deep.Tendon.Reflexes.(DTR)
@@ -45,12 +38,10 @@ Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Large.fleshy.hands
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Dysplastic.or.unusual.fingernails
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Fifth.finger.clinodactyly.(bend.or.curvature.of.the.fifth.toward.the.adjacent.fourth.finger)
-Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Single.palmer.crease
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Dysplastic.or.unusual.toenails
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_2/3.toe.syndactyly.(second.and.third.toes.are.fused.together)
 Extremities.(Hands.and.Feet);Has.the.patient.ever.had.any.of.the.following.hands.and.feet.conditions?_Recurring.ingrown.toenails
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Astigmatism_Vision.impairments
-Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Cortical Vision Impairment_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Depth perception problems_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Eye alignment (strabismus)_Vision.impairments
 Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_Eye movement abnormalities_Vision.impairments
@@ -59,7 +50,6 @@ Eyes.-.Vision;Has.the.patient.ever.had.any.of.the.following.vision.impairments?_
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Chronic constipation_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Chronic diarrhea_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Gastroesophageal reflux (GERD)_Conditions
-Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Irritable bowel syndrome (IBS)_Conditions
 Gastrointestinal;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.gastrointestinal.conditions?_Silent reflux_Conditions
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Abdominal bloating_Symptoms
 Gastrointestinal;Has.the.patient.ever.had.any.of.the.following.gastrointestinal.symptoms?_Aspiration_Symptoms
@@ -83,11 +73,7 @@ Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.
 Immunology;Has.the.patient.ever.had.any.of.the.following,.which.may.be.signs.of.Primary.Immunodeficiency_Failure.of.infant.to.gain.weight.or.grow.properly
 Immunology;Please.answer.the.following.immunology.related.questions._If.not,.has.the.delay.resulted.from.immune.system.concerns?
 Immunology;Please.answer.the.following.immunology.related.questions._Has.the.patient.ever.had.a.severe.adverse.reaction.to.any.vaccines?
-Immunology;If.the.patient.has.had.a.severe.reaction.to.vaccines,.which.ones?_DTaP.vaccine
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.ankle
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.knee
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.ankle
-Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.hand
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.hand
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.foot
 Lymphatics;Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.foot
@@ -107,21 +93,15 @@ Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Supernumerary.teeth.(extra.teeth)
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Weak/soft.tooth.enamel
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_High.number.of.cavities
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Tooth.in.palate.(roof.of.mouth)
 Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Tooth/teeth.extraction.(pulled)
-Mouth.-.Dental;Has.the.patient.ever.had.any.of.the.following.dental.conditions?_Enamel.Hypoplasia
 Mouth.-.Dental;Has.the.patient.ever.ground.his.or.her.teeth?_Yes,.during.the.day
 Mouth.-.Dental;Has.the.patient.ever.ground.his.or.her.teeth?_Yes,.during.the.night
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Fractures_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Muscle/bone/joint pain_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Scoliosis_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.been.diagnosed.with.any.of.the.following.neck,.back.or.orthopedic.conditions?_Torticollis_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Abnormally formed bones in the leg or foot_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Flat feet (over age 4)_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Hip dysplasia – developmental_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Hyper-extended knee joints_Conditions
 Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Over-pronated foot/feet_Conditions
-Neck.-.Back.-.Orthopedic;Has.the.patient.ever.had.any.of.the.following.neck,.back.or.orthopedic.conditions?_Unequal leg length_Conditions
 Neck.-.Back.-.Orthopedic;Does.the.patient.have.a.sacral.dimple?
 Neonatal;What.was.the.patient's.gestational.age?
 Neonatal;What.was.the.birth.weight.of.the.patient?.
@@ -129,16 +109,12 @@ Neonatal;What.was.the.birth.length
 Neonatal;What.was.the.head.circumference?
 Neonatal;What.were.the.baby's.APGAR.scores.at.1.minute.and.5.minutes?_1.minute
 Neonatal;What.were.the.baby's.APGAR.scores.at.1.minute.and.5.minutes?_5.minutes
-Neonatal;If.the.baby.was.delivered.vaginally,.did.the.physician.use.any.of.the.following?_Forceps
 Neonatal;If.the.baby.was.delivered.vaginally,.did.the.physician.use.any.of.the.following?_Vacuum
-Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Emergency.(maternal.distress)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Emergency.(fetal.distress)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Failure.to.progress.(the.baby.was.not.coming.down.the.birth.canal)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Baby.presented.breech.or.transverse
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Problems.with.umbilical.cord.(knotted,.collapsed,.wrapped.around.baby,.other)
 Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Planned
-Neonatal;If.C-section.was.performed,.was.it.due.to.any.of.the.following?_Concerns.about.the.mother's.ability.to.deliver.vaginally
-Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Congenital.abnormality
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Feeding.difficulty
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Low.blood.sugar
 Neonatal;If.the.baby.was.transferred.to.the.Intensive.Care.Unit,.what.was.the.reason?_Breathing.difficulties
@@ -146,13 +122,11 @@ Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Feeding.problems
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Failure.to.gain.weight.normally
 Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Hypo-reflexia.(reduced.reflexes)
-Neonatal;When.the.baby.was.born,.did.he/she.have.any.of.the.following.conditions?_Torticolis
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Abnormal.involuntary.movement.disorder.(e.g..chorea,.dystonia,.ballismus,.tics,.other.abnormal.movements.that.are.not.seizures)
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Holding.breath
 Neurological;Has.the.patient.ever.exhibited.any.of.the.following?_Teeth.grinding.(during.day.or.night)
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Muscle.rigidity
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Dizziness,.faintness.or.actual.syncope
-Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Loss.of.consciousness
 Neurological;Has.the.patient.ever.had.any.of.the.following.neurological.conditions?_Cyclic.vomiting
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Sensitivity.to.light
 Neurological;Has.the.patient.ever.experienced.the.following.symptoms,.on.a.frequent.basis?_Sensitivity.to.sound
@@ -169,39 +143,29 @@ Neurological.-.Seizures;Has.the.patient.ever.had.non-febrile.seizures?
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Absence seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Complex partial seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Not applicable_Non-febrile.seizures
-Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Simple partial seizures_Non-febrile.seizures
 Neurological.-.Seizures;What.type.of.non-febrile.seizures.has.the.patient.had?_Tonic-clonic seizures_Non-febrile.seizures
-Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Loss.of.complex.skill(s).(e.g..toilet.training,.reading)
-Neurological.-.Seizures;Did.onset.of.seizures.correlate.with.a.loss.of.skill?_Loss.of.speech.(e.g..individual.words,.speech.in.sentences)
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Excessive snoring_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Recurring nosebleeds_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Seemingly constant cold/runny nose_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Tonsillitis_Condition
 Nose.-.Throat;Has.the.patient.ever.experienced.any.of.the.following.nose.or.throat.conditions?_Trouble perceiving smells_Condition
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Bipolar/manic.depression
-Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Anxiety.disorder
 Psychiatric;Has.the.patient.ever.been.diagnosed.with.any.of.the.following.psychiatric.conditions?_Obsessive.compulsive.disorder.(OCD)
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Asthma
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Recurrent.pneumonia
-Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Shortness.of.breath
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Chronic.bronchitis
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Apnea.(obstructive,.not.neurologic)
 Pulmonary.(Lungs);Has.the.patient.ever.had.any.of.the.following.lung.conditions?_Reactive.airway.syndrome.(pre-asthma)
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Dysplastic kidney(s) (malformed kidney(s))_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Hydronephrosis (dilated renal pelvis)_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Increased kidney size_Conditions
-Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Polycystic kidney(s) (multiple cysts present in one or both kidneys)_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Recurrent Urinary Tract infections_Conditions
 Renal.-.Kidney;Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions
 Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Pain urinating_Diagnosis
 Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Unusually smelling urine_Diagnosis
-Renal.-.Kidney;Has.the.patient.ever.had.any.of.the.following.kidney.symptoms?_Vomiting_Diagnosis
-Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Face_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Bushy.eyebrows_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Neck_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Back_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Buttocks_ currently
-Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Forearms_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Thighs_ currently
 Skin;Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Lower.leg.and.calves_ currently
 Skin;Has.the.patient.ever.had.eczema?
@@ -212,5 +176,4 @@ Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Frequent.nighttime.awa
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Difficulty.going.back.to.sleep.after.nighttime.awakening
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Short.nighttime.sleep.(under.6.hrs)
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Night.terrors
-Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Sleepwalking
 Sleep;Has.the.patient.ever.had.severe.sleep.disturbances?_Hypersomnia.(excessive.daytime.sleepiness.or.prolonged.nighttime.sleep)

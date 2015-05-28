@@ -8,7 +8,7 @@ CNVplot <- function(genetics_ranges)
   genetics_ranges$End <- as.numeric(genetics_ranges$End)
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
-  patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
+  patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain.Loss == "Loss") %>% summarize(size = sum(size)) %>% arrange(desc(size))
   patients <- add_rownames(patients, var = "y")
 
   min.pos <- min(genetics_ranges$Start)
@@ -57,7 +57,7 @@ delPlot <- function(genetics_ranges, depvar, noOutput = T)
   patients <- add_rownames(patients, var = "y")
 
   depvar <- filter(depvar, Patient.ID %in% patients$Patient.ID)
-  depvar[2] <- factor(depvar[[2]], exclude = "")
+  depvar[2] <- factor(depvar[[2]], exclude = c("",NA))
 
   min.pos <- min(genetics_ranges$Start)
   max.pos <- max(genetics_ranges$End)
