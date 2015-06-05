@@ -1,11 +1,10 @@
+library(epicalc)
 library(dplyr)
 
 CNVplot <- function(genetics_ranges)
 {
   genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22")
 
-  genetics_ranges$Start <- as.numeric(genetics_ranges$Start)
-  genetics_ranges$End <- as.numeric(genetics_ranges$End)
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain.Loss == "Loss") %>% summarize(size = sum(size)) %>% arrange(desc(size))
@@ -45,31 +44,45 @@ CNVplot <- function(genetics_ranges)
   rect("50674641", -15, "50733212", height + 5, col = rgb(0,0,0,.1), border = F, lwd = 1)
 }
 
-delPlot <- function(genetics_ranges, depvar, noOutput = T)
+delPlot <- function(genetics_ranges, demographics, depvar, noOutput = T)
 {
+  #
+  #genetics_ranges <- Genetics_ranges
+  #demographics <- Demographics
+  #depvar <- Developmental[c("Patient.ID","How.many.words.are.used.in.a.typical.sentence?_ currently")]
+  #
   genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
 
-  genetics_ranges$Start <- as.numeric(genetics_ranges$Start)
-  genetics_ranges$End <- as.numeric(genetics_ranges$End)
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
   patients <- add_rownames(patients, var = "y")
-
-  depvar <- filter(depvar, Patient.ID %in% patients$Patient.ID)
-  depvar[2] <- factor(depvar[[2]], exclude = c("",NA))
 
   min.pos <- min(genetics_ranges$Start)
   max.pos <- max(genetics_ranges$End)
   max.size <- max(patients$size)
 
   df <- merge(depvar,patients)
+  df <- merge(df, demographics)
 
   height <- nrow(patients) * 10
-
   p <- 1
-  tryCatch(p <- kruskal.test(df$size ~ df[[2]])$p.value,
-           error = function(e) e)
+  if (is.numeric(df[[2]]))
+  {
+    model <- lm(df[[2]] ~ df$size + df$Gender)
+    p <- regress.display(model)$table["df$size","Pr>|t|"]
+  } else if (is.ordered(df[[2]]))
+  {
+    df2 <<- df
+    model <- polr(df2[[2]] ~ scale(df2$size) + df2$Gender + scale(df2$Age))
+    p <- ordinal.or.display(model)["scale(df2$size)","P value"]
+  } else
+  {
+    model <- glm(df[[2]] ~ df$size + df$Gender + df$Age, family = binomial)
+    p <- logistic.display(model)$table["df$size","Pr(>|Z|)"]
+  }
+  #tryCatch(p <- kruskal.test(df$size ~ df[[2]])$p.value,
+  #         error = function(e) e)
 
   if (!noOutput)
   {
@@ -84,18 +97,29 @@ delPlot <- function(genetics_ranges, depvar, noOutput = T)
   main <- gsub("_", "\n", main)
   plot(0, xlim = c(min.pos - max.size / 10, max.pos + max.size / 10), ylim = c(0, height), main = paste0(main, "\np = ", p), yaxt = "n", xaxt = "n", xlab = "", ylab = "")
 
+  #Colors
+  if (is.numeric(df[[2]]))
+  {
+    cols <- colorRampPalette(c("red", "blue"))(100)
+  } else
+    cols <- colorRampPalette(c("red", "blue"))(nlevels(df[[2]]))
+
   for (pat in df$Patient.ID)
   {
     range <- filter(genetics_ranges, Patient.ID == pat)
     for (i in 1:nrow(range))
     {
+      if (is.numeric(df[[2]]))
+      {
+        col <- cols[1 + floor(100 * (df[[2]][df$Patient.ID == pat] - min(df[[2]], na.rm = T)) / max(df[[2]], na.rm = T))]
+      } else
+        col <- cols[unclass(df[[2]][df$Patient.ID == pat])]
 
-      col <- as.numeric(df[[2]][df$Patient.ID == pat]) + 1
       border <- F
       if (is.na(col))
       {
         col <- "white"
-        border <- "black"
+        #border <- "black"
       }
       y <- as.numeric(patients$y[patients$Patient.ID == pat])
 
@@ -106,7 +130,7 @@ delPlot <- function(genetics_ranges, depvar, noOutput = T)
   }
 
   rect("50674641", -15, "50733212", height + 5, col = rgb(0,0,0,.1), border = F, lwd = 1)
-  legend("topleft", c(levels(depvar[[2]]), "Missing"), fill = c(2:(nlevels(depvar[[2]]) + 1), 0), title = "Legend")
+  legend("topleft", c(levels(depvar[[2]]), "Missing"), fill = c(cols, 0), title = "Legend")
 
   if (!noOutput)
     dev.off()
