@@ -16,7 +16,8 @@ CNVplot <- function(genetics_ranges)
 
   height <- nrow(patients) * 10
 
-  plot(0, xlim = c(min.pos - max.size / 10, max.pos + max.size / 10), ylim = c(0, height), main = "Chromosomal abnormalities", yaxt = "n", xaxt = "n", xlab = "", ylab = "")
+  par(mar = c(6,0,0,0), oma = c(0,0,0,0), bty = "n")
+  plot(0, xlim = c(min.pos - max.size / 10, max.pos + max.size / 10), ylim = c(-200, height), main = NULL, yaxt = "n", xaxt = "n", xlab = "", ylab = "")
 
   for (pat in patients$Patient.ID)
   {
@@ -44,76 +45,99 @@ CNVplot <- function(genetics_ranges)
   rect("50674641", -15, "50733212", height + 5, col = rgb(0,0,0,.1), border = F, lwd = 1)
 }
 
-delPlot <- function(genetics_ranges, demographics, depvar, noOutput = T)
+delAnalysis <- function(genetics_ranges, data, depvar)
 {
-  #
-  #genetics_ranges <- Genetics_ranges
-  #demographics <- Demographics
-  #depvar <- Developmental[c("Patient.ID","How.many.words.are.used.in.a.typical.sentence?_ currently")]
-  #
   genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
-
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
   patients <- add_rownames(patients, var = "y")
 
+  df <- merge(data, patients)
+
+  if (is.numeric(df[[depvar]]))
+  {
+    model <- lm(df[[depvar]] ~ df$size + df$Gender)
+    table <- regress.display(model)$table[-1,]
+  } else if (is.ordered(df[[depvar]]))
+  {
+    df2 <<- df
+    depvar <<- depvar
+    model <- polr(df2[[depvar]] ~ scale(df2$size) + df2$Gender + scale(df2$Age))
+    table <- ordinal.or.display(model)
+  } else
+  {
+    if (depvar == "Is.the.patient's.menstrual.cycle.regular?_ currently")
+      model <- glm(df[[depvar]] ~ df$size + df$Age, family = binomial)
+    else
+      model <- glm(df[[depvar]] ~ df$size + df$Gender + df$Age, family = binomial)
+    table <- logistic.display(model)$table
+  }
+
+  or  <- table[1, 1]
+  icl <- table[1, 2]
+  icu <- table[1, 3]
+  p   <- table[1, 4]
+
+  c(p,icl,or,icu)
+}
+
+delPlotGenes <- function(genetics_ranges, data, results_ranges, results_genes_p, results_lasso, genes, depvar, noOutput = T)
+{
+  #
+  #genetics_ranges <- genetics_ranges
+  #genes <- Genes
+  #depvar <- vars$Variable[37]
+  #
+  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
+  genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
+
+  results_genes_p_corr <- t(apply(results_genes_p[-(1:2)], 1, p.adjust, method = "bonferroni"))
+  rownames(results_genes_p_corr) <- results_genes_p$Variable
+  results_genes_p_corr <- -log(results_genes_p_corr, base = 10)
+
+  patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
+  patients <- add_rownames(patients, var = "y")
+
   min.pos <- min(genetics_ranges$Start)
+  min.pos <- ifelse (min.pos < 40000000, 40000000, min.pos)
   max.pos <- max(genetics_ranges$End)
   max.size <- max(patients$size)
 
-  df <- merge(depvar,patients)
-  df <- merge(df, demographics)
+  df <- merge(data, patients)
 
   height <- nrow(patients) * 10
-  p <- 1
-  if (is.numeric(df[[2]]))
-  {
-    model <- lm(df[[2]] ~ df$size + df$Gender)
-    p <- regress.display(model)$table["df$size","Pr>|t|"]
-  } else if (is.ordered(df[[2]]))
-  {
-    df2 <<- df
-    model <- polr(df2[[2]] ~ scale(df2$size) + df2$Gender + scale(df2$Age))
-    p <- ordinal.or.display(model)["scale(df2$size)","P value"]
-  } else
-  {
-    model <- glm(df[[2]] ~ df$size + df$Gender + df$Age, family = binomial)
-    p <- logistic.display(model)$table["df$size","Pr(>|Z|)"]
-  }
-  #tryCatch(p <- kruskal.test(df$size ~ df[[2]])$p.value,
-  #         error = function(e) e)
 
   if (!noOutput)
   {
-    filename <- gsub(".", " ", names(depvar[2]), fixed = T)
+    filename <- gsub(".", " ", depvar, fixed = T)
     filename <- gsub("_", " ", filename)
     filename <- gsub("?", " ", filename, fixed = T)
     filename <- gsub("/", " ", filename, fixed = T)
     png(filename = paste0("delplots/", substr(filename,1,128), ".png"), width = 1280, height = 1024)
   }
 
-  main <- gsub(".", " ", names(depvar[2]), fixed = T)
+  main <- gsub(".", " ", depvar, fixed = T)
   main <- gsub("_", "\n", main)
-  plot(0, xlim = c(min.pos - max.size / 10, max.pos + max.size / 10), ylim = c(0, height), main = paste0(main, "\np = ", p), yaxt = "n", xaxt = "n", xlab = "", ylab = "")
+  plot(0, xlim = c(min.pos, max.pos ), ylim = c(-(height/4 + 50), height), main = paste0(main, "\np = ", format(results_ranges$Range_p_corrected[results_ranges$Variable == depvar]), digits = 3), yaxt = "n", xaxt = "n", xlab = "", ylab = "")
 
   #Colors
-  if (is.numeric(df[[2]]))
+  if (is.numeric(df[[depvar]]))
   {
     cols <- colorRampPalette(c("red", "blue"))(100)
   } else
-    cols <- colorRampPalette(c("red", "blue"))(nlevels(df[[2]]))
+    cols <- colorRampPalette(c("red", "blue"))(nlevels(df[[depvar]]))
 
   for (pat in df$Patient.ID)
   {
     range <- filter(genetics_ranges, Patient.ID == pat)
     for (i in 1:nrow(range))
     {
-      if (is.numeric(df[[2]]))
+      if (is.numeric(df[[depvar]]))
       {
-        col <- cols[1 + floor(100 * (df[[2]][df$Patient.ID == pat] - min(df[[2]], na.rm = T)) / max(df[[2]], na.rm = T))]
+        col <- cols[1 + floor(100 * (df[[depvar]][df$Patient.ID == pat] - min(df[[depvar]], na.rm = T)) / max(df[[depvar]], na.rm = T))]
       } else
-        col <- cols[unclass(df[[2]][df$Patient.ID == pat])]
+        col <- cols[unclass(df[[depvar]][df$Patient.ID == pat])]
 
       border <- F
       if (is.na(col))
@@ -129,11 +153,99 @@ delPlot <- function(genetics_ranges, demographics, depvar, noOutput = T)
     }
   }
 
+  maxp <- max(results_genes_p_corr[depvar,], na.rm = T)
+  maxp <- ifelse(maxp < 2, 2, maxp)
+
+  for (gene in genes$Gene)
+  {
+    if (results_lasso[results_lasso$Variable == depvar, gene] < 0)
+    {
+      col <- "red"
+    } else if (results_lasso[results_lasso$Variable == depvar, gene] > 0)
+    {
+      col <- "green"
+    } else
+    {
+      col <- "orange"
+    }
+
+    ygene <- results_genes_p_corr[depvar, gene] * (height/4)/maxp - (height/4 + 50)
+    rect(genes$txStart[genes$Gene == gene], ygene, genes$txEnd[genes$Gene == gene], ygene + 10, col = col, border = F)
+  }
+
+  abline(h = -log(.05, base = 10) * (height/4)/maxp - (height/4 + 50), lty = 2)
+  text(x = min.pos + 100, y = -log(.05, base = 10) * (height/4)/maxp - (height/4 + 50) + 20, label = "-log(p = .05)")
+
   rect("50674641", -15, "50733212", height + 5, col = rgb(0,0,0,.1), border = F, lwd = 1)
-  legend("topleft", c(levels(depvar[[2]]), "Missing"), fill = c(cols, 0), title = "Legend")
+  legend("topleft", c(levels(df[[depvar]]), "Missing"), fill = c(cols, 0), title = "Legend")
 
   if (!noOutput)
     dev.off()
+}
 
-  p
+delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput = T)
+{
+  #
+  #genetics_ranges <- Genetics_ranges
+  #depvar <- vars$Variable[37]
+  #
+
+  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
+  genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
+
+  patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
+  patients <- add_rownames(patients, var = "y")
+
+  df <- merge(data, patients)
+
+  height <- nrow(patients) * 10
+
+  if (!noOutput)
+  {
+    filename <- gsub(".", " ", depvar, fixed = T)
+    filename <- gsub("_", " ", filename)
+    filename <- gsub("?", " ", filename, fixed = T)
+    filename <- gsub("/", " ", filename, fixed = T)
+    png(filename = paste0("delplotsrange/", substr(filename,1,128), ".png"), width = 400, height = 800)
+  }
+
+  main <- gsub(".", " ", depvar, fixed = T)
+  main <- gsub("_", "\n", main)
+
+  par(mar = c(6,0,0,0), oma = c(0,0,0,0))
+  plot(NULL, xlim = c(0,10), ylim = c(-200, height), sub = paste0(main, "\np = ", format(results_ranges$Range_p_corrected[results_ranges$Variable == depvar], digits = 3), "\nOR = ", format(results_ranges$OR[results_ranges$Variable == depvar], digits = 2)), yaxt = "n", xaxt = "n", xlab = "", ylab = "", asp = 1/50, bty = "n")
+
+  #Colors
+  if (is.numeric(df[[depvar]]))
+  {
+    cols <- colorRampPalette(c("red", "blue"))(100)
+  } else
+    cols <- colorRampPalette(c("red", "blue"))(nlevels(df[[depvar]]))
+
+  for (pat in df$Patient.ID)
+  {
+    range <- filter(genetics_ranges, Patient.ID == pat)
+    for (i in 1:nrow(range))
+    {
+      if (is.numeric(df[[depvar]]))
+      {
+        col <- cols[1 + floor(100 * (df[[depvar]][df$Patient.ID == pat] - min(df[[depvar]], na.rm = T)) / max(df[[depvar]], na.rm = T))]
+      } else
+        col <- cols[unclass(df[[depvar]][df$Patient.ID == pat])]
+
+      border <- F
+      if (is.na(col))
+      {
+        col <- "white"
+        #border <- "black"
+      }
+      y <- as.numeric(patients$y[patients$Patient.ID == pat])
+      rect(0, height - y * 10 + 7, 10, height - y * 10, col = col, border = border)
+    }
+  }
+
+  legend("bottom", c(levels(df[[depvar]]), "Missing"), fill = c(cols, 0), title = NULL, bty = "n")
+
+  if (!noOutput)
+    dev.off()
 }
