@@ -120,7 +120,7 @@ for (var in grep("(communication|motor)\\.milestones", names(Developmental), val
   while (sum(summary(Developmental[[var]])[lvl_high:11]) < 6 & lvl_high > 1)
     lvl_high <- lvl_high - 1
 
-  if (lvl_high <= lvl_low)
+  if (lvl_high - lvl_low < 2)
     next
 
   unclassed[unclassed < lvl_low] <- lvl_low
@@ -141,7 +141,7 @@ Developmental$`What.is.the.level.of.patient's.response.to.movement?_ currently` 
 Developmental$`What.is.the.level.of.patient's.response.to.sound?_ currently` <- factor(Developmental$`What.is.the.level.of.patient's.response.to.sound?_ currently`, levels = c("Hyper-sensitive (e.g. easily startles at loud noises)", "Normal", "Hypo-sensitive (e.g. does not appear to react to excessively loud noises)"), labels = c("Hypo-sensitive", "Normal", "Hyper-sensitive"), ordered = T)
 
 Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently`[Developmental$`What.is.the.level.of.patient's.response.to.sound?_ currently` == "Lower than usual" | Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently` == "Normal"] <- "Normal or lower than usual"
-Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently` <- factor(Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently`, levels = c("Normal or lower than usual", "Higher than usual"), labels = c("Normal or hypo-sensitive", "Hyper-sensitive"), ordered = T)
+Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently` <- factor(Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently`, levels = c("Normal or lower than usual", "Higher than usual"), labels = c("Normal or hypo-sensitive", "Hyper-sensitive"))
 
 Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently` <- factor(Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently`, levels = c("Non-verbal – does not use sounds, uses only gestures and pointing", "Non-verbal – uses sounds to communicate meaning, such as grunts", "Non-verbal – uses word-like sounds to communicate meaning but does not state words clearly", "Verbal – uses meaningful single words or phrases that are understandable to others", "Verbal – uses meaningful words and sentences that are understandable to others"), ordered = T)
 
@@ -221,4 +221,4 @@ Genetics_ranges$Patient.ID       <- as.character(Genetics_ranges$Patient.ID)
 Genetics_ranges$Start            <- as.numeric(Genetics_ranges$Start)
 Genetics_ranges$End              <- as.numeric(Genetics_ranges$End)
 
-save(Genetics_genes_bin, Genetics_pathways, Genetics_pathways_bin, Genetics_ranges, file = "Genetics.Rda")
+save(Genes, Genetics_genes_bin, Genetics_pathways, Genetics_pathways_bin, Genetics_ranges, file = "Genetics.Rda")
