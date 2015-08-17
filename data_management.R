@@ -1,6 +1,6 @@
 source("process.R")
 
-export_date = as.Date("2015-03-20")
+export_date = as.Date("2015-07-27")
 
 Demographics      <- processDemographics(         noOutput = T)
 Demographics$Gender               <- factor(Demographics$Gender)
@@ -11,7 +11,6 @@ Clinical          <- processFile("Clinical",      noOutput = T)
 Developmental     <- processFile("Developmental", noOutput = T)
 
 Genetics <- read.csv("Genetics.csv", stringsAsFactors = F)
-Genetics <- filter(Genetics,Genetic.Status == "Results Verified")
 
 patients <- intersect(unique(Genetics$Patient.ID),Clinical$Patient.ID)
 Clinical <- Clinical[Clinical$Patient.ID %in% patients,]
@@ -26,18 +25,18 @@ Clin_vars <- read.csv2("clin_vars.csv",      stringsAsFactors = F)
 Clinical <- Clinical[c("Patient.ID",Clin_vars$Variable)]
 
 # Group creation
-Clin_vars_groups <- read.csv2("clin_vars_groups.csv", stringsAsFactors = F)
-Clinical_groups <- select(Clinical, Patient.ID)
-for (group in Clin_vars_groups$Variable)
-{
-  Clinical_groups[group] <- apply(select(Clinical, starts_with(group)), 1, function(x)
-  {
-    if (any(x == "Yes"))
-      "Yes"
-    else
-      x[1]
-  })
-}
+# Clin_vars_groups <- read.csv2("clin_vars_groups.csv", stringsAsFactors = F)
+# Clinical_groups <- select(Clinical, Patient.ID)
+# for (group in Clin_vars_groups$Variable)
+# {
+#   Clinical_groups[group] <- apply(select(Clinical, starts_with(group)), 1, function(x)
+#   {
+#     if (any(x == "Yes"))
+#       "Yes"
+#     else
+#       x[1]
+#   })
+# }
 
 # Data types
 Clinical$`What.was.the.patient's.gestational.age?` <- ifelse(Clinical$`What.was.the.patient's.gestational.age?` == "Over 40 weeks", 41, as.numeric(sub(" weeks", "", Clinical$`What.was.the.patient's.gestational.age?`)))
@@ -54,17 +53,17 @@ for (var in names(Clinical[-1]))
   if (is.character(Clinical[[var]]))
     Clinical[var] <- factor(Clinical[[var]], levels = c("No", "Yes"), exclude = c("", NA))
 
-for (var in names(Clinical_groups[-1]))
-  Clinical_groups[var] <- factor(Clinical_groups[[var]], levels = c("No", "Yes"), exclude = c("", NA))
+#for (var in names(Clinical_groups[-1]))
+#  Clinical_groups[var] <- factor(Clinical_groups[[var]], levels = c("No", "Yes"), exclude = c("", NA))
 
 # Summary and selection for groups
-for (var in Clin_vars_groups$Variable)
-  for (lvl in levels(Clinical_groups[[var]]))
-    if (!is.na(lvl))
-      Clin_vars_groups[Clin_vars_groups$Variable == var, lvl] <- summary(factor(Clinical_groups[[var]]))[lvl]
+#for (var in Clin_vars_groups$Variable)
+#  for (lvl in levels(Clinical_groups[[var]]))
+#    if (!is.na(lvl))
+#      Clin_vars_groups[Clin_vars_groups$Variable == var, lvl] <- summary(factor(Clinical_groups[[var]]))[lvl]
 
-Clin_vars_groups <- filter(Clin_vars_groups, Yes > 5, No > 5)
-Clinical_groups <- Clinical_groups[c("Patient.ID", Clin_vars_groups$Variable)]
+#Clin_vars_groups <- filter(Clin_vars_groups, Yes > 5, No > 5)
+#Clinical_groups <- Clinical_groups[c("Patient.ID", Clin_vars_groups$Variable)]
 
 # Summary and selection for individual vars
 for (var in names(Clinical[-1]))
@@ -86,18 +85,18 @@ Dev_vars  <- read.csv2("dev_vars.csv",       stringsAsFactors = F)
 Developmental <- Developmental[c("Patient.ID", Dev_vars$Variable)]
 
 # Group creation
-Dev_vars_groups <- read.csv2("dev_vars_groups.csv", stringsAsFactors = F)
-Developmental_groups <- select(Developmental, Patient.ID)
-for (group in Dev_vars_groups$Variable)
-{
-  Developmental_groups[group] <- apply(select(Developmental, starts_with(group)), 1, function(x)
-  {
-    if (any(x == "Yes"))
-      "Yes"
-    else
-      x[1]
-  })
-}
+#Dev_vars_groups <- read.csv2("dev_vars_groups.csv", stringsAsFactors = F)
+#Developmental_groups <- select(Developmental, Patient.ID)
+#for (group in Dev_vars_groups$Variable)
+#{
+#  Developmental_groups[group] <- apply(select(Developmental, starts_with(group)), 1, function(x)
+#  {
+#    if (any(x == "Yes"))
+#      "Yes"
+#    else
+#      x[1]
+#  })
+#}
 
 # Data types
 for (var in names(Developmental))
@@ -130,7 +129,7 @@ for (var in grep("(communication|motor)\\.milestones", names(Developmental), val
     levels[lvl_low] <- gsub("\\d+ - (\\d+ \\w+)", "\\1 -", levels[lvl_low], perl = T)
   if (lvl_high < 11)
     levels[lvl_high] <- gsub("(\\d+) - \\d+ (\\w+)", "\\1 \\2 +", levels[lvl_high], perl = T)
-  Developmental[[var]] <- ordered(unclassed, labels = levels[lvl_low:lvl_high])
+  Developmental[[var]] <- ordered(unclassed, levels = lvl_low:lvl_high, labels = levels[lvl_low:lvl_high])
 }
 
 Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently`[Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently` == "6 - 7 words" | Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently` == "8 - 10 words"] <- "6 + words"
@@ -151,18 +150,16 @@ for (var in names(Developmental[-1]))
   if (is.character(Developmental[[var]]))
     Developmental[var] <- factor(Developmental[[var]], levels = c("No", "Yes"), exclude = c("", NA))
 
-for (var in names(Developmental_groups[-1]))
-  if (is.character(Developmental_groups[[var]]))
-    Developmental_groups[var] <- factor(Developmental_groups[[var]], levels = c("No", "Yes"), exclude = c("", NA))
+#for (var in names(Developmental_groups[-1]))
+#  if (is.character(Developmental_groups[[var]]))
+#    Developmental_groups[var] <- factor(Developmental_groups[[var]], levels = c("No", "Yes"), exclude = c("", NA))
 
-for (var in Dev_vars_groups$Variable)
-  for (lvl in levels(Developmental_groups[[var]]))
-    if (!is.na(lvl))
-      Dev_vars_groups[Dev_vars_groups$Variable == var, lvl] <- summary(factor(Developmental_groups[[var]]))[lvl]
-Dev_vars_groups <- filter(Dev_vars_groups, Yes > 5, No > 5)
-Developmental_groups <- Developmental_groups[c("Patient.ID", Dev_vars_groups$Variable)]
-
-# Variable and group selection
+#for (var in Dev_vars_groups$Variable)
+#  for (lvl in levels(Developmental_groups[[var]]))
+#    if (!is.na(lvl))
+#      Dev_vars_groups[Dev_vars_groups$Variable == var, lvl] <- summary(factor(Developmental_groups[[var]]))[lvl]
+#Dev_vars_groups <- filter(Dev_vars_groups, Yes > 5, No > 5)
+#Developmental_groups <- Developmental_groups[c("Patient.ID", Dev_vars_groups$Variable)]
 
 # Summary and selection for individual vars
 for (var in names(Developmental[-1]))
@@ -180,10 +177,10 @@ write.csv2(Dev_vars, "dev_vars_summary.csv")
 
 
 Clin_vars <- select(Clin_vars, Group, Variable)
-Clin_vars_groups <- select(Clin_vars_groups, Group, Variable)
+#Clin_vars_groups <- select(Clin_vars_groups, Group, Variable)
 Dev_vars <- select(Dev_vars, Group, Variable)
-Dev_vars_groups <- select(Dev_vars_groups, Group, Variable)
-save(Clin_vars, Clin_vars_groups, Dev_vars, Dev_vars_groups, Clinical, Clinical_groups, Developmental, Developmental_groups, Demographics, file = "Phenotypes.Rda")
+#Dev_vars_groups <- select(Dev_vars_groups, Group, Variable)
+save(Clin_vars, Dev_vars, Clinical, Developmental, Demographics, file = "Phenotypes.Rda")
 
 # ==== Genetics ====
 Genetics_ranges    <- processRanges(Genetics)

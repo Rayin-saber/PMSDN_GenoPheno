@@ -7,7 +7,7 @@ CNVplot <- function(genetics_ranges)
 
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
-  patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain.Loss == "Loss") %>% summarize(size = sum(size)) %>% arrange(desc(size))
+  patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain.Loss == "Loss" | Result.type == "mutation") %>% summarize(size = sum(size)) %>% arrange(desc(size))
   patients <- add_rownames(patients, var = "y")
 
   min.pos <- min(genetics_ranges$Start)
@@ -30,15 +30,17 @@ CNVplot <- function(genetics_ranges)
           col <- "blue"
         else if (range$Gain.Loss[i] == "Loss")
           col <- "red"
-      }
-      else if (range$Result.type[i] == "mutation")
+      } else if (range$Result.type[i] == "mutation")
+      {
         col <- "darkred"
+        range$Start[i] <- range$Start[i]-50000
+      }
 
       y <- as.numeric(patients$y[patients$Patient.ID == pat])
 
       if (nrow(range) > 1 & range$Result.type[i] != "gene" & i == 1)
         abline(h = height - y * 10 + 3)
-      rect(range$Start[i], height - y * 10 + 7, range$End[i] + 1, height - y * 10, col = col, border = col)
+      rect(range$Start[i], height - y * 10 + 7, range$End[i] + 1, height - y * 10, col = col, border = F)
     }
   }
 
@@ -47,7 +49,7 @@ CNVplot <- function(genetics_ranges)
 
 delAnalysis <- function(genetics_ranges, data, depvar)
 {
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
+  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
@@ -89,7 +91,7 @@ delPlotGenes <- function(genetics_ranges, data, results_ranges, results_genes_p,
   #genes <- Genes
   #depvar <- vars$Variable[37]
   #
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
+  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   results_genes_p_corr <- t(apply(results_genes_p[-(1:2)], 1, p.adjust, method = "bonferroni"))
@@ -183,14 +185,14 @@ delPlotGenes <- function(genetics_ranges, data, results_ranges, results_genes_p,
     dev.off()
 }
 
-delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput = T)
+delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput = T, bnw = F)
 {
   #
   #genetics_ranges <- Genetics_ranges
   #depvar <- vars$Variable[37]
   #
 
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss")
+  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
@@ -212,15 +214,23 @@ delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput
   main <- gsub(".", " ", depvar, fixed = T)
   main <- gsub("_", "\n", main)
 
-  par(mar = c(6,0,0,0), oma = c(0,0,0,0))
-  plot(NULL, xlim = c(0,10), ylim = c(-200, height), sub = paste0(main, "\np = ", format(results_ranges$Range_p_corrected[results_ranges$Variable == depvar], digits = 3), "\nOR = ", format(results_ranges$OR[results_ranges$Variable == depvar], digits = 2)), yaxt = "n", xaxt = "n", xlab = "", ylab = "", asp = 1/50, bty = "n")
+  par(mar = c(6,0,0,0), oma = c(0,0,0,0), cex=.7)
+  plot(NULL, xlim = c(0,10), ylim = c(-400, height), sub = paste0(main, "\np = ", format(results_ranges$Range_p_corrected[results_ranges$Variable == depvar], digits = 3)), yaxt = "n", xaxt = "n", xlab = "", ylab = "", asp = 1/50, bty = "n")
 
   #Colors
+  if (bnw)
+  {
+    col1 <- rgb(.9,.9,.9)
+    col2 <- rgb(0,0,0)
+  } else {
+    col1 <- "red"
+    col2 <- "blue"
+  }
   if (is.numeric(df[[depvar]]))
   {
-    cols <- colorRampPalette(c("red", "blue"))(100)
+    cols <- colorRampPalette(c(col1, col2))(100)
   } else
-    cols <- colorRampPalette(c("red", "blue"))(nlevels(df[[depvar]]))
+    cols <- colorRampPalette(c(col1, col2))(1 + nlevels(df[[depvar]]))
 
   for (pat in df$Patient.ID)
   {
@@ -244,7 +254,7 @@ delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput
     }
   }
 
-  legend("bottom", c(levels(df[[depvar]]), "Missing"), fill = c(cols, 0), title = NULL, bty = "n")
+  legend("bottom", c(levels(df[[depvar]]), "Missing"), fill = c(cols[1:(nlevels(df[[depvar]]))], 0), title = NULL, bty = "n")
 
   if (!noOutput)
     dev.off()
