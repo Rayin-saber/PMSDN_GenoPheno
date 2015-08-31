@@ -6,10 +6,10 @@ registerDoMC(cores = 8)
 
 load("Phenotypes.Rda")
 load("Genetics.Rda")
+Genetics_ranges <- Genetics
+rm(Genetics)
 
 # Deletions----------------------------------------------------------------------------------
-CNVplot(Genetics_ranges)
-
 data <- merge(Demographics, Clinical,             all = T)
 data <- merge(data,         Clinical,             all = T)
 #data <- merge(data,         Clinical_groups,      all = T)
@@ -21,6 +21,16 @@ rm(Demographics, Clinical, Developmental)
 vars <- rbind(Clin_vars, Dev_vars)
 
 rm(Clin_vars, Dev_vars)
+
+# First plot of the deletions
+CNVplot(Genetics_ranges)
+
+# Keep only terminal deletions/mutations on chr22
+Genetics_ranges <- filter(Genetics_ranges, Chr_Gene == "22", Gain_Loss != "Gain", End > 50000000)
+data <- filter(data, Patient.ID %in% Genetics_ranges$Patient.ID)
+
+# Second plot of the deletions
+CNVplot(Genetics_ranges)
 
 results_ranges <- vars
 results_ranges$Range_p <- NA
@@ -36,6 +46,31 @@ rm(df2, depvar)
 results_ranges$Range_p_corrected <- p.adjust(results_ranges$Range_p, "fdr")
 results_ranges <- arrange(results_ranges, Range_p_corrected)
 write.csv2(results_ranges, "results_ranges.csv")
+
+# Plots--------------------------------------------------------------------------
+dir.create("delplotsrangesvg")
+for (var in vars$Variable[1:100])
+  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
+
+for (var in vars$Variable[vars$Group == "Renal.-.Kidney"])
+  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
+
+for (var in vars$Variable[vars$Group == "Gross.Motor.Development"])
+  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
+
+# ROC curves---------------------------------------------------------------------
+# Keep only the maximum extent of deletion for each patient
+library(pROC)
+Start <- Genetics_ranges %>% group_by(Patient.ID) %>% summarize(Start = min(Start))
+vars2 <- results_ranges$Variable[results_ranges$Range_p_corrected < .05]
+data$Patient.ID <- as.numeric(data$Patient.ID)
+dataroc <- merge(Start,data[c("Patient.ID",vars2)])
+for (var in vars2)
+  if (nlevels(dataroc[[var]]) > 2)
+    dataroc[var] <- NULL
+
+for (var in names(dataroc[-(1:2)]))
+  plot(roc(dataroc[[var]], dataroc$Start, percent = T), print.thres = "best", print.auc = T, main = var)
 
 # Lasso---------------------------------------------------------------------------------------
 results_lasso <- vars
@@ -120,14 +155,10 @@ for (var in vars$Variable)
 
 rm(table, model)
 
-# Plots--------------------------------------------------------------------------
 dir.create("delplots")
 for (var in vars$Variable)
   delPlotGenes(Genetics_ranges, data, results_ranges, results_genes_p, results_lasso, Genes, var, noOutput = F)
 
-dir.create("delplotsrangesvg")
-for (var in vars$Variable[1:100])
-  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
 
 results_genes_mat <- t(apply(results_genes_p[-(1:2)], 1, p.adjust, method = "bonferroni"))
 #results_genes_mat_or <- apply(results_genes_OR[-(1:2)], 2, as.numeric)
