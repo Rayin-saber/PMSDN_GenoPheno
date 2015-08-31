@@ -3,11 +3,11 @@ library(dplyr)
 
 CNVplot <- function(genetics_ranges)
 {
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22")
+  genetics_ranges <- filter(genetics_ranges, Chr_Gene == "22")
 
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
-  patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain.Loss == "Loss" | Result.type == "mutation") %>% summarize(size = sum(size)) %>% arrange(desc(size))
+  patients <- group_by(genetics_ranges, Patient.ID) %>% filter(Gain_Loss == "Loss" | Result.type == "mutation") %>% summarize(size = sum(size)) %>% arrange(desc(size))
   patients <- add_rownames(patients, var = "y")
 
   min.pos <- min(genetics_ranges$Start)
@@ -26,14 +26,14 @@ CNVplot <- function(genetics_ranges)
     {
       if (range$Result.type[i] == "coordinates" | range$Result.type[i] == "gene")
       {
-        if (range$Gain.Loss[i] == "Gain")
+        if (range$Gain_Loss[i] == "Gain")
           col <- "blue"
-        else if (range$Gain.Loss[i] == "Loss")
+        else if (range$Gain_Loss[i] == "Loss")
           col <- "red"
       } else if (range$Result.type[i] == "mutation")
       {
         col <- "darkred"
-        range$Start[i] <- range$Start[i]-50000
+        range$End[i] <- range$End[i]+50000
       }
 
       y <- as.numeric(patients$y[patients$Patient.ID == pat])
@@ -49,7 +49,7 @@ CNVplot <- function(genetics_ranges)
 
 delAnalysis <- function(genetics_ranges, data, depvar)
 {
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
+  genetics_ranges <- filter(genetics_ranges, Chr_Gene == "22", Gain_Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
@@ -91,7 +91,7 @@ delPlotGenes <- function(genetics_ranges, data, results_ranges, results_genes_p,
   #genes <- Genes
   #depvar <- vars$Variable[37]
   #
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
+  genetics_ranges <- filter(genetics_ranges, Chr_Gene == "22", Gain_Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   results_genes_p_corr <- t(apply(results_genes_p[-(1:2)], 1, p.adjust, method = "bonferroni"))
@@ -192,7 +192,7 @@ delPlotRange <- function(genetics_ranges, data, results_ranges, depvar, noOutput
   #depvar <- vars$Variable[37]
   #
 
-  genetics_ranges <- filter(genetics_ranges, Genome.Browser.Build == "GRCh38/hg38", Chr.Gene == "22", Gain.Loss == "Loss" | Result.type == "mutation")
+  genetics_ranges <- filter(genetics_ranges, Chr_Gene == "22", Gain_Loss == "Loss" | Result.type == "mutation")
   genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
 
   patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
