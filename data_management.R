@@ -105,11 +105,11 @@ for (var in names(Developmental))
 
 
 for (var in grep("(communication|motor)\\.milestones", names(Developmental), value = T))
-  Developmental[var] <- factor(Developmental[[var]], levels = c("0 - 3 months", "4 - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +"), ordered = T)
+  Developmental[var] <- factor(Developmental[[var]], levels = c("0 - 3 months", "4  - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +"), ordered = T)
 
 for (var in grep("(communication|motor)\\.milestones", names(Developmental), value = T))
 {
-  levels <- c("0 - 3 months", "4 - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +")
+  levels <- c("0 - 3 months", "4  - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +")
   unclassed <- unclass(Developmental[[var]])
   lvl_low <- 1
   while (sum(summary(Developmental[[var]])[1:lvl_low]) < 6 & lvl_low < 11)
