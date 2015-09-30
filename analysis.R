@@ -4,21 +4,19 @@ load("data.Rda")
 
 # ==== Patient selection ====
 patients <- unique(Genetics_ranges$Patient.ID)
-data <- merge(Demographics, Clinical,             by = "Patient.ID")
+data <- merge(Demographics, Clinical,             all = T)
 data <- merge(data,         Developmental,        all = T)
 rm(Demographics, Clinical, Developmental)
 
 vars <- rbind(Clin_vars, Dev_vars)
 rm(Clin_vars, Dev_vars)
 
-
-
 # Deletions----------------------------------------------------------------------------------
 # First plot of the deletions
 CNVplot(Genetics_ranges)
 
 # Keep only terminal deletions/mutations on chr22
-Genetics_ranges <- filter(Genetics_ranges, Chr_Gene == "22", Gain_Loss != "Gain", End > 50000000)
+Genetics_ranges <- filter(Genetics_ranges, Chr_Gene == "22", Gain_Loss != "Gain", End > 50500000) # shank3 = 50674641
 data <- filter(data, Patient.ID %in% Genetics_ranges$Patient.ID)
 
 # Second plot of the deletions
@@ -54,16 +52,47 @@ for (var in vars$Variable[vars$Group == "Gross.Motor.Development"])
 # Keep only the maximum extent of deletion for each patient
 library(pROC)
 Start <- Genetics_ranges %>% group_by(Patient.ID) %>% summarize(Start = min(Start))
-vars2 <- results_ranges$Variable[results_ranges$Range_p_corrected < .05]
+rocvars <- results_ranges[as.numeric(results_ranges$Range_p_corrected) < .05, c("Group", "Variable")]
 data$Patient.ID <- as.numeric(data$Patient.ID)
-dataroc <- merge(Start,data[c("Patient.ID",vars2)])
-for (var in vars2)
+dataroc <- merge(Start,data[c("Patient.ID",rocvars$Variable)])
+for (var in rocvars$Variable)
   if (nlevels(dataroc[[var]]) > 2)
     dataroc[var] <- NULL
 
-for (var in names(dataroc[-(1:2)]))
-  plot(roc(dataroc[[var]], dataroc$Start, percent = T), print.thres = "best", print.auc = T, main = var)
+rocvars <- rocvars[rocvars$Variable %in% names(dataroc)[-(1:2)],]
 
+for (var in rocvars$Variable)
+{
+  roc <- roc(dataroc[[var]], dataroc$Start, percent = T)
+  plot(roc, print.thres = "best", print.auc = T, main = var)
+  
+  youden <- roc$sensitivities + roc$specificities - 100
+  plot(youden)
+  thres <- roc$thresholds[which(youden == max(youden))]
+  
+  rocvars$min[rocvars$Variable == var] <- max(dataroc$Start[dataroc$Start<thres])
+  rocvars$max[rocvars$Variable == var] <- min(dataroc$Start[dataroc$Start>thres])
+  rocvars$auc[rocvars$Variable == var] <- as.numeric(auc(roc))
+}
+
+# rocvars <- rocvars[rocvars$auc > 70,]
+
+library(ggplot2)
+
+# write.csv(rocvars, "rocvars.csv")
+rocvars <- read.csv("rocvars.csv")
+rocvars <- merge(rocvars, group_by(rocvars, Group) %>% summarise(gmin = min(min)))
+rocvars <- merge(rocvars, group_by(rocvars, Group) %>% summarise(gmax = max(max)))
+rocvars <- arrange(rocvars, gmin, Group,min)
+rocvars$Variable <- factor(rocvars$Variable, levels = rocvars$Variable)
+rocvars$Group <- factor(rocvars$Group, levels = rev(unique(rocvars$Group)))
+
+ggplot(rocvars) + 
+  geom_linerange(aes(x=Variable, ymin = min/1000000, ymax = max/1000000, colour = Group), size = 8) +
+  geom_linerange(aes(x=Variable, ymin = gmin/1000000, ymax = gmax/1000000, colour = Group), size = 8, alpha = .5) +
+  geom_text(aes(x=Variable, y = gmax/1000000, label = paste0(as.integer(auc), "%")), hjust=0) +
+  scale_y_continuous(name = "Position") +
+  coord_flip()
 
 # library(glmnet)
 # library(doMC)
