@@ -76,10 +76,25 @@ delAnalysis <- function(genetics_ranges, data, depvar)
     table <- logistic.display(model)$table
   }
 
-  or  <- table[1, 1]
-  icl <- table[1, 2]
-  icu <- table[1, 3]
-  p   <- table[1, 4]
+  or  <- as.numeric(table[1, 1])
+  icl <- as.numeric(table[1, 2])
+  icu <- as.numeric(table[1, 3])
+  p   <- as.numeric(table[1, 4])
+
+  sd <- sd(patients$size)
+
+  if (is.ordered(df[[depvar]]))
+  {
+    or <- (or ** (1 / sd)) ** 1e6
+    icl <- (icl ** (1 / sd)) ** 1e6
+    icu <- (icu ** (1 / sd)) ** 1e6
+  }
+  else
+  {
+    or <- or ** 1e6
+    icl <- icl ** 1e6
+    icu <- icu ** 1e6
+  }
 
   c(p,icl,or,icu)
 }
