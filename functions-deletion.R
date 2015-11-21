@@ -1,55 +1,32 @@
-library(epicalc)
 library(dplyr)
-library(ggplot2)
+library(ordinal)
 
-delAnalysis <- function(genetics_ranges, data, depvar)
+delAnalysis <- function(x, size)
 {
-  genetics_ranges <- filter(genetics_ranges, Chr_Gene == "22", Gain_Loss == "Loss" | Result.type == "mutation")
-  genetics_ranges <- mutate(genetics_ranges, size = End - Start + 1)
-
-  patients <- group_by(genetics_ranges, Patient.ID) %>% summarize(size = sum(size)) %>% arrange(desc(size))
-  patients <- add_rownames(patients, var = "y")
-
-  df <- merge(data, patients)
-
-  if (is.numeric(df[[depvar]]))
+  if (is.numeric(x))
   {
-    model <- lm(df[[depvar]] ~ df$size + df$Gender)
-    table <- regress.display(model)$table[-1,]
-  } else if (is.ordered(df[[depvar]]))
-  {
-    df2 <<- df
-    depvar <<- depvar
-    model <- polr(df2[[depvar]] ~ scale(df2$size) + df2$Gender + scale(df2$Age))
-    table <- ordinal.or.display(model)
-  } else
-  {
-    if (depvar == "Is.the.patient's.menstrual.cycle.regular?_ currently")
-      model <- glm(df[[depvar]] ~ df$size + df$Age, family = binomial)
-    else
-      model <- glm(df[[depvar]] ~ df$size + df$Gender + df$Age, family = binomial)
-    table <- logistic.display(model)$table
+    model <- lm(x ~ size + data$Gender)
+    p <- summary(model)$coefficients["size","Pr(>|t|)"]
+    icl <- ((confint(model) %>% exp) ** 1e6)["size", 1]
+    or <- (coef(model)[["size"]] %>% exp) ** 1e6
+    icu <- ((confint(model) %>% exp) ** 1e6)["size", 2]
   }
-
-  or  <- as.numeric(table[1, 1])
-  icl <- as.numeric(table[1, 2])
-  icu <- as.numeric(table[1, 3])
-  p   <- as.numeric(table[1, 4])
-
-  sd <- sd(patients$size)
-
-  if (is.ordered(df[[depvar]]))
+  else if (is.ordered(x))
   {
-    or <- (or ** (1 / sd)) ** 1e6
-    icl <- (icl ** (1 / sd)) ** 1e6
-    icu <- (icu ** (1 / sd)) ** 1e6
+    model <- clm(x ~ scale(size) + data$Gender + scale(data$Age))
+    p <- summary(model)$coefficients["scale(size)","Pr(>|z|)"]
+    icl <- confint(model)["scale(size)", 1]
+    or <- coef(model)[["scale(size)"]]
+    icu <- confint(model)["scale(size)", 2]
   }
   else
   {
-    or <- or ** 1e6
-    icl <- icl ** 1e6
-    icu <- icu ** 1e6
+    model <- glm(x ~ size + data$Gender + data$Age, family = binomial)
+    p <- summary(model)$coefficients["size","Pr(>|z|)"]
+    icl <- ((confint(model) %>% exp) ** 1e6)["size", 1]
+    or <- (coef(model)[["size"]] %>% exp) ** 1e6
+    icu <- ((confint(model) %>% exp) ** 1e6)["size", 2]
   }
 
-  c(p,icl,or,icu)
+  c(p = p,icl = icl,or = or,icu = icu)
 }

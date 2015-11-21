@@ -5,14 +5,16 @@ library(cowplot)
 library(pROC)
 library(parallel)
 library(RSvgDevice)
+library(DT)
 
-#source("functions-deletion.R")
+source("functions-deletion.R")
 
 load("data.Rda")
 
 # Create main data frame -------------------------------------------------------
 full_join(Demographics, Clinical) %>%
-  full_join(Developmental) -> data
+  full_join(Developmental) %>%
+  ungroup -> data
 
 vars <- rbind(Clin_vars, Dev_vars)
 
@@ -56,6 +58,7 @@ Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 5067
 Genetics_ranges %<>% semi_join(data)
 
 # Re-compute del extent var ----------------------------------------------------
+Genetics_ranges %<>% select(-min)
 Genetics_ranges %<>%
   full_join(
     Genetics_ranges %>%
@@ -69,7 +72,7 @@ Genetics_ranges %>%
   mutate(End = ifelse(Gain_Loss == "Mutation", End + 5e4, End)) %>%
   ggplot(aes(x = Patient.ID, ymin = Start/1e6, ymax = End/1e6)) +
   geom_linerange(size = 1, aes(color = Gain_Loss)) +
-  scale_color_manual(values = c(Loss = "red", mutation = "darkred")) +
+  scale_color_manual(values = c(Loss = "red", Mutation = "darkred")) +
   scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
   theme(axis.ticks.y = element_blank(), axis.line.y = element_blank(), legend.position = "left", legend.title = element_blank()) +
   ylab("Chromosomic position") +
@@ -86,6 +89,19 @@ data %<>%
   ) %>%
   arrange(desc(min))
 
+# Association analysis ---------------------------------------------------------
+data %>%
+  select(-Patient.ID, -Birthdate, -Gender, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
+  sapply(delAnalysis, 50818468 - data$min) %>% # end of chr22
+  t %>%
+  data.frame %>%
+  add_rownames("Variable") %>%
+  mutate(p.adj = p.adjust(p, "fdr")) %>%
+  arrange(p.adj) %>%
+  left_join(vars) -> results_ranges
+
+write.csv2(results_ranges, "results_ranges.csv")
+
 # Plot for one var (test)-------------------------------------------------------
 data %>%
   ggplot(aes(x = Patient.ID, ymin = 0, ymax = 1, color = data[["Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions"]])) +#`Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions`)) +
@@ -101,27 +117,6 @@ data %>%
 
 plot_grid(DEL_plot, g, g, g, g, align = "h", nrow = 1, rel_widths = c(4, 1, 1, 1, 1)) %>%
   save_plot(filename = "test.svg", device = devSVG, nrow = 1, base_height = 7, base_width = 12)
-
-
-# Association analysis ---------------------------------------------------------
-
-data %>%
-  select(-Patient.ID, Birthdate, Gender, Ancestral.Background, Country) %>%
-  lapply(summary)
-results_ranges <- vars
-results_ranges$Range_p <- NA
-results_ranges$ICl <- NA
-results_ranges$OR <- NA
-results_ranges$ICu <- NA
-
-for (var in vars$Variable)
-  results_ranges[results_ranges$Variable == var, c("Range_p", "ICl", "OR", "ICu")] <- delAnalysis(Genetics_ranges, data, var)
-
-rm(df2, depvar)
-
-results_ranges$Range_p_corrected <- p.adjust(results_ranges$Range_p, "fdr")
-results_ranges <- arrange(results_ranges, Range_p_corrected)
-write.csv2(results_ranges, "results_ranges.csv")
 
 # Plots-------------------------------------------------------------------------
 dir.create("delplotsrangesvg")
