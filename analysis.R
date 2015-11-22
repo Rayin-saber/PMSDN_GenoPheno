@@ -21,6 +21,21 @@ vars <- rbind(Clin_vars, Dev_vars)
 rm(Demographics, Clinical, Developmental)
 rm(Clin_vars, Dev_vars)
 
+# Clean variable names ---------------------------------------------------------
+vars <- bind_rows(
+  vars %>%
+    filter(Group == "Self-Help.Skills") %>%
+    mutate(text = Variable %>% gsub("_.*", "", ., perl = T)),
+  vars %>%
+    filter(Group != "Self-Help.Skills") %>%
+    mutate(text = Variable %>% gsub(".*?_(.*?)_.*", "\\1", ., perl = T)) %>%
+    mutate(text = text %>% gsub("_ currently", "", ., perl = T)) %>%
+    mutate(text = text %>% sub(".*?_", "", ., perl = T)) %>%
+    mutate(Group = Group %>% factor)
+) %>%
+  mutate(text = text %>% sub("\\(.*?\\)$", "", ., perl = T)) %>%
+  mutate(text = text %>% gsub("\\.", " ", ., perl = T))
+
 # Manage Genetics_ranges -------------------------------------------------------
 Genetics_ranges %<>%
   filter(Chr_Gene == "22") %>%
@@ -39,17 +54,7 @@ Genetics_ranges %<>%
   arrange(desc(min))
 
 # First plot with all patients and every genetic alteration --------------------
-Genetics_ranges %>%
-  mutate(End = ifelse(Gain_Loss == "Mutation", End + 5e4, End)) %>%
-  ggplot(aes(x = Patient.ID, ymin = Start/1e6, ymax = End/1e6)) +
-  geom_linerange(size = 1, aes(color = Gain_Loss)) +
-  scale_color_manual(values = c(Gain = "blue", Loss = "red", mutation = "darkred")) +
-  scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
-  theme(axis.ticks.y = element_blank(), legend.position = "left") +
-  ylab("Chromosomic position") +
-  xlab("Patients") +
-  geom_rect(ymin = 50674641/1e6, ymax = 50733212/1e6, xmin = 1, xmax = nrow(Genetics_ranges), alpha = .01, fill = "grey") +
-  coord_flip() -> CNV_plot
+Genetics_ranges %>% cnvPlot -> CNV_plot
 
 # Keep only terminal deletions/mutations ---------------------------------------
 Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 50674641
@@ -68,17 +73,7 @@ Genetics_ranges %<>%
   arrange(desc(min))
 
 # Final plot of the deletions for the included patients ------------------------
-Genetics_ranges %>%
-  mutate(End = ifelse(Gain_Loss == "Mutation", End + 5e4, End)) %>%
-  ggplot(aes(x = Patient.ID, ymin = Start/1e6, ymax = End/1e6)) +
-  geom_linerange(size = 1, aes(color = Gain_Loss)) +
-  scale_color_manual(values = c(Loss = "red", Mutation = "darkred")) +
-  scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
-  theme(axis.ticks.y = element_blank(), axis.line.y = element_blank(), legend.position = "left", legend.title = element_blank()) +
-  ylab("Chromosomic position") +
-  xlab("Patients") +
-  geom_rect(ymin = 50674641/1e6, ymax = 50733212/1e6, xmin = 0.5, xmax = nrow(Genetics_ranges), alpha = .01, fill = "grey") +
-  coord_flip() -> DEL_plot
+Genetics_ranges %>% cnvPlot -> DEL_plot
 
 # Keep only patients with geno & pheno data and build dataframe ----------------
 data %<>%
@@ -102,32 +97,19 @@ data %>%
 
 write.csv2(results_ranges, "results_ranges.csv")
 
-# Plot for one var (test)-------------------------------------------------------
-data %>%
-  ggplot(aes(x = Patient.ID, ymin = 0, ymax = 1, color = data[["Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions"]])) +#`Has.the.patient.been.diagnosed.with.any.of.the.following.kidney.conditions?_Vesicoureteral Reflux (Renal reflux)_Conditions`)) +
-  geom_linerange(size = 1) +
-  scale_x_discrete(labels = NULL, limits = data$Patient.ID[order(desc(data$min))]) +
-  scale_y_continuous(labels = NULL) +
-  scale_color_grey(start = .9, end = .2, na.value = "white") +
-  theme(axis.ticks = element_blank(), axis.line = element_blank(), legend.position = "none") +
-  xlab("") +
-  ggtitle("Vesico-ureteral Reflux") +
-  theme(plot.title = element_text(angle = 45, vjust = 0.5, hjust = 0.5, size = 10)) +
-  coord_flip() -> g
-
-plot_grid(DEL_plot, g, g, g, g, align = "h", nrow = 1, rel_widths = c(4, 1, 1, 1, 1)) %>%
-  save_plot(filename = "test.svg", device = devSVG, nrow = 1, base_height = 7, base_width = 12)
-
 # Plots-------------------------------------------------------------------------
-dir.create("delplotsrangesvg")
-for (var in vars$Variable[1:100])
-  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
-
-for (var in vars$Variable[vars$Group == "Renal.-.Kidney"])
-  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
-
-for (var in vars$Variable[vars$Group == "Gross.Motor.Development"])
-  delPlotRange(Genetics_ranges, data, results_ranges, var, noOutput = T, bnw = T)
+for (group in unique(results_ranges$Group))
+{
+  print(group)
+#vars$Variable[vars$Group == group] %>%
+  results_ranges %>%
+    filter(Group == group) %>%
+    arrange(p.adj) %>%
+    .[["Variable"]] %>%
+    lapply(delPlot, data, results_ranges) %>%
+    plot_grid(DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(2, rep(1, length(.)))) %>%
+    save_plot(filename = paste0("plots/",group, ".svg"), device = devSVG, base_height = 12, base_width = 4 + 2 * length(.))
+}
 
 # ROC curves--------------------------------------------------------------------
 # Keep only the maximum extent of deletion for each patient
