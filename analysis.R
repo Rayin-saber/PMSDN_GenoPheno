@@ -6,7 +6,7 @@ library(magrittr)
 library(cowplot)
 library(pROC)
 library(parallel)
-library(RSvgDevice)
+library(svglite)
 library(DT)
 library(grid)
 
@@ -104,7 +104,7 @@ for (group in unique(results_ranges$Group))
     .[["Variable"]] %>%
     lapply(delPlot, data, results_ranges) %>%
     plot_grid(DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(2, rep(1, length(.)))) %>%
-    save_plot(filename = paste0("plots/",group, ".svg"), device = devSVG, base_height = 12, base_width = 4 + 2 * length(.))
+    save_plot(filename = str_c("plots_test/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
 }
 
 # ROC curves--------------------------------------------------------------------
