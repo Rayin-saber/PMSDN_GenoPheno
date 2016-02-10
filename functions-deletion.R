@@ -1,5 +1,7 @@
 library(dplyr)
 library(ordinal)
+library(ggplot2)
+library(grid)
 
 cnvPlot <- function(Genetics_ranges)
 {
@@ -7,13 +9,19 @@ cnvPlot <- function(Genetics_ranges)
     mutate(End = ifelse(Gain_Loss == "Mutation", End + 5e4, End)) %>%
     ggplot(aes(x = Patient.ID, ymin = Start/1e6, ymax = End/1e6)) +
     geom_linerange(size = 1, aes(color = Gain_Loss)) +
+    geom_rect(ymin = 50674641/1e6, ymax = 50733212/1e6, xmin = 1, xmax = nrow(Genetics_ranges), alpha = .01, fill = "grey") +
     scale_color_manual(values = c(Gain = "blue", Loss = "red", Mutation = "darkred")) +
     scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
-    theme(axis.ticks.y = element_blank(), axis.line.y = element_blank(), legend.position = c(0.1,0.1), legend.title = element_blank()) +
     ylab("Chromosomic coordinates") +
-    xlab("Patients") +
-    geom_rect(ymin = 50674641/1e6, ymax = 50733212/1e6, xmin = 1, xmax = nrow(Genetics_ranges), alpha = .01, fill = "grey") +
-    coord_flip()
+    xlab(NULL) +
+    theme(axis.ticks.y = element_blank(),
+          axis.line.y = element_blank(),
+          legend.position = c(0.1, 0.1),
+          legend.title = element_blank()) +
+    coord_flip() +
+    annotate("segment", x = nrow(Genetics_ranges), xend = 1, y = 52, yend = 52, arrow = arrow(type = "closed", angle = 20)) +
+    annotate("text", x = nrow(Genetics_ranges)/2, y = 51.95, label = "Patients", angle = 90, hjust = .5, vjust = 0) +
+    annotate("text", x = nrow(Genetics_ranges)/2, y = 52.05, label = "Decreasing deletion size", angle = 90, hjust = .5, vjust = 1)
 }
 
 delAnalysis <- function(x, size)
@@ -56,12 +64,14 @@ delPlot <- function(var, data, results_ranges)
     scale_x_discrete(labels = NULL, limits = data$Patient.ID[order(desc(data$min))]) +
     scale_y_continuous(labels = NULL) +
     scale_color_grey(start = .9, end = .2, na.value = "white") +
-    theme(axis.ticks = element_blank(), axis.line = element_blank(), legend.position = "none") +
     xlab(NULL) +
     ylab(paste0("p = ", results_ranges$p.adj[results_ranges$Variable == var] %>% format(digits = 4))) +
     ggtitle(results_ranges$text[results_ranges$Variable == var]) +
-    theme(plot.title = element_text(angle = 45, vjust = 0.5, hjust = 0.5, size = 9)) +
-    theme(axis.title.x = element_text(angle = -45, size = 9, vjust = 0)) +
-    theme(plot.margin = grid::unit(c(0,0,1,0), "cm")) +
+    theme(axis.ticks = element_blank(),
+          axis.line = element_blank(),
+          legend.position = "none",
+          plot.title = element_text(vjust = 0.2, hjust = 0.1, angle = 45),
+          axis.title.x = element_text(angle = -45, vjust = .5),
+          plot.margin = unit(c(0.05, 0, 0, 0), "npc")) +
     coord_flip()
 }
