@@ -1,3 +1,5 @@
+library(stringr)
+library(EMCluster)
 library(dplyr)
 library(ggplot2)
 library(magrittr)
@@ -6,33 +8,34 @@ library(pROC)
 library(parallel)
 library(RSvgDevice)
 library(DT)
+library(grid)
+
 
 source("functions-deletion.R")
 
 load("data.Rda")
 
 # Create main data frame -------------------------------------------------------
-full_join(Demographics, Clinical) %>%
+Demographics %>%
+  full_join(Clinical) %>%
   full_join(Developmental) %>%
   ungroup -> data
 
-vars <- rbind(Clin_vars, Dev_vars)
+rbind(Clin_vars, Dev_vars) -> vars
 
 rm(Demographics, Clinical, Developmental)
 rm(Clin_vars, Dev_vars)
 
 # Clean variable names ---------------------------------------------------------
-vars <- bind_rows(
-  vars %>%
-    filter(Group == "Self-Help.Skills") %>%
-    mutate(text = Variable %>% gsub("_.*", "", ., perl = T)),
-  vars %>%
-    filter(Group != "Self-Help.Skills") %>%
-    mutate(text = Variable %>% gsub(".*?_(.*?)_.*", "\\1", ., perl = T)) %>%
-    mutate(text = text %>% gsub("_ currently", "", ., perl = T)) %>%
-    mutate(text = text %>% sub(".*?_", "", ., perl = T)) %>%
-    mutate(Group = Group %>% factor)
-) %>%
+vars %>%
+  filter(Group == "Self-Help.Skills") %>%
+  mutate(text = Variable %>% gsub("_.*", "", ., perl = T)) %>%
+  bind_rows(vars %>%
+            filter(Group != "Self-Help.Skills") %>%
+            mutate(text = Variable %>% gsub(".*?_(.*?)_.*", "\\1", ., perl = T)) %>%
+            mutate(text = text %>% gsub("_ currently", "", ., perl = T)) %>%
+            mutate(text = text %>% sub(".*?_", "", ., perl = T)) %>%
+            mutate(Group = Group %>% factor)) %>%
   mutate(text = text %>% sub("\\(.*?\\)$", "", ., perl = T)) %>%
   mutate(text = text %>% gsub("\\.", " ", ., perl = T))
 
@@ -45,12 +48,10 @@ Genetics_ranges %<>%
 
 # Create the del extend var ----------------------------------------------------
 Genetics_ranges %<>%
-  full_join(
-    Genetics_ranges %>%
-      filter(Gain_Loss != "Gain") %>%
-      group_by(Patient.ID) %>%
-      summarize(min = min(Start))
-  ) %>%
+  full_join(Genetics_ranges %>%
+            filter(Gain_Loss != "Gain") %>%
+            group_by(Patient.ID) %>%
+            summarize(min = min(Start))) %>%
   arrange(desc(min))
 
 # First plot with all patients and every genetic alteration --------------------
@@ -65,11 +66,9 @@ Genetics_ranges %<>% semi_join(data)
 # Re-compute del extent var ----------------------------------------------------
 Genetics_ranges %<>% select(-min)
 Genetics_ranges %<>%
-  full_join(
-    Genetics_ranges %>%
-      group_by(Patient.ID) %>%
-      summarize(min = min(Start))
-  ) %>%
+  full_join(Genetics_ranges %>%
+            group_by(Patient.ID) %>%
+            summarize(min = min(Start))) %>%
   arrange(desc(min))
 
 # Final plot of the deletions for the included patients ------------------------
@@ -77,11 +76,9 @@ Genetics_ranges %>% cnvPlot -> DEL_plot
 
 # Keep only patients with geno & pheno data and build dataframe ----------------
 data %<>%
-  inner_join(
-    Genetics_ranges %>%
-      distinct(Patient.ID) %>%
-      select(Patient.ID, min)
-  ) %>%
+  inner_join(Genetics_ranges %>%
+             distinct(Patient.ID) %>%
+             select(Patient.ID, min)) %>%
   arrange(desc(min))
 
 # Association analysis ---------------------------------------------------------
@@ -89,11 +86,11 @@ data %>%
   select(-Patient.ID, -Birthdate, -Gender, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
   sapply(delAnalysis, 50818468 - data$min) %>% # end of chr22
   t %>%
-  data.frame %>%
-  add_rownames("Variable") %>%
-  mutate(p.adj = p.adjust(p, "fdr")) %>%
-  arrange(p.adj) %>%
-  left_join(vars) -> results_ranges
+    data.frame %>%
+    add_rownames("Variable") %>%
+    mutate(p.adj = p.adjust(p, "fdr")) %>%
+    arrange(p.adj) %>%
+    left_join(vars) -> results_ranges
 
 write.csv2(results_ranges, "results_ranges.csv")
 
@@ -101,7 +98,6 @@ write.csv2(results_ranges, "results_ranges.csv")
 for (group in unique(results_ranges$Group))
 {
   print(group)
-#vars$Variable[vars$Group == group] %>%
   results_ranges %>%
     filter(Group == group) %>%
     arrange(p.adj) %>%
@@ -166,9 +162,9 @@ rocvars$Variable <- factor(rocvars$Variable, levels = rocvars$Variable)
 rocvars$Group <- factor(rocvars$Group, levels = rev(unique(rocvars$Group)))
 
 ggplot(rocvars) +
-  geom_linerange(aes(x = Variable, ymin = min/1000000, ymax = max/1000000, colour = Group), size = 8) +
-  geom_linerange(aes(x = Variable, ymin = icl/1e6, ymax = icu/1e6, colour = Group), size = 8, alpha = .5) +
+  geom_linerange(aes(x = Variable, ymin = min / 1000000, ymax = max / 1000000, colour = Group), size = 8) +
+  geom_linerange(aes(x = Variable, ymin = icl / 1e6, ymax = icu / 1e6, colour = Group), size = 8, alpha = .5) +
   #geom_linerange(aes(x=Variable, ymin = gmin/1000000, ymax = gmax/1000000, colour = Group), size = 8, alpha = .5) +
-  geom_text(aes(x = Variable, y = gmax/1000000, label = paste0(as.integer(auc), "%")), hjust=0) +
+  geom_text(aes(x = Variable, y = gmax / 1000000, label = srt_c(as.integer(auc), "%")), hjust = 0) +
   scale_y_continuous(name = "Position") +
   coord_flip()
