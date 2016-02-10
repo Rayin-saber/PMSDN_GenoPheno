@@ -37,7 +37,9 @@ vars %>%
             mutate(text = text %>% sub(".*?_", "", ., perl = T)) %>%
             mutate(Group = Group %>% factor)) %>%
   mutate(text = text %>% sub("\\(.*?\\)$", "", ., perl = T)) %>%
-  mutate(text = text %>% gsub("\\.", " ", ., perl = T))
+  mutate(text = text %>% gsub("\\.", " ", ., perl = T)) %>%
+  mutate(text = text %>% sub("With PMS, some children develop understandable verbal speech while others do not  If the patient is over age 2, please choose the response that most closely matches your child's abilities today", "Verbal speech", ., perl = T)) %>%
+  mutate(text = text %>% sub("Has the patient ever exhibited symptoms of or been diagnosed with ADD/ADHD or any other significant attention or hyperactivity issues warranting intervention?", "Symptoms/diagnostic of ADD/ADHD", ., perl = T)) -> vars
 
 # Manage Genetics_ranges -------------------------------------------------------
 Genetics_ranges %<>%
@@ -83,7 +85,7 @@ data %<>%
 
 # Association analysis ---------------------------------------------------------
 data %>%
-  select(-Patient.ID, -Birthdate, -Gender, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
+  select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
   sapply(delAnalysis, 50818468 - data$min) %>% # end of chr22
   t %>%
     data.frame %>%
