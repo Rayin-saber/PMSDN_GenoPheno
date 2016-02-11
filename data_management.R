@@ -1,6 +1,6 @@
 source("functions-process.R")
 
-export_date <- as.Date("2015-07-27")
+export_date <- as.Date("2015-12-04")
 
 # ==== Demographics ====
 Demographics      <- processDemographics(         noOutput = T)
