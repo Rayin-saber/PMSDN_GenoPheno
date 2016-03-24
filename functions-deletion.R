@@ -12,6 +12,7 @@ cnvPlot <- function(Genetics_ranges)
     geom_rect(ymin = 50674641/1e6, ymax = 50733212/1e6, xmin = 1, xmax = nrow(Genetics_ranges), alpha = .01, fill = "grey") +
     scale_color_manual(values = c(Gain = "blue", Loss = "red", Mutation = "darkred")) +
     scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
+    # scale_y_continuous(breaks = seq(15,50,5)) +
     ylab("Chromosomic coordinates") +
     xlab(NULL) +
     theme(axis.ticks.y = element_blank(),
