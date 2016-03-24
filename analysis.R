@@ -17,8 +17,8 @@ load("data.Rda")
 
 # Create main data frame -------------------------------------------------------
 Demographics %>%
-  full_join(Clinical) %>%
-  full_join(Developmental) %>%
+  inner_join(Clinical) %>%
+  inner_join(Developmental) %>%
   ungroup -> data
 
 rbind(Clin_vars, Dev_vars) -> vars
