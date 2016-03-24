@@ -109,6 +109,7 @@ Genetics_ranges %<>%
 
 # First plot with all patients and every genetic alteration --------------------
 Genetics_ranges %>% cnvPlot -> CNV_plot
+# save_plot(plot = CNV_plot, filename = "CNV_plot.svg", device = svglite, base_height = 12, base_width =  30)
 
 # Keep only terminal deletions/mutations ---------------------------------------
 Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 50674641
@@ -139,6 +140,7 @@ data %<>%
              select(Patient.ID, min)) %>%
   arrange(desc(min))
 
+rm(Genetics_ranges)
 
 article$nb_pat$included <- nrow(data)
 
@@ -202,6 +204,7 @@ results_ranges %>%
 # write.csv2("results_ranges.csv", row.names = F)
 
 # Plots-------------------------------------------------------------------------
+dir.create("plots", recursive = T)
 for (group in unique(results_ranges$Group))
 {
   print(group)
@@ -211,14 +214,17 @@ for (group in unique(results_ranges$Group))
     .[["Variable"]] %>%
     lapply(delPlot, data, results_ranges) %>%
     plot_grid(DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(2, rep(1, length(.)))) %>%
-    save_plot(filename = str_c("plots_test/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
+    save_plot(filename = str_c("plots/",group, ".png"), base_height = 12, base_width =  4 + 2 * length(.))
+    # save_plot(filename = str_c("plots/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
 }
 
 save(article, file = "article.Rdata")
 
 # ROC curves--------------------------------------------------------------------
 # Keep only the maximum extent of deletion for each patient
-Start <- Genetics_ranges %>% group_by(Patient.ID) %>% summarize(Start = min(Start))
+Genetics_ranges %>%
+  group_by(Patient.ID) %>%
+  summarize(Start = min(Start)) -> Start
 rocvars <- filter(results_ranges, Range_p_corrected < .05) %>% select(Group, Variable)
 data$Patient.ID <- as.numeric(data$Patient.ID)
 datarocs <- merge(Start,data[c("Patient.ID",rocvars$Variable)])
