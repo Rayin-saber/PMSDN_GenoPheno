@@ -34,20 +34,6 @@ for (var in names(Clinical[-1]))
     Clinical[var] <- factor(Clinical[[var]], levels = c("No", "Yes"), exclude = c("", NA))
   }
 
-# Summary and selection for individual vars
-for (var in names(Clinical[-1]))
-  if (!is.numeric(Clinical[[var]]))
-    if (any(summary(Clinical[[var]])[1:nlevels(Clinical[[var]])] < 6) | grepl("_Other", var))
-      Clinical[[var]] <- NULL
-
-Clin_vars <- Clin_vars[Clin_vars$Variable %in% names(Clinical[-1]),]
-
-for (var in Clin_vars$Variable)
-  for (lvl in levels(Clinical[[var]]))
-    if (!is.na(lvl))
-      Clin_vars[Clin_vars$Variable == var, lvl] <- summary(factor(Clinical[[var]]))[lvl]
-write.csv2(Clin_vars, "clin_vars_summary.csv")
-
 # ==== Developmental ====
 Developmental     <- processFile("Developmental", noOutput = T)
 
@@ -64,30 +50,6 @@ for (var in names(Developmental))
 for (var in grep("(communication|motor)\\.milestones", names(Developmental), value = T))
   Developmental[var] <- factor(Developmental[[var]], levels = c("0 - 3 months", "4 - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +"), ordered = T)
 
-for (var in grep("(communication|motor)\\.milestones", names(Developmental), value = T))
-{
-  levels <- c("0 - 3 months", "4 - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +")
-  unclassed <- unclass(Developmental[[var]])
-  lvl_low <- 1
-  while (sum(summary(Developmental[[var]])[1:lvl_low]) < 6 & lvl_low < 11)
-    lvl_low <- lvl_low + 1
-
-  lvl_high <- 11
-  while (sum(summary(Developmental[[var]])[lvl_high:11]) < 6 & lvl_high > 1)
-    lvl_high <- lvl_high - 1
-
-  if (lvl_high - lvl_low < 2)
-    next
-
-  unclassed[unclassed < lvl_low] <- lvl_low
-  unclassed[unclassed > lvl_high] <- lvl_high
-
-  if (lvl_low > 1)
-    levels[lvl_low] <- gsub("\\d+ - (\\d+ \\w+)", "\\1 -", levels[lvl_low], perl = T)
-  if (lvl_high < 11)
-    levels[lvl_high] <- gsub("(\\d+) - \\d+ (\\w+)", "\\1 \\2 +", levels[lvl_high], perl = T)
-  Developmental[[var]] <- ordered(unclassed, levels = lvl_low:lvl_high, labels = levels[lvl_low:lvl_high])
-}
 
 # Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently`[Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently` == "6 - 7 words" | Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently` == "8 - 10 words"] <- "6 + words"
 Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently` <- factor(Developmental$`How.many.words.are.used.in.a.typical.sentence?_ currently`, levels = c("2 - 3 words", "4 - 5 words", "6 - 7 words", "8 - 10 words"), ordered = T)
@@ -109,20 +71,6 @@ for (var in names(Developmental[-1]))
     Developmental[var] <- gsub(" (by imputation)", "", Developmental[[var]], fixed = T)
     Developmental[var] <- factor(Developmental[[var]], levels = c("No", "Yes"), exclude = c("", NA))
   }
-
-# Summary and selection for individual vars
-for (var in names(Developmental[-1]))
-  if (!is.numeric(Developmental[[var]]))
-    if (any(summary(Developmental[[var]])[1:nlevels(Developmental[[var]])] < 6) | grepl("_Other", var))
-      Developmental[[var]] <- NULL
-
-    Dev_vars <- Dev_vars[Dev_vars$Variable %in% names(Developmental[-1]),]
-
-for (var in Dev_vars$Variable)
-  for (lvl in levels(Developmental[[var]]))
-    if (!is.na(lvl))
-      Dev_vars[Dev_vars$Variable == var, lvl] <- summary(factor(Developmental[[var]]))[lvl]
-write.csv2(Dev_vars, "dev_vars_summary.csv")
 
 # ==== Genetics ====
 Genetics_ranges <- processGenetics(noOutput = T)

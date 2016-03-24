@@ -83,6 +83,48 @@ data %<>%
              select(Patient.ID, min)) %>%
   arrange(desc(min))
 
+
+
+
+
+# PRO selection
+for (var in grep("(communication|motor)\\.milestones", names(data), value = T))
+{
+  levels <- c("0 - 3 months", "4 - 7 months",	"8 - 11 months",	"12 - 18 months",	"19 - 24 months",	"25 - 30 months",	"31 - 36 months", "4 - 5 years", "6 - 7 years",	"8 - 9 years", "10 years +")
+  unclassed <- unclass(data[[var]])
+  lvl_low <- 1
+  while (sum(summary(data[[var]])[1:lvl_low]) < 6 & lvl_low < 11)
+    lvl_low <- lvl_low + 1
+
+  lvl_high <- 11
+  while (sum(summary(data[[var]])[lvl_high:11]) < 6 & lvl_high > 1)
+    lvl_high <- lvl_high - 1
+
+  if (lvl_high - lvl_low < 2)
+    next
+
+  unclassed[unclassed < lvl_low] <- lvl_low
+  unclassed[unclassed > lvl_high] <- lvl_high
+
+  if (lvl_low > 1)
+    levels[lvl_low] <- gsub("\\d+ - (\\d+ \\w+)", "\\1 -", levels[lvl_low], perl = T)
+  if (lvl_high < 11)
+    levels[lvl_high] <- gsub("(\\d+) - \\d+ (\\w+)", "\\1 \\2 +", levels[lvl_high], perl = T)
+  data[[var]] <- ordered(unclassed, levels = lvl_low:lvl_high, labels = levels[lvl_low:lvl_high])
+}
+rm(unclassed, lvl_low, lvl_high, levels)
+
+for (var in vars$Variable)
+  if (!is.numeric(data[[var]]))
+    if (any(summary(data[[var]])[1:nlevels(data[[var]])] < 6) | grepl("_Other", var))
+      data[[var]] <- NULL
+
+vars %<>% filter(Variable %in% names(data))
+
+# for (var in vars$Variable)
+#   for (lvl in levels(data[[var]]))
+#     if (!is.na(lvl))
+#       vars[vars$Variable == var, lvl] <- summary(factor(data[[var]]))[lvl]
 # Association analysis ---------------------------------------------------------
 data %>%
   select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
