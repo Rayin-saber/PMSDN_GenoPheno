@@ -15,6 +15,11 @@ source("functions-deletion.R")
 
 load("data.Rda")
 
+article <- list()
+article$nb_pat$demo <- nrow(Demographics)
+article$nb_pat$clin <- nrow(Clinical)
+article$nb_pat$dev <- nrow(Developmental)
+
 # Create main data frame -------------------------------------------------------
 Demographics %>%
   inner_join(Clinical) %>%
@@ -22,6 +27,8 @@ Demographics %>%
   ungroup -> data
 
 rbind(Clin_vars, Dev_vars) -> vars
+article$PRO$sel <- nrow(vars)
+article$nb_pat$pheno <- nrow(data)
 
 rm(Demographics, Clinical, Developmental)
 rm(Clin_vars, Dev_vars)
@@ -76,12 +83,21 @@ vars %>%
   mutate(text = text %>% sub("Has the patient ever had poor eye contact?", "Poor eye contact", ., fixed = T)) %>%
   mutate(text = text %>% sub("Cling to caregivers/familiar adult in presence of a stranger", "Cling to familiar adult in presence of a stranger", ., fixed = T)) -> vars
 
+article$nb_pat$all_gen <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
+article$genetics$all <- nrow(Genetics_ranges)
+article$genetics$Xmes <- Genetics_ranges$Chr_Gene %>% factor %>% levels
+
 # Manage Genetics_ranges -------------------------------------------------------
 Genetics_ranges %<>%
   filter(Chr_Gene == "22") %>%
   mutate(Patient.ID = as.character(Patient.ID)) %>%
   mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) %>%
   select(-Result.type, -Chr_Gene)
+
+article$genetics$X22$del <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% nrow
+article$genetics$X22$dup <- Genetics_ranges %>% filter(Gain_Loss == "Gain") %>% nrow
+article$genetics$X22$mut <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% nrow
+article$nb_pat$mut <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
 
 # Create the del extend var ----------------------------------------------------
 Genetics_ranges %<>%
@@ -97,6 +113,8 @@ Genetics_ranges %>% cnvPlot -> CNV_plot
 # Keep only terminal deletions/mutations ---------------------------------------
 Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 50674641
 
+article$nb_pat$term_del <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
+
 # And only patients who have phenotypic data ----------------------------------
 Genetics_ranges %<>% semi_join(data)
 
@@ -107,6 +125,9 @@ Genetics_ranges %<>%
             group_by(Patient.ID) %>%
             summarize(min = min(Start))) %>%
   arrange(desc(min))
+
+article$nb_pat$mut_sel <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
+article$genetics$range <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% mutate(size = End - min) %>% .$size %>% summary
 
 # Final plot of the deletions for the included patients ------------------------
 Genetics_ranges %>% cnvPlot -> DEL_plot
@@ -119,8 +140,7 @@ data %<>%
   arrange(desc(min))
 
 
-
-
+article$nb_pat$included <- nrow(data)
 
 # PRO selection
 for (var in grep("(communication|motor)\\.milestones", names(data), value = T))
@@ -160,6 +180,10 @@ vars %<>% filter(Variable %in% names(data))
 #   for (lvl in levels(data[[var]]))
 #     if (!is.na(lvl))
 #       vars[vars$Variable == var, lvl] <- summary(factor(data[[var]]))[lvl]
+
+article$PRO$incl <- vars %>% nrow
+article$completion <- sapply(data[vars$Variable], function (x) {is.na(x)[is.na(x) == F] %>% length/nrow(data)}) %>% summary
+
 # Association analysis ---------------------------------------------------------
 data %>%
   select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
@@ -171,7 +195,11 @@ data %>%
     arrange(p.adj) %>%
     left_join(vars) -> results_ranges
 
-write.csv2(results_ranges, "results_ranges.csv")
+results_ranges %>%
+  mutate_each(funs(p = prettyNum(., digits = 3))) %>%
+  mutate(OR = str_c(or, "[", icl, "-", icu, "]", sep = " ")) %>%
+  select(Variable, text,  p, p.adj, OR) -> article$results_ranges
+# write.csv2("results_ranges.csv", row.names = F)
 
 # Plots-------------------------------------------------------------------------
 for (group in unique(results_ranges$Group))
@@ -185,6 +213,8 @@ for (group in unique(results_ranges$Group))
     plot_grid(DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(2, rep(1, length(.)))) %>%
     save_plot(filename = str_c("plots_test/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
 }
+
+save(article, file = "article.Rdata")
 
 # ROC curves--------------------------------------------------------------------
 # Keep only the maximum extent of deletion for each patient
