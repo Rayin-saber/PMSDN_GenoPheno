@@ -1,3 +1,6 @@
+library(cosmosR)
+library(readr)
+library(rvest)
 library(stringr)
 library(EMCluster)
 library(dplyr)
@@ -143,6 +146,16 @@ data %<>%
 rm(Genetics_ranges)
 
 article$nb_pat$included <- nrow(data)
+
+# Table 1 : demographics and comparison
+Demographics %<>%
+  mutate(included = Patient.ID %in% data$Patient.ID)
+Demographics$Ancestral.Background[Demographics$Ancestral.Background == ""] <- NA
+Demographics$included %<>% factor
+Demographics$Ancestral.Background %<>% factor
+
+Demographics %>% select(Age, Gender, Ancestral.Background, included) %>% desc_groupe("included")
+read_file("desc_groupe_included.html") %>% read_html %>% html_table %>% .[[1]] -> article$table1
 
 # PRO selection
 for (var in grep("(communication|motor)\\.milestones", names(data), value = T))
