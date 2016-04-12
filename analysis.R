@@ -204,8 +204,8 @@ results_ranges %>%
 # write.csv2("results_ranges.csv", row.names = F)
 
 # Plots-------------------------------------------------------------------------
-dir.create("plots", recursive = T)
-for (group in unique(results_ranges$Group))
+unique(results_ranges$Group) %>%
+  sapply(simplify = F, function(group)
 {
   print(group)
   results_ranges %>%
@@ -213,10 +213,10 @@ for (group in unique(results_ranges$Group))
     arrange(p.adj) %>%
     .[["Variable"]] %>%
     lapply(delPlot, data, results_ranges) %>%
-    plot_grid(DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(2, rep(1, length(.)))) %>%
-    save_plot(filename = str_c("plots/",group, ".png"), base_height = 12, base_width =  4 + 2 * length(.))
+    plot_grid(article$DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(4, rep(1, length(.))))# %>%
+    # save_plot(filename = str_c("plots/",group, ".png"), base_height = 12, base_width =  4 + 1 * length(.$layers), limitsize = F)
     # save_plot(filename = str_c("plots/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
-}
+}) -> article$plots
 
 save(article, file = "article.Rdata")
 
