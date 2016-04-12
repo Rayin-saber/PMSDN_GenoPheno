@@ -26,14 +26,14 @@ article$nb_pat$dev <- nrow(Developmental)
 # Create main data frame -------------------------------------------------------
 Demographics %>%
   inner_join(Clinical) %>%
-  inner_join(Developmental) %>%
+  full_join(Developmental) %>%
   ungroup -> data
 
 rbind(Clin_vars, Dev_vars) -> vars
 article$PRO$sel <- nrow(vars)
 article$nb_pat$pheno <- nrow(data)
 
-rm(Demographics, Clinical, Developmental)
+rm(Clinical, Developmental)
 rm(Clin_vars, Dev_vars)
 
 # Clean variable names ---------------------------------------------------------
@@ -111,7 +111,7 @@ Genetics_ranges %<>%
   arrange(desc(min))
 
 # First plot with all patients and every genetic alteration --------------------
-Genetics_ranges %>% cnvPlot -> CNV_plot
+Genetics_ranges %>% cnvPlot -> article$CNV_plot
 # save_plot(plot = CNV_plot, filename = "CNV_plot.svg", device = svglite, base_height = 12, base_width =  30)
 
 # Keep only terminal deletions/mutations ---------------------------------------
@@ -119,7 +119,7 @@ Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 5067
 
 article$nb_pat$term_del <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 
-# And only patients who have phenotypic data ----------------------------------
+# Keep only patients who have phenotypic data ----------------------------------
 Genetics_ranges %<>% semi_join(data)
 
 # Re-compute del extent var ----------------------------------------------------
@@ -130,18 +130,19 @@ Genetics_ranges %<>%
             summarize(min = min(Start))) %>%
   arrange(desc(min))
 
-article$nb_pat$mut_sel <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
-article$genetics$range <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% mutate(size = End - min) %>% .$size %>% summary
-
-# Final plot of the deletions for the included patients ------------------------
-Genetics_ranges %>% cnvPlot -> DEL_plot
-
 # Keep only patients with geno & pheno data and build dataframe ----------------
 data %<>%
   inner_join(Genetics_ranges %>%
              distinct(Patient.ID) %>%
              select(Patient.ID, min)) %>%
   arrange(desc(min))
+
+
+article$nb_pat$mut_sel <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
+article$genetics$range <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% mutate(size = End - min) %>% .$size %>% summary
+
+# Final plot of the deletions for the included patients ------------------------
+Genetics_ranges %>% cnvPlot -> article$DEL_plot
 
 rm(Genetics_ranges)
 
