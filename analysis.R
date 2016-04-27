@@ -227,9 +227,9 @@ unique(results_ranges$Group) %>%
     arrange(p.adj) %>%
     .[["Variable"]] %>%
     lapply(delPlot, data, results_ranges) %>%
-    plot_grid(article$DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(4, rep(1, length(.))))# %>%
-    # save_plot(filename = str_c("plots/",group, ".png"), base_height = 12, base_width =  4 + 1 * length(.$layers), limitsize = F)
-    # save_plot(filename = str_c("plots/",group, ".svg"), device = svglite, base_height = 12, base_width =  4 + 2 * length(.))
+    plot_grid(article$DEL_plot, plotlist = ., align = "h", nrow = 1, rel_widths = c(8, rep(1, length(.))))# %>%
+    # save_plot(filename = str_c("plots/",group, ".png"), base_height = 12) #, base_width =  6 + .75 * length(.$layers), limitsize = F)
+    # save_plot(filename = str_c("plots/",group, ".svg"), device = svglite, base_height = 12) #, base_width = 6 + .75 * length(.$layers))
 }) -> article$plots
 
 save(article, file = "article.Rdata")
