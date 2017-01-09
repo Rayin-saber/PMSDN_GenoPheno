@@ -80,7 +80,7 @@ Of the 1,300 patient-reported outcome (PRO) items present in the registry, `r ar
 
 ## Deletion analyses results
 
-`r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates could be translated into the GRCh38/hg38 human genome assembly on chromosome 22. Figure 1 represents the chromosomal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients. Panel A of the figure is a representation of chromosome 22 with the zoomed region framed in red. Panel B represents the deletion sizes for each patient, one line per patient, ordered by the decreasing total size of deleted genetic material. Duplicated regions are represented as blue boxes, deleted regions as red boxes, and mutations of *SHANK3* as dark red boxes. The range of the *SHANK3* gene is represented as a gray transparent box across the figure. Horizontal black lines help relate different chromosomal abnormalities for patients with more than one abnormality.
+`r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates could be translated into the GRCh38/hg38 human genome assembly on chromosome 22. Figure 1 represents the terminal chromosomal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients. Panel A of the figure is a representation of chromosome 22 with the zoomed terminal region framed in red. Panel B represents the deletion sizes for each patient, one line per patient, ordered by the decreasing maximum extent of the deleted genetic material. Duplicated regions are represented as blue boxes, deleted regions as red boxes, and mutations of *SHANK3* as dark red boxes. The range of the *SHANK3* gene is represented as a vertical box across the figure. Horizontal black lines help relate different chromosomal abnormalities for patients with more than one abnormality.
 
 `r article$PRO$incl` phenotypes were tested against deletion sizes for `r article$nb_pat$included` patients using the models described in the methods section. After correction of the p values using the FDR method, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*. Complete results are presented in Supplemental data 2, and figures for all groups of phenotypes in Supplemental data 3.
 
@@ -217,7 +217,7 @@ All the code for ETL and analysis is openly available on github (https://github.
 ## Figure 1
 
 **Title**: Genetic status on chromosome 22 for all patients with a verified genetic test result.  
-**Legend**: Deletions (in red), *SHANK3* mutations (in dark red), and duplications (in blue) on the long arm of chromosome 22 (as shown in Panel A), ordered by decreasing size of total deleted genetic material, one line for each patient (Panel B)
+**Legend**: Deletions (in red), *SHANK3* mutations (in dark red), and duplications (in blue) on the long arm of chromosome 22 (as shown in Panel A), ordered by decreasing maximum extent of deleted genetic material, one line for each patient (Panel B)
 
 ## Figure 2
 
