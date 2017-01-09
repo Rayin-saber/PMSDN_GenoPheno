@@ -1,12 +1,12 @@
 source("functions-process.R")
 
-export_date <- as.Date("2015-12-04")
+export_date <- as.Date("2016-10-12")
 
 # ==== Demographics ====
 Demographics      <- processDemographics(         noOutput = T)
 
 Demographics$Gender               <- factor(Demographics$Gender)
-Demographics$Ancestral.Background <- factor(Demographics$Ancestral.Background)
+Demographics$Race <- factor(Demographics$Race)
 Demographics$Country              <- factor(Demographics$Country)
 
 # ==== Clinical ====
