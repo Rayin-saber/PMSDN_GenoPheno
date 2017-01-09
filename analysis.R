@@ -115,7 +115,7 @@ Genetics_ranges %>% cnvPlot -> article$CNV_plot
 # save_plot(plot = CNV_plot, filename = "CNV_plot.svg", device = svglite, base_height = 12, base_width =  30)
 
 # Keep only terminal deletions/mutations ---------------------------------------
-Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50500000) # shank3 = 50674641
+Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50674641) # shank3 : 50674641
 
 article$nb_pat$term_del <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 
