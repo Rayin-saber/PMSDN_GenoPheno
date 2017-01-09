@@ -5,7 +5,6 @@ Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Someti
 Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Always
 Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_In.the.past
 Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Only.when.stressed
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Other
 Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Appear.to.act.without.thinking_Status_ currently
 Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.sustaining.attention.in.tasks.or.play.activities_Status_ currently
 Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Seem.not.to.listen.when.spoken.to.directly_Status_ currently
@@ -21,7 +20,6 @@ Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.an
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Social.anxiety
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Separation.anxiety.disorder
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Obsessive-compulsive.disorder
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Other
 Behavior;Has.the.patient.ever.exhibited.excessive.mouthing/chewing.not.associated.with.teething?
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Specific.food.aversion
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Over-eating
@@ -30,7 +28,6 @@ Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Under
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Refuses.to.eat.and.needs.to.be.force-fed
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Pica
 Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Rumination
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Other
 Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Demonstrate.understanding.of.the.use.of.familiar.objects.(e.g.,.gives.cup.to.doll.to.drink)
 Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Imitate.household.activities.during.play.(e.g.,.tries.to.clean.with.sponge)
 Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Act.out.recent.experiences.using.gestures,.body.languages,.words
@@ -45,7 +42,6 @@ Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cogni
 Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Auditory.processing.disorder
 Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Non-verbal.learning.disability
 Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Intellectual.disability.(formerly.Mental.Retardation)
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Other
 Communication.Development;With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently
 Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Social.smile
 Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Single.syllables.utterances.(e.g..ma,.da)
@@ -60,7 +56,6 @@ Communication.Development;What.non-verbal.communication.skills.has.the.patient.u
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Picture.Exchange.Communication.System.(PECS)
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Icons.or.symbols.for.communication.(real.photos.or.icons.to.represent.words,.actions.or.activities)
 Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Voice.Output.Communication.Device
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Other
 Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Apraxia of speech (verbal apraxia)_Symptoms
 Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Articulation disorder_Symptoms
 Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Expressive language disorder_Symptoms
@@ -83,12 +78,10 @@ First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.difficul
 First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.poor.suck
 First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.swallowing.problems
 First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Required.special.feeds
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Other
 First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Nasogastric.(NG).tube
 First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Thickened.liquid
 First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Special.nipples
 First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Gavage.(force.feeding)
-First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Other
 First-Year.Development;How.long.were.special.feeds.required?
 Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Hold.head.up.on.his/her.own
 Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Roll.over.back.to.stomach
@@ -112,7 +105,7 @@ Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Acne
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Mature.body.odor
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.pubic.hair
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.underarm.hair
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Rapid.height.growth.–.a.growth.spurt
+Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Rapid.height.growth.–.a.growth.spurt.
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Deepening.of.the.voice
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.chest.and.facial.hair
 Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Increase.in.the.size.of.the.testicles
@@ -146,7 +139,6 @@ Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature
 Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Overheats.easily_ currently
 Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Does.not.perspire_ currently
 Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Perspires.less.than.typical_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Other_ currently
 Sensory;What.is.the.patient's.pain.tolerance.level?_ currently
 Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Smile.at.others_Status_ currently
 Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Play.Peek-a-boo_Status_ currently
@@ -156,7 +148,7 @@ Social-Emotional.Development;Indicate.if.the.following.social/emotional.mileston
 Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Respond.affectionately.to.caregivers.(gives.hug/kiss.when.asked)_Status_ currently
 Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.routines.without.objection.(e.g..getting.ready.for.walk,.bed)_Status_ currently
 Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Hug/kiss.caregivers,.dolls,.stuffed.animals_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Respond.to.others.–.emotions.(e.g..pats.someone.who.is.upset/crying)_Status_ currently
+Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Respond.to.others.emotions.(e.g..pats.someone.who.is.upset/crying)._Status_ currently
 Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Show.variety.of.emotions_Status_ currently
 Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.pretend.play_Status_ currently
 Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Shows.awareness.of.imaginary.characters.(e.g..monsters,.imaginary.friends)_Status_ currently
