@@ -133,7 +133,7 @@ Genetics_ranges %<>%
 # Keep only patients with geno & pheno data and build dataframe ----------------
 data %<>%
   inner_join(Genetics_ranges %>%
-             distinct(Patient.ID) %>%
+             distinct(Patient.ID, .keep_all = T) %>%
              select(Patient.ID, min)) %>%
   arrange(desc(min))
 
