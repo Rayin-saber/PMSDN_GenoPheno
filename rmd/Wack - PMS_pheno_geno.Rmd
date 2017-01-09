@@ -203,7 +203,7 @@ Two main scenarios exist for those phenotypes that are not associated with great
 
 When used as a predictor for binomial outcomes such as the occurrence of a clearly defined somatic phenotype, use of the deletion can only act as a proxy for responsibility of chromosomal regions of interest and hint at potential breakpoints. Comparisons using individual genes could help narrow down ranges of genes that might play a role in the phenotype, but this needs specific model developments as gene statuses inferred from this data would generate strong collinearity between contiguous genes affected in the same deletion ranges.
 
-It is to be noted that PMS being caused by 22q13 deletions, a majority of patients are tested only for genetic defects on chromosome 22, specifically using array CGH or FISH techniques and providing ranges of deletions. This is a strong bias in the data as most information is for chromosome 22 defects only, ignoring possible additional chromosomal aberrations.
+It is to be noted that PMS being caused by 22q13 deletions, a majority of patients are tested only for genetic defects on chromosome 22, specifically using array CGH or FISH techniques and providing ranges of deletions. This is a bias in the data as most information is for chromosome 22 defects only, ignoring possible additional chromosomal aberrations. The assumption in this analysis is that other potential defects are randomly distributed and don't affect the outcome.
 
 A third source of data consisting of the natural language processing of the patients' clinical notes, encoded as UMLS concepts, will provide us with a range of phenotypes that were not captured by the registry questionnaires and will permit even more detailed analyses.
 
