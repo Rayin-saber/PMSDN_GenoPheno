@@ -1,10 +1,13 @@
 ---
 title: "Identification of genotype-phenotype associations in Phelan-McDermid Syndrome using patient-sourced data from an international registry"
+keep_md: true
 output:
-  word_document:
-    reference_docx: template.docx
   pdf_document:
     template: template.tex
+    keep_tex: true
+    latex_engine: xelatex
+  word_document:
+    reference_docx: template.docx
 bibliography: PMS_DN_biblatex.bib
 csl: humangenet.csl
 author: Maxime Wack, Claire Hassen-Khodja, Michael T. McDuffie, Geraldine Bliss, Liz Horn, Andria Cornell, Cartik Kothari, Catalina Betancur, Megan O'Boyle, Isaac Kohane, Paul Avillach
