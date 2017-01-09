@@ -217,7 +217,44 @@ results_ranges %>%
   select(Variable, text,  p, p.adj, or, IC_OR, Group) -> article$results_ranges
 # write.csv2("results_ranges.csv", row.names = F)
 
+save(data,article,results_ranges,vars, file = "results.Rdata")
+load("results.Rdata")
+
+library(tidyr)
+library(purrr)
+library(magrittr)
+library(gtable)
+
+data %<>%
+  mutate(Patient.ID = Patient.ID %>% as.numeric,
+         limit = order(min)) %>%
+  dmap_if(is.factor, . %>% ordered %>% as.numeric) %>%
+  gather(var, value, -Patient.ID, -Birthdate, -Gender, -Race, -Country, -Age, -Age_months, -min, -limit) %>%
+  mutate(value = value %>% ordered) %>%
+  left_join(results_ranges, by = c("var" = "Variable"))
+
 # Plots-------------------------------------------------------------------------
+data %>%
+  filter(Group == "Renal.-.Kidney") %>%
+  arrange(p.adj) %>%
+  mutate(text = text %>% factor(levels = text %>% unique),
+         p.adj = p.adj %>% prettyNum(digits = 3)) %>%
+  ggplot(aes(x = limit, ymin = 0, ymax = 1, color = value)) +
+  facet_grid(. ~ text) +
+  geom_linerange(size = 1) +
+  geom_text(color = "black", angle = -45, aes(x = -12, y = 0.5, label = paste0("p = ", p.adj))) +
+  scale_y_continuous(labels = NULL) +
+  scale_color_grey(start = .9, end = .2, na.value = "white") +
+  xlab(NULL) +
+  ylab(NULL) +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.line = element_blank(),
+        legend.position = "none",
+        strip.text = element_text(vjust = 0, hjust = 0, angle = 75),
+        strip.background = element_blank())+
+coord_flip()
+
 unique(results_ranges$Group) %>%
   sapply(simplify = F, function(group)
 {
