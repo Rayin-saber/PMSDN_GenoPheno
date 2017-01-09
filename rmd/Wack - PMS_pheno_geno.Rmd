@@ -24,6 +24,14 @@ library(pander)
 library(stringr)
 
 load("article.Rdata")
+
+pvalue <- function(var)
+{
+  article$results_ranges %>%
+    filter(text == var) %>%
+    .$p.adj %>%
+    prettyNum(digits = 3)
+}
 opts_chunk$set(echo = F,
                message = F,
                error = F,
@@ -75,50 +83,92 @@ Of the 1,300 patient-reported outcome (PRO) items present in the registry, `r ar
 `r article$PRO$incl` phenotypes were tested against deletion sizes for `r article$nb_pat$included` patients using the models described in the methods section. After correction of the p values using the FDR method, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*. Complete results are presented in Supplemental data 2, and figures for all groups of phenotypes in Supplemental data 3.
 
 Significantly associated phenotypes with positive effect sizes are presented in Table 2, with their respective raw p value, FDR adjusted p value, and odds ratio with 95% confidence interval (odds ratios are expressed for every million base pair deleted). They include the age of acquisition for all main gross motor developmental milestones: (Figure 1)
-Hold head (p = `r article$results_ranges %>% filter(text == "Hold head up on his/her own") %>% .$p.adj`),
-Crawl (p = `r article$results_ranges %>% filter(text == "Crawl on hands and knees") %>% .$p.adj`),
-Sit (p = `r article$results_ranges %>% filter(text == "Sit when placed") %>% .$p.adj`),
-Walk (p = `r article$results_ranges %>% filter(text == "Walk unassisted") %>% .$p.adj`),
+Hold head (p = `r pvalue("Hold head up on his/her own")`),
+Crawl (p = `r pvalue("Crawl on hands and knees")`),
+Sit (p = `r pvalue("Sit when placed")`),
+Walk (p = `r pvalue("Walk unassisted")`),
 and
-Climb stairs (p = `r article$results_ranges %>% filter(text == "Climb stairs standing up without help") %>% .$p.adj`)
+Climb stairs (p = `r pvalue("Climb stairs standing up without help")`)
 where greater deletion sizes are associated with later ages of acquisition;
-certain kidney ailments: (Figure 2)
-Vesicoureteral reflux (p = `r article$results_ranges %>% filter(text == "Vesicoureteral Reflux ") %>% .$p.adj`)
+certain congenital dysmorphic kidney ailments: (Figure 2)
+Vesicoureteral reflux (p = `r pvalue("Vesicoureteral Reflux ")`),
+Hydronephrosis (p = `r pvalue("Hydronephrosis ")`),
+Increased kidney size (p = `r pvalue("Increased kidney size")`),
+Polycystic kidney (p = `r pvalue("Polycystic kidney")`),
+Persistent fever related to kidney issues (p = `r pvalue("Persistent fever related to kidney issues")`),
 and
-Hydronephrosis (p = `r article$results_ranges %>% filter(text == "Hydronephrosis ") %>% .$p.adj`);
+Dysplastic kidney (p = `r pvalue("Dysplastic kidney")`);
 a range of phenotypes related to gross motor and muscle tone:
-Balance maintaining (p = `r article$results_ranges %>% filter(text == "Difficulties maintaining balance ") %>% .$p.adj`),
-Floppy baby (p = `r article$results_ranges %>% filter(text == "Floppy baby") %>% .$p.adj`),
-Neonatal hypotonia (p = `r article$results_ranges %>% filter(text == "Hypotonia") %>% .$p.adj`),
-Apnea (p = `r article$results_ranges %>% filter(text == "Apnea ") %>% .$p.adj`),
+Floppy baby (p = `r pvalue("Floppy baby")`),
+Neonatal hypotonia (p = `r pvalue("Hypotonia")`),
+Fatigues easily (p = `r pvalue("Fatigues easily")`),
+Apnea (p = `r pvalue("Apnea ")`),
 and
-Fatigue (p = `r article$results_ranges %>% filter(text == "Fatigues easily") %>% .$p.adj`);
-multiple items related to feeding difficulties during the first-year development (p = `r article$results_ranges %>% filter(text == "Feeding problems") %>% .$p.adj`);
+Fatigue (p = `r pvalue("Fatigues easily")`);
+multiple items related to feeding difficulties during the first-year development:
+Feeding problems (p = `r pvalue("Feeding problems")`),
+Swallowing problems (p = `r pvalue("Had swallowing problems")`),
+Required special feeds (p = `r pvalue("Required special feeds")`),
+and
+Poor suck (p = `r pvalue("Had poor suck")`);
 dysmorphic features commonly described in PMS:
-Sacral dimple (p = `r article$results_ranges %>% filter(text == "Does the patient have a sacral dimple?") %>% .$p.adj`),
-Large fleshy hands (p = `r article$results_ranges %>% filter(text == "Large fleshy hands") %>% .$p.adj`),
-Dysplastic toenails (p = `r article$results_ranges %>% filter(text == "Dysplastic or unusual toenails") %>% .$p.adj`)
+Too tall for age (p = `r pvalue("Too tall for age ")`),
+Sacral dimple (p = `r pvalue("Does the patient have a sacral dimple?")`),
+Large fleshy hands (p = `r pvalue("Large fleshy hands")`),
 and
-fingernails (p = `r article$results_ranges %>% filter(text == "Dysplastic or unusual fingernails") %>% .$p.adj`);
+Dysplastic toenails (p = `r pvalue("Dysplastic or unusual toenails")`);
+lymphatic system issues:
+swelling of left (p = `r pvalue("Left foot")`),
+and
+right feet (p = `r pvalue("Right foot")`),
+and
+Primary Lymphedema (p = `r pvalue("Primary Lymphedema")`);
 and central nervous system anomalies:
-Abnormal Cranial CAT scan (p = `r article$results_ranges %>% filter(text == "Abnormal Cranial CAT scan") %>% .$p.adj`),
-Abnormal MRI (p = `r article$results_ranges %>% filter(text == "Abnormal MRI") %>% .$p.adj`),
+Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan Test result")`),
+Abnormal MRI (p = `r pvalue("Abnormal MRI Test result")`),
+Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
+Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
 and
-Febrile seizures (p = `r article$results_ranges %>% filter(text == "Has the patient ever had febrile seizures?") %>% .$p.adj`).
+Febrile (p = `r pvalue("Has the patient ever had febrile seizures?")`)
+and
+non-febrile seizures (p = `r pvalue("Has the patient ever had non-febrile seizures?")`).
+The presence of these features and symptoms is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
 Significantly associated phenotypes with negative effect sizes are presented in Table 3. They include behaviors related to hyperactivity:
-Act as if driven by a motor (p = `r article$results_ranges %>% filter(text == "Act as if driven by a motor") %>% .$p.adj`),
-Run around and climb excessively (p = `r article$results_ranges %>% filter(text == "Run around or climb excessively when inappropriate") %>% .$p.adj`),
-Symptoms of ADD/ADHD (p = `r article$results_ranges %>% filter(text == "Symptoms/diagnostic of ADD/ADHD") %>% .$p.adj`),
-Difficulty going back to sleep after nighttime awakening (p = `r article$results_ranges %>% filter(text == "Difficulty going back to sleep after nighttime awakening") %>% .$p.adj`);
+Act as if driven by a motor (p = `r pvalue("Act as if driven by a motor")`),
+Run around and climb excessively (p = `r pvalue("Run around or climb excessively when inappropriate")`),
+and
+Symptoms of ADD/ADHD (p = `r pvalue("Symptoms/diagnostic of ADD/ADHD")`);
 social behaviors:
-Plays alongside others but not with them (p = `r article$results_ranges %>% filter(text == "Plays alongside others but not with them") %>% .$p.adj`),
-Respond to others emotions (p = `r article$results_ranges %>% filter(text == "Respond to others – emotions ") %>% .$p.adj`),
-Verbal speech ability (p = `r article$results_ranges %>% filter(text == "Verbal speech ") %>% .$p.adj`);
+Plays alongside others but not with them (p = `r pvalue("Plays alongside others but not with them")`),
+Engage in pretend play (p = `r pvalue("Engage in pretend play")`),
+Respond to others emotions (p = `r pvalue("Respond to others emotions (e g  pats someone who is upset/crying) ")`),
+Respond affectionately to caregivers (p = `r pvalue("Respond affectionately to caregivers ")`),
+Hug/kiss caregivers, dolls, stuffed animals (p = `r pvalue("Hug/kiss caregivers, dolls, stuffed animals")`),
+and
+Shows awareness of imaginary characters (p = `r pvalue("Shows awareness of imaginary characters ")`);
+cognitive development:
+Understanding of the use of familiar objects (p = `r pvalue("Understanding of the use of familiar objects ")`),
+Imitate household activities during play (p = `r pvalue("Imitate household activities during play ")`),
+Use functional toys appropriately (p = `r pvalue("Use functional toys appropriately ")`),
+Act out recent experiences using gestures, etc. (p = `r pvalue("Act out recent experiences using gestures, etc.")`),
+Understand difference between food and objects (p = `r pvalue("Understand difference between food and objects ")`),
+and
+Observe actions and imitate them later (p = `r pvalue("Observe actions and imitate them later")`);
+communication development:
+Ability to follow directions (p = `r pvalue("Ability to follow directions")`),
+Receptive language disorder (p = `r pvalue("Receptive language disorder")`),
+Expressive language disorder (p = `r pvalue("Expressive language disorder")`),
+and
+Use of sign language (p = `r pvalue("Sign language")`);
 and differential diagnoses:
-ADHD (p = `r article$results_ranges %>% filter(text == "ADHD") %>% .$p.adj`),
-Pervasive Developmental Disorder (p = `r article$results_ranges %>% filter(text == "Pervasive Developmental Disorder ") %>% .$p.adj`),
-Autism (p = `r article$results_ranges %>% filter(text == "Autism") %>% .$p.adj`).
+ADHD (p = `r pvalue("ADHD")`),
+Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder ")`),
+and
+Autism (p = `r pvalue("Autism")`)
+and
+Autistic-like features (p = `r pvalue("Autistic-like features")`).
+The absence of these features, behaviors or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
 No allergy, anesthesia related, cardiovascular, ears nose and throat, immunologic, psychiatric, sensory, skin, and sleep conditions were significantly associated with greater deletion sizes. Other classical dysmorphic features in PMS were not found associated with deletion size, nor forms of aggressive behavior. Non-febrile seizures were not found associated with deletion size, as opposed to febrile seizures. No fine motor developmental milestones were found associated with deletion size, when all major gross motor milestones were found to be associated with greater deletions.
 
