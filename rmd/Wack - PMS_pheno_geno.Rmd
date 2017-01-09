@@ -239,35 +239,29 @@ pander(article$table1,
 
 ```{r table2}
 article$results_ranges %>%
-  mutate(ORn = OR %>% str_extract("^[0-9.]+") %>% as.numeric,
-         p.adj = p.adj %>% as.numeric,
-         p = p %>% as.numeric) %>%
   rename(Phenotype = text) %>%
-  filter(ORn > 1,
+  filter(or > 1,
          p.adj < 0.05) %>%
-  arrange(desc(ORn)) %>%
-  select(-Variable, -ORn) %>%
-  #head(15) %>%
+  arrange(desc(or)) %>%
+  select(Phenotype, p, p.adj, or, IC_OR) %>%
+  mutate_each(funs(prettyNum(., digits = 3))) %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest positive effect sizes",
-         justify = c("left", rep("center", 3)))
+         justify = c("left", rep("center", 4)))
 ```
   
 
 ```{r table3}
 article$results_ranges %>%
-  mutate(ORn = OR %>% str_extract("^[0-9.]+") %>% as.numeric,
-         p.adj = p.adj %>% as.numeric,
-         p = p %>% as.numeric) %>%
   rename(Phenotype = text) %>%
-  filter(ORn < 1,
+  filter(or < 1,
          p.adj < 0.05) %>%
-  arrange(ORn) %>%
-  select(-Variable, -ORn) %>%
-  #head(15) %>%
+  arrange(or) %>%
+  select(Phenotype, p, p.adj, or, IC_OR) %>%
+  mutate_each(funs(prettyNum(., digits = 3))) %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest negative effect sizes",
-         justify = c("left", rep("center", 3)))
+         justify = c("left", rep("center", 4)))
 ```
 
 
