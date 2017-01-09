@@ -151,11 +151,11 @@ article$nb_pat$included <- nrow(data)
 # Table 1 : demographics and comparison
 Demographics %<>%
   mutate(included = Patient.ID %in% data$Patient.ID)
-Demographics$Ancestral.Background[Demographics$Ancestral.Background == ""] <- NA
+Demographics$Race[Demographics$Race == ""] <- NA
 Demographics$included %<>% factor
-Demographics$Ancestral.Background %<>% factor
+Demographics$Race %<>% factor
 
-Demographics %>% select(Age, Gender, Ancestral.Background, included) %>% desc_groupe("included")
+Demographics %>% select(Age, Gender, Race, included) %>% desc_groupe("included")
 read_file("desc_groupe_included.html") %>% read_html %>% html_table %>% .[[1]] -> article$table1
 
 # PRO selection
@@ -202,7 +202,7 @@ article$completion <- sapply(data[vars$Variable], function (x) {is.na(x)[is.na(x
 
 # Association analysis ---------------------------------------------------------
 data %>%
-  select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Ancestral.Background, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
+  select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Race, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
   sapply(delAnalysis, 50818468 - data$min) %>% # end of chr22
   t %>%
     data.frame %>%
