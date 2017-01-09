@@ -212,9 +212,9 @@ data %>%
     left_join(vars) -> results_ranges
 
 results_ranges %>%
-  mutate_each(funs(p = prettyNum(., digits = 3))) %>%
-  mutate(OR = str_c(or, "[", icl, "-", icu, "]", sep = " ")) %>%
-  select(Variable, text,  p, p.adj, OR) -> article$results_ranges
+  mutate_each(funs(prettyNum(., digits = 3)), -p, -p.adj, -or) %>%
+  mutate(IC_OR = str_c("[", icl, "-", icu, "]", sep = " ")) %>%
+  select(Variable, text,  p, p.adj, or, IC_OR, Group) -> article$results_ranges
 # write.csv2("results_ranges.csv", row.names = F)
 
 # Plots-------------------------------------------------------------------------
