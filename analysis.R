@@ -256,6 +256,7 @@ data %>%
 coord_flip()
 
 unique(results_ranges$Group) %>%
+  sort %>%
   sapply(simplify = F, function(group)
 {
   print(group)
