@@ -66,12 +66,12 @@ delPlot <- function(var, data, results_ranges)
     scale_y_continuous(labels = NULL) +
     scale_color_grey(start = .9, end = .2, na.value = "white") +
     xlab(NULL) +
-    ylab(paste0("p = ", results_ranges$p.adj[results_ranges$Variable == var] %>% format(digits = 4))) +
+    ylab(paste0("p = ", results_ranges$p.adj[results_ranges$Variable == var] %>% prettyNum(digits = 3))) +
     ggtitle(results_ranges$text[results_ranges$Variable == var]) +
     theme(axis.ticks = element_blank(),
           axis.line = element_blank(),
           legend.position = "none",
-          plot.title = element_text(vjust = 0.2, hjust = 0.1, angle = 45),
+          plot.title = element_text(vjust = 0.2, hjust = 0.1, angle = 90),
           axis.title.x = element_text(angle = -45, vjust = .5),
           plot.margin = unit(c(0.05, 0, 0, 0), "npc")) +
     coord_flip()
