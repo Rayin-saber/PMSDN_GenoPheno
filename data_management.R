@@ -1,3 +1,4 @@
+library(purrr)
 source("functions-process.R")
 
 export_date <- as.Date("2016-10-12")
@@ -61,7 +62,9 @@ Developmental$`What.is.the.level.of.patient's.response.to.sound?_ currently` <- 
 # Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently`[Developmental$`What.is.the.level.of.patient's.response.to.sound?_ currently` == "Lower than usual" | Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently` == "Normal"] <- "Normal or lower than usual"
 Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently` <- factor(Developmental$`What.is.the.patient's.pain.tolerance.level?_ currently`, levels = c("Lower than usual", "Normal", "Higher than usual"), labels = c("Hypo-sensitive", "Normal", "Hyper-sensitive"), ordered = T)
 
-Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently` <- factor(Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently`, levels = c("Non-verbal – does not use sounds, uses only gestures and pointing", "Non-verbal – uses sounds to communicate meaning, such as grunts", "Non-verbal – uses word-like sounds to communicate meaning but does not state words clearly", "Verbal – uses meaningful single words or phrases that are understandable to others", "Verbal – uses meaningful words and sentences that are understandable to others"), ordered = T)
+Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently` %>%
+  map_chr(function(x){ifelse(x == "", NA, x)}) %>%
+  factor(labels = c("Non-verbal – does not use sounds, uses only gestures and pointing", "Non-verbal – uses sounds to communicate meaning, such as grunts", "Non-verbal – uses word-like sounds to communicate meaning but does not state words clearly", "Verbal – uses meaningful single words or phrases that are understandable to others", "Verbal – uses meaningful words and sentences that are understandable to others"), ordered = T) -> Developmental$`With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently`
 
 Developmental$`Is.the.patient.able.to.feed.himself/herself.independently?_1_Answer_ currently` <- factor(Developmental$`Is.the.patient.able.to.feed.himself/herself.independently?_1_Answer_ currently`, levels = c("No", "Without utensils (hand/finger feeding", "With utensils", "Both (with utensils and hand/finger feeding"), labels = c("No", "Without utensils", "With utensils", "Both"), ordered = T)
 
