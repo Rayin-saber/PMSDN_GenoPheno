@@ -1,1 +1,20 @@
-*
+i2b2/
+plots/
+.Rhistory
+*.Rdata
+data.Rda
+data*.csv
+*.chain
+*.txt
+liftOver
+*.txt.hg*
+rocvars.csv
+test_emcluster.r
+rmd/Figures/
+rmd/Supplemental Data
+rmd/.Rhistory
+rmd/article.Rdata
+rmd/*.svg
+rmd/*.zip
+rmd/*.docx
+rmd/*.pdf
