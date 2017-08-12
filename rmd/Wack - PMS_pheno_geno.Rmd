@@ -259,7 +259,8 @@ article$results_ranges %>%
          p.adj < 0.05) %>%
   arrange(desc(or)) %>%
   select(Phenotype, p, p.adj, or, IC_OR) %>%
-  mutate_each(funs(prettyNum(., digits = 3))) %>%
+  mutate_all(funs(prettyNum(., digits = 3))) %>%
+  as.data.frame %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest positive effect sizes",
          justify = c("left", rep("center", 4)))
@@ -274,6 +275,7 @@ article$results_ranges %>%
   arrange(or) %>%
   select(Phenotype, p, p.adj, or, IC_OR) %>%
   mutate_each(funs(prettyNum(., digits = 3))) %>%
+  as.data.frame %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest negative effect sizes",
          justify = c("left", rep("center", 4)))
