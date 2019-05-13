@@ -1,22 +1,11 @@
-library(cosmosR)
-library(readr)
-library(rvest)
-library(stringr)
-library(EMCluster)
-library(dplyr)
-library(ggplot2)
-library(magrittr)
-library(cowplot)
-library(pROC)
-library(parallel)
-library(svglite)
-library(DT)
-library(grid)
-
+library(tidyverse)
+library(desctable)
+library(patchwork)
 
 source("functions-deletion.R")
 
-load("data.Rda")
+readRDS("data.rds") %>%
+  list2env(envir = globalenv())
 
 article <- list()
 article$nb_pat$demo <- nrow(Demographics)
@@ -24,10 +13,9 @@ article$nb_pat$clin <- nrow(Clinical)
 article$nb_pat$dev <- nrow(Developmental)
 
 # Create main data frame -------------------------------------------------------
-Demographics %>%
-  inner_join(Clinical) %>%
+Clinical %>%
   full_join(Developmental) %>%
-  ungroup -> data
+  inner_join(Demographics) -> data
 
 rbind(Clin_vars, Dev_vars) -> vars
 article$PRO$sel <- nrow(vars)
@@ -38,14 +26,12 @@ rm(Clin_vars, Dev_vars)
 
 # Clean variable names ---------------------------------------------------------
 vars %>%
-  filter(Group == "Self-Help.Skills") %>%
-  mutate(text = Variable %>% gsub("_.*", "", ., perl = T)) %>%
-  bind_rows(vars %>%
-            filter(Group != "Self-Help.Skills") %>%
-            mutate(text = Variable %>% gsub(".*?_(.*?)_.*", "\\1", ., perl = T)) %>%
-            mutate(text = text %>% gsub("_ currently", "", ., perl = T)) %>%
-            mutate(text = text %>% sub(".*?_", "", ., perl = T)) %>%
-            mutate(Group = Group %>% factor)) %>%
+  mutate(text = ifelse(Group == "Self-Help.Skills",
+                       Variable %>% str_replace("_.*$", ""),
+                       Variable %>%
+                         str_replace_all(".*?_(.*?)_.*", "\\1") %>%
+                         str_replace_all("_ currently", "") %>%
+                         str_replace(".*?_", ""))) %>%
   mutate(text = text %>% sub("\\(.*?\\)$", "", ., perl = T)) %>%
   mutate(text = text %>% gsub("\\.", " ", ., perl = T)) %>%
   mutate(text = text %>% sub("With PMS, some children develop understandable verbal speech while others do not  If the patient is over age 2, please choose the response that most closely matches your child's abilities today", "Verbal speech", ., fixed = T)) %>%
@@ -91,52 +77,80 @@ article$genetics$all <- nrow(Genetics_ranges)
 article$genetics$Xmes <- Genetics_ranges$Chr_Gene %>% factor %>% levels
 
 # Manage Genetics_ranges -------------------------------------------------------
-Genetics_ranges %<>%
+Genetics_ranges %>%
   filter(Chr_Gene == "22") %>%
-  mutate(Patient.ID = as.character(Patient.ID)) %>%
   mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) %>%
-  select(-Result.type, -Chr_Gene)
+  select(-Result.type, -Chr_Gene) -> Genetics_ranges
 
 article$genetics$X22$del <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% nrow
 article$genetics$X22$dup <- Genetics_ranges %>% filter(Gain_Loss == "Gain") %>% nrow
 article$genetics$X22$mut <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% nrow
 article$nb_pat$mut <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
 
-# Create the del extend var ----------------------------------------------------
-Genetics_ranges %<>%
-  full_join(Genetics_ranges %>%
-            filter(Gain_Loss != "Gain") %>%
-            group_by(Patient.ID) %>%
-            summarize(min = min(Start))) %>%
-  arrange(desc(min))
+# Create the del extent var ----------------------------------------------------
+create_del_extent_var <- function(ranges, first = F)
+{
+  if (!first)
+    ranges %>% select(-min) -> ranges
+  
+  ranges %>%
+    full_join(ranges %>%
+              filter(Gain_Loss != "Gain") %>%
+              group_by(Patient.ID) %>%
+              summarise(min = min(Start)))
+}
+
+Genetics_ranges %>%
+  create_del_extent_var(T) %>%
+  arrange(desc(min)) -> Genetics_ranges
 
 # First plot with all patients and every genetic alteration --------------------
 Genetics_ranges %>% cnvPlot -> article$CNV_plot
 # save_plot(plot = CNV_plot, filename = "CNV_plot.svg", device = svglite, base_height = 12, base_width =  30)
 
+# Fix patients with small gaps (size < 5% total deletion length) between two large deletions ---------------------
+Genetics_ranges %>%
+  filter(Gain_Loss == "Loss") %>%
+  mutate(length = End - Start) %>%
+  full_join(group_by(., Patient.ID) %>%
+            summarise(total = sum(length))) %>%
+  group_by(Patient.ID) %>%
+  filter(n() > 1) %>%
+  arrange(Patient.ID, Start) %>%
+  mutate(gap = lead(Start) - End,
+         ratio = gap / total) %>%
+  ungroup %>%
+  mutate(End = case_when(ratio < .05 ~ lead(End),
+                         T ~ End)) %>%
+  filter(ratio < .05) %>%
+  select(Patient.ID, Gain_Loss, Start, End) -> merged
+
+Genetics_ranges %>%
+  anti_join(merged) %>%
+  bind_rows(merged) -> Genetics_ranges
+
 # Keep only terminal deletions/mutations ---------------------------------------
-Genetics_ranges %<>% filter(Gain_Loss != "Gain", End > 50674641) # shank3 : 50674641
+Genetics_ranges %>%
+  filter(Gain_Loss != "Gain",
+         End > 50674641) -> Genetics_ranges # shank3 : 50674642-50733210
 
 article$nb_pat$term_del <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 
 # Keep only patients who have phenotypic data ----------------------------------
-Genetics_ranges %<>% semi_join(data)
+Genetics_ranges %>%
+  semi_join(data) -> Genetics_ranges
 
 # Re-compute del extent var ----------------------------------------------------
-Genetics_ranges %<>% select(-min)
-Genetics_ranges %<>%
-  full_join(Genetics_ranges %>%
-            group_by(Patient.ID) %>%
-            summarize(min = min(Start))) %>%
-  arrange(desc(min))
+Genetics_ranges %>%
+  create_del_extent_var %>%
+  arrange(desc(min)) -> Genetics_ranges
 
 # Keep only patients with geno & pheno data and build dataframe ----------------
-data %<>%
+data %>%
   inner_join(Genetics_ranges %>%
              distinct(Patient.ID, .keep_all = T) %>%
              select(Patient.ID, min)) %>%
-  arrange(desc(min))
-
+  arrange(desc(min)) -> data
 
 article$nb_pat$mut_sel <- Genetics_ranges %>% filter(Gain_Loss == "Mutation") %>% distinct(Patient.ID) %>% nrow
 article$genetics$range <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% mutate(size = End - min) %>% .$size %>% summary
@@ -149,14 +163,16 @@ rm(Genetics_ranges)
 article$nb_pat$included <- nrow(data)
 
 # Table 1 : demographics and comparison
-Demographics %<>%
-  mutate(included = Patient.ID %in% data$Patient.ID)
-Demographics$Race[Demographics$Race == ""] <- NA
-Demographics$included %<>% factor
-Demographics$Race %<>% factor
+Demographics %>%
+  mutate(included = Patient.ID %in% data$Patient.ID,
+         Race = ifelse(Race == "", NA, Race) %>% factor,
+         included = included %>% factor) -> Demographics
 
-Demographics %>% select(Age, Gender, Race, included) %>% desc_groupe("included")
-read_file("desc_groupe_included.html") %>% read_html %>% html_table %>% .[[1]] -> article$table1
+Demographics %>%
+  ungroup() %>%
+  select(Age, Gender, Race, included) %>%
+  group_by(included) %>%
+  desctable -> article$table1
 
 # PRO selection
 for (var in grep("(communication|motor)\\.milestones", names(data), value = T))
@@ -190,7 +206,8 @@ for (var in vars$Variable)
     if (any(summary(data[[var]])[1:nlevels(data[[var]])] < 6) | grepl("_Other", var))
       data[[var]] <- NULL
 
-vars %<>% filter(Variable %in% names(data))
+vars %>%
+  filter(Variable %in% names(data)) -> vars
 
 # for (var in vars$Variable)
 #   for (lvl in levels(data[[var]]))
@@ -202,17 +219,16 @@ article$completion <- sapply(data[vars$Variable], function (x) {is.na(x)[is.na(x
 
 # Association analysis ---------------------------------------------------------
 data %>%
-  select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Race, -Country, -min, -`Is.the.patient's.menstrual.cycle.regular?_ currently`) %>%
-  sapply(delAnalysis, 50818468 - data$min) %>% # end of chr22
-  t %>%
-    data.frame %>%
-    add_rownames("Variable") %>%
-    mutate(p.adj = p.adjust(p, "fdr")) %>%
-    arrange(p.adj) %>%
-    left_join(vars) -> results_ranges
+  select(-Patient.ID, -Birthdate, -Gender, -Age, -Age_months, -Race, -Country, -min) %>%
+  names %>%
+  map(delAnalysis, data) %>%
+  bind_rows %>%
+  mutate(p.adj = p.adjust(p, "fdr")) %>%
+  arrange(p.adj) %>%
+  left_join(vars) -> results_ranges
 
 results_ranges %>%
-  mutate_each(funs(prettyNum(., digits = 3)), -p, -p.adj, -or) %>%
+  mutate_at(vars(-p, -p.adj, -or), ~ prettyNum(., digits = 3)) %>%
   mutate(IC_OR = str_c("[", icl, "-", icu, "]", sep = " ")) %>%
   select(Variable, text,  p, p.adj, or, IC_OR, Group) -> article$results_ranges
 # write.csv2("results_ranges.csv", row.names = F)
@@ -220,55 +236,22 @@ results_ranges %>%
 save(data,article,results_ranges,vars, file = "results.Rdata")
 load("results.Rdata")
 
-library(tidyr)
-library(purrr)
-library(magrittr)
-library(gtable)
-
-data %<>%
-  mutate(Patient.ID = Patient.ID %>% as.numeric,
-         limit = order(min)) %>%
-  dmap_if(is.factor, . %>% ordered %>% as.numeric) %>%
-  gather(var, value, -Patient.ID, -Birthdate, -Gender, -Race, -Country, -Age, -Age_months, -min, -limit) %>%
+data %>%
+  arrange(desc(min)) %>%
+  mutate_if(is.factor, . %>% ordered %>% as.numeric) %>%
+  gather(var, value, -Patient.ID, -Birthdate, -Gender, -Race, -Country, -Age, -Age_months, -min) %>%
   mutate(value = value %>% ordered) %>%
-  left_join(results_ranges, by = c("var" = "Variable"))
+  left_join(results_ranges, by = c("var" = "Variable")) -> dataplot
 
 # Plots-------------------------------------------------------------------------
-data %>%
+dataplot %>%
   filter(Group == "Renal.-.Kidney") %>%
-  arrange(p.adj) %>%
-  mutate(text = text %>% factor(levels = text %>% unique),
-         p.adj = p.adj %>% prettyNum(digits = 3)) %>%
-  ggplot(aes(x = limit, ymin = 0, ymax = 1, color = value)) +
-  facet_grid(. ~ text) +
-  geom_linerange(size = 1) +
-  geom_text(color = "black", angle = -45, aes(x = -12, y = 0.5, label = paste0("p = ", p.adj))) +
-  scale_y_continuous(labels = NULL) +
-  scale_color_grey(start = .9, end = .2, na.value = "white") +
-  xlab(NULL) +
-  ylab(NULL) +
-  theme(axis.ticks = element_blank(),
-        axis.text = element_blank(),
-        axis.line = element_blank(),
-        legend.position = "none",
-        strip.text = element_text(vjust = 0, hjust = 0, angle = 75),
-        strip.background = element_blank())+
-coord_flip()
+  delPlotGroup(article$DEL_plot) -> kidney
 
-unique(results_ranges$Group) %>%
-  sort %>%
-  sapply(simplify = F, function(group)
-{
-  print(group)
-  results_ranges %>%
-    filter(Group == group) %>%
-    arrange(p.adj) %>%
-    .[["Variable"]] %>%
-    lapply(delPlot, data, results_ranges) %>%
-    plot_grid(article$DEL_plot, plotlist = ., align = "hv", nrow = 1, rel_widths = c(6, rep(1, length(.)))) #%>%
-    # save_plot(filename = str_c("plots/",group, ".png"), base_height = 12) #, base_width =  6 + .75 * length(.$layers), limitsize = F)
-    # save_plot(filename = str_c("plots/",group, ".svg"), device = svglite, base_height = 12) #, base_width = 6 + .75 * length(.$layers))
-}) -> article$plots
+dataplot %>%
+  group_split(Group) %>%
+  map(delPlotGroup, article$DEL_plot) %>%
+  setNames(dataplot$Group %>% unique %>% sort) -> article$plots
 
 save(article, file = "article.Rdata")
 
