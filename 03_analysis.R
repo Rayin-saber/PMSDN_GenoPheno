@@ -70,7 +70,9 @@ vars %>%
   mutate(text = text %>% sub("What is the level of patient's response to movement?", "Response to movement", ., fixed = T)) %>%
   mutate(text = text %>% sub("Initiate social interaction by smiling, moving arms and/or vocalizing", "Initiate social interaction", ., fixed = T)) %>%
   mutate(text = text %>% sub("Has the patient ever had poor eye contact?", "Poor eye contact", ., fixed = T)) %>%
-  mutate(text = text %>% sub("Cling to caregivers/familiar adult in presence of a stranger", "Cling to familiar adult in presence of a stranger", ., fixed = T)) -> vars
+  mutate(text = text %>% sub("Cling to caregivers/familiar adult in presence of a stranger", "Cling to familiar adult in presence of a stranger", ., fixed = T)) %>%
+  mutate(text = text %>% str_trim) %>%
+  mutate(text = text %>% str_replace_all("\\(.*?\\)$", "")) -> vars
 
 article$nb_pat$all_gen <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 article$genetics$all <- nrow(Genetics_ranges)
@@ -252,6 +254,18 @@ dataplot %>%
   group_split(Group) %>%
   map(delPlotGroup, article$DEL_plot) %>%
   setNames(dataplot$Group %>% unique %>% sort) -> article$plots
+
+article$plots %>%
+  map2(str_c("plots/", names(.), ".png"),
+       ~ ggsave(plot = .x,
+                filename = .y,
+                width = 15,
+                height = 10))
+
+article$results_ranges %>%
+  select(Group, Var = text, p, p.adj, or, IC_OR, fullname = Variable) %>%
+  arrange(p.adj) %>%
+  write_excel_csv("resultats/resultats.csv")
 
 save(article, file = "article.Rdata")
 
