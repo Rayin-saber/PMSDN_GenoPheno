@@ -94,8 +94,8 @@ and
 Climb stairs (p = `r pvalue("Climb stairs standing up without help")`)
 where greater deletion sizes are associated with later ages of acquisition;
 certain congenital dysmorphic kidney ailments: (Figure 2)
-Vesicoureteral reflux (p = `r pvalue("Vesicoureteral Reflux ")`),
-Hydronephrosis (p = `r pvalue("Hydronephrosis ")`),
+Vesicoureteral reflux (p = `r pvalue("Vesicoureteral Reflux")`),
+Hydronephrosis (p = `r pvalue("Hydronephrosis")`),
 Increased kidney size (p = `r pvalue("Increased kidney size")`),
 Polycystic kidney (p = `r pvalue("Polycystic kidney")`),
 Persistent fever related to kidney issues (p = `r pvalue("Persistent fever related to kidney issues")`),
@@ -105,7 +105,7 @@ a range of phenotypes related to gross motor and muscle tone:
 Floppy baby (p = `r pvalue("Floppy baby")`),
 Neonatal hypotonia (p = `r pvalue("Hypotonia")`),
 Fatigues easily (p = `r pvalue("Fatigues easily")`),
-Apnea (p = `r pvalue("Apnea ")`),
+Apnea (p = `r pvalue("Apnea")`),
 and
 Fatigue (p = `r pvalue("Fatigues easily")`);
 multiple items related to feeding difficulties during the first-year development:
@@ -115,7 +115,7 @@ Required special feeds (p = `r pvalue("Required special feeds")`),
 and
 Poor suck (p = `r pvalue("Had poor suck")`);
 dysmorphic features commonly described in PMS:
-Too tall for age (p = `r pvalue("Too tall for age ")`),
+Too tall for age (p = `r pvalue("Too tall for age")`),
 Sacral dimple (p = `r pvalue("Does the patient have a sacral dimple?")`),
 Large fleshy hands (p = `r pvalue("Large fleshy hands")`),
 and
@@ -132,9 +132,7 @@ Abnormal MRI (p = `r pvalue("Abnormal MRI Test result")`),
 Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
 Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
 and
-Febrile (p = `r pvalue("Has the patient ever had febrile seizures?")`)
-and
-non-febrile seizures (p = `r pvalue("Has the patient ever had non-febrile seizures?")`).
+Febrile seizures (p = `r pvalue("Has the patient ever had febrile seizures?")`).
 The presence of these features and symptoms is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
 Significantly associated phenotypes with negative effect sizes are presented in Table 3. They include behaviors related to hyperactivity:
@@ -145,17 +143,17 @@ Symptoms of ADD/ADHD (p = `r pvalue("Symptoms/diagnostic of ADD/ADHD")`);
 social behaviors:
 Plays alongside others but not with them (p = `r pvalue("Plays alongside others but not with them")`),
 Engage in pretend play (p = `r pvalue("Engage in pretend play")`),
-Respond to others emotions (p = `r pvalue("Respond to others emotions (e g  pats someone who is upset/crying) ")`),
-Respond affectionately to caregivers (p = `r pvalue("Respond affectionately to caregivers ")`),
+Respond to others emotions (p = `r pvalue("Respond to others – emotions ")`),
+Respond affectionately to caregivers (p = `r pvalue("Respond affectionately to caregivers")`),
 Hug/kiss caregivers, dolls, stuffed animals (p = `r pvalue("Hug/kiss caregivers, dolls, stuffed animals")`),
 and
-Shows awareness of imaginary characters (p = `r pvalue("Shows awareness of imaginary characters ")`);
+Shows awareness of imaginary characters (p = `r pvalue("Shows awareness of imaginary characters")`);
 cognitive development:
-Understanding of the use of familiar objects (p = `r pvalue("Understanding of the use of familiar objects ")`),
-Imitate household activities during play (p = `r pvalue("Imitate household activities during play ")`),
-Use functional toys appropriately (p = `r pvalue("Use functional toys appropriately ")`),
+Understanding of the use of familiar objects (p = `r pvalue("Understanding of the use of familiar objects")`),
+Imitate household activities during play (p = `r pvalue("Imitate household activities during play")`),
+Use functional toys appropriately (p = `r pvalue("Use functional toys appropriately")`),
 Act out recent experiences using gestures, etc. (p = `r pvalue("Act out recent experiences using gestures, etc.")`),
-Understand difference between food and objects (p = `r pvalue("Understand difference between food and objects ")`),
+Understand difference between food and objects (p = `r pvalue("Understand difference between food and objects")`),
 and
 Observe actions and imitate them later (p = `r pvalue("Observe actions and imitate them later")`);
 communication development:
@@ -166,7 +164,7 @@ and
 Use of sign language (p = `r pvalue("Sign language")`);
 and differential diagnoses:
 ADHD (p = `r pvalue("ADHD")`),
-Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder ")`),
+Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder")`),
 and
 Autism (p = `r pvalue("Autism")`)
 and
