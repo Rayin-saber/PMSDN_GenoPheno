@@ -112,12 +112,12 @@ delPlotOne <- function(plotdata)
   plotdata$p.adj %>%
     unique %>%
     prettyNum(digits = 2) %>%
-    str_c("p= ", .) -> pvalue
+    str_c("p = ", .) -> pvalue
 
   plotdata %>%
     distinct(text, .keep_all = T) %>%
     mutate_at(vars(or, icl, icu), ~prettyNum(., digits = 2)) %>%
-    transmute(OR = str_c("OR= ", or, " [", icl, "-", icu, "]")) %>%
+    transmute(OR = str_c("OR = ", or, " [", icl, "-", icu, "]")) %>%
     pull -> OR
 
   str_c(pvalue, OR, sep = "\n") -> xtitle
