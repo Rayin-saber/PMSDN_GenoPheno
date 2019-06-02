@@ -1,5 +1,10 @@
 i2b2/
 plots/
+poster/
+resultats/
+data*/
+*.rds
+*.svg
 .Rhistory
 *.Rdata
 data.Rda
