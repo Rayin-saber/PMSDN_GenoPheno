@@ -1,157 +1,157 @@
-Group;Variable
-Behavior;Has.the.patient.ever.had.a.poor.eye.contact?
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Rarely
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Sometimes
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Always
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_In.the.past
-Behavior;Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Only.when.stressed
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Appear.to.act.without.thinking_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.sustaining.attention.in.tasks.or.play.activities_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Seem.not.to.listen.when.spoken.to.directly_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Leave.seat.in.classroom.or.in.other.situations.in.which.remaining.seated.is.expected_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Run.around.or.climb.excessively.in.situations.in.which.it.is.inappropriate_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.playing.or.engaging.in.leisure.activities.quietly_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Act.as.if.driven.by.a.motor_Status_ currently
-Behavior;Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.awaiting.turn_Status_ currently
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.ADD/ADHD.or.any.other.significant.attention.or.hyperactivity.issues.warranting.intervention?
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Generalized.anxiety.disorder
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Panic.disorder
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Specific.phobia
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Social.anxiety
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Separation.anxiety.disorder
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Obsessive-compulsive.disorder
-Behavior;Has.the.patient.ever.exhibited.excessive.mouthing/chewing.not.associated.with.teething?
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Specific.food.aversion
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Over-eating
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Uncontrollable.appetite
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Under-eating
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Refuses.to.eat.and.needs.to.be.force-fed
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Pica
-Behavior;Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Rumination
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Demonstrate.understanding.of.the.use.of.familiar.objects.(e.g.,.gives.cup.to.doll.to.drink)
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Imitate.household.activities.during.play.(e.g.,.tries.to.clean.with.sponge)
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Act.out.recent.experiences.using.gestures,.body.languages,.words
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Understand.difference.between.food.and.objects.(e.g.,.unwraps.candy,.does.not.eat.non-food.objects)
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Play.with.interactive.games/toys
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Observe.actions.of.others.and.imitate.them.at.a.later.time
-Cognitive.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Use.functional.toys.appropriately.(e.g.,.pounds.hammer)
-Cognitive.Development;Has.the.patient.ever.experienced.regression.in.cognitive.abilities?
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dyslexia
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dysphasia/Aphasia
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dyscalculia
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Auditory.processing.disorder
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Non-verbal.learning.disability
-Cognitive.Development;Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Intellectual.disability.(formerly.Mental.Retardation)
-Communication.Development;With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Social.smile
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Single.syllables.utterances.(e.g..ma,.da)
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_First.verbal.word.(e.g..'go')
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Verbal.two.word.sentences.(e.g..'go.car')
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Read.whole.words.(word.as.an.individual.unit)
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Phonics.type.reading.(sounds.out.words)
-Communication.Development;Has.the.patient.achieved.any.of.the.following.communication.milestones?_Write/type.using.a.keyboard
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Gesturing
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Pointing
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Sign.language
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Picture.Exchange.Communication.System.(PECS)
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Icons.or.symbols.for.communication.(real.photos.or.icons.to.represent.words,.actions.or.activities)
-Communication.Development;What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Voice.Output.Communication.Device
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Apraxia of speech (verbal apraxia)_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Articulation disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Expressive language disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Phonological processing disorder_Symptoms
-Communication.Development;Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Receptive language disorder_Symptoms
-Communication.Development;How.many.words.are.used.in.a.typical.sentence?_ currently
-Communication.Development;What.is.the.patient's.ability.to.follow.directions?_ currently
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Look.at,.reach.and.grasp.objects.placed.at.a.distance
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Transfer.object.between.hands
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Isolate.index.finger.to.point
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Clap.hands
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Deliberately.release.object.to.a.container
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Hit.two.objects.together
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Acquired.pincer.grasp
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Hold.and.drink.from.open.cup.unassisted
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Turn.knobs
-Fine.Motor.Development;How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Stack.and.balance.blocks
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.difficulty.latching.on.the.breast
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.difficulty.latching.on.the.bottle
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.poor.suck
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Had.swallowing.problems
-First-Year.Development;Did.the.baby.have.difficulties.with.feeding?_Required.special.feeds
-First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Nasogastric.(NG).tube
-First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Thickened.liquid
-First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Special.nipples
-First-Year.Development;If.the.baby.required.special.feeds,.what.type?_Gavage.(force.feeding)
-First-Year.Development;How.long.were.special.feeds.required?
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Hold.head.up.on.his/her.own
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Roll.over.back.to.stomach
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Sit.when.placed
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Crawl.on.hands.and.knees
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Walk.unassisted
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Climb.stairs.standing.up.without.help
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Descend.stairs.without.help
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Jump.with.both.feet
-Gross.Motor.Development;How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Pedal.tricycle
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Fatigues easily_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Floppy baby_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Ligament or joint laxity_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Poor reflexes_Symptoms
-Physical.Development;Has.the.patient.ever.shown.any.of.the.following.symptoms?_Weak muscles_Symptoms
-Physical.Development;Does.the.patient.have.coordination.difficulties?.(excessive.clumsiness)
-Physical.Development;Does.the.patient.have.difficulties.with.motor.planning.or.motor.learning?
-Physical.Development;Does.the.patient.have.difficulties.maintaining.balance?.(the.patient.falls.without.support)
-Physical.Development;If.the.patient.has.difficulties.maintaining.balance,.does.the.inability.to.balance.depend.on.sight?.(e.g..no.balance.in.the.dark)
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Acne
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Mature.body.odor
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.pubic.hair
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.underarm.hair
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Rapid.height.growth.–.a.growth.spurt.
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Deepening.of.the.voice
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.chest.and.facial.hair
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Increase.in.the.size.of.the.testicles
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Breast.development
-Puberty;At.what.age.did.the.patient.show.the.following.signs.of.puberty?_First.period.(menstruation)
-Puberty;If.the.patient.has.reached.puberty,.has.he/she.had.any.of.the.following?_Precocious.puberty
-Puberty;If.the.patient.has.reached.puberty,.has.he/she.had.any.of.the.following?_Problems.with.sex.hormones
-Puberty;Is.the.patient's.menstrual.cycle.regular?_ currently
-Self-Help.Skills;Is.the.patient.able.to.undress.without.assistance?_Answer_ currently
-Self-Help.Skills;Is.the.patient.able.to.dress.without.assistance?_Answer_ currently
-Self-Help.Skills;Is.the.patient.able.to.toilet.independently?.(during.the.day)_Answer_ currently
-Self-Help.Skills;Is.the.patient.toilet-trained.at.night-time?_Answer_ currently
-Self-Help.Skills;Is.the.patient.able.to.drink.independently?.(out.of.any.type.of.vessel)_Answer_ currently
-Self-Help.Skills;Is.the.patient.able.to.feed.himself/herself.independently?_1_Answer_ currently
-Sensory;What.is.the.level.of.patient's.response.to.touch?_Normal_ currently
-Sensory;What.is.the.level.of.patient's.response.to.touch?_Highly.sensitive.to.touch.(tactile.defensiveness,.hyper-sensitivity)_ currently
-Sensory;What.is.the.level.of.patient's.response.to.touch?_Under-sensitive.to.touch.(under-responsiveness,.hypo-sensitivity)_ currently
-Sensory;What.is.the.level.of.patient's.response.to.touch?_Mixed.hypo-.and.hyper-sensitivity.to.touch.throughout.the.body_ currently
-Sensory;What.is.the.level.of.patient's.response.to.touch?_Poor.tactile.perception.and.discrimination_ currently
-Sensory;What.is.the.level.of.patient's.response.to.movement?_ currently
-Sensory;What.is.the.level.of.the.patient's.proprioceptive.sense_Normal_ currently
-Sensory;What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.sensory.seeking.behaviors.(e.g..bumps.into.objects/wall.deliberately,.enjoys.wearing.tight-fitting.clothing)_ currently
-Sensory;What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.difficulty.grading.movement.(misjudges.how.much.to.flex/extend.muscles.during.movement,.gross.or.fine)_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Normal_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Hyper-sensitive.(e.g..prefers.bland.tasting.food.with.little.texture,.gags.or.chokes.easily,.has.problems.chewing.and.swallowing)_ currently
-Sensory;"What.is.the.level.of.the.patient's.response.to.oral.input?_Hypo-sensitive.(e.g..grinds.teeth,.frequently.chews.on.fingers,.clothes,.non-food.items;.prefers.intensely.flavored.foods)_ currently"
-Sensory;What.is.the.level.of.the.patient's.response.to.oral.input?_Mouthing/chewing.obsessively_ currently
-Sensory;What.is.the.level.of.patient's.response.to.sound?_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Normal_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Always.cold_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Overheats.easily_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Does.not.perspire_ currently
-Sensory;What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Perspires.less.than.typical_ currently
-Sensory;What.is.the.patient's.pain.tolerance.level?_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Smile.at.others_Status_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Play.Peek-a-boo_Status_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Initiate.social.interaction.by.smiling,.moving.arms.and/or.vocalizing_Status_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Cling.to.caregivers/familiar.adult.in.presence.of.a.stranger_Status_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Smile.when.praised,.repeats.action.for.more.praise_Status_ currently
-Social-Emotional.Development;Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Respond.affectionately.to.caregivers.(gives.hug/kiss.when.asked)_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.routines.without.objection.(e.g..getting.ready.for.walk,.bed)_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Hug/kiss.caregivers,.dolls,.stuffed.animals_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Respond.to.others.–.emotions.(e.g..pats.someone.who.is.upset/crying)._Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Show.variety.of.emotions_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.pretend.play_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Shows.awareness.of.imaginary.characters.(e.g..monsters,.imaginary.friends)_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.alongside.others.but.not.with.them_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.with.caregivers.or.older.children_Status_ currently
-Social-Emotional.Development;Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.with.peers_Status_ currently
+"Group","Variable","text"
+"Aggressive behavior","Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Rarely","Rarely"
+"Aggressive behavior","Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Sometimes","Sometimes"
+"Aggressive behavior","Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Always","Always"
+"Aggressive behavior","Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_In.the.past","In the past"
+"Aggressive behavior","Has.the.patient.ever.displayed.any.forms.of.aggressive.behavior?_Only.when.stressed","Only when stressed"
+"Attention disorder","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.ADD/ADHD.or.any.other.significant.attention.or.hyperactivity.issues.warranting.intervention?","Symptoms/diagnostic of ADD/ADHD"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Appear.to.act.without.thinking_Status_ currently","Appear to act without thinking"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.sustaining.attention.in.tasks.or.play.activities_Status_ currently","Difficulty sustaining attention in tasks"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Seem.not.to.listen.when.spoken.to.directly_Status_ currently","Seem not to listen when spoken to directly"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Leave.seat.in.classroom.or.in.other.situations.in.which.remaining.seated.is.expected_Status_ currently","Leave seat when remaining seated is expected"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Run.around.or.climb.excessively.in.situations.in.which.it.is.inappropriate_Status_ currently","Run around or climb excessively when inappropriate"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.playing.or.engaging.in.leisure.activities.quietly_Status_ currently","Difficulty playing quietly"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Act.as.if.driven.by.a.motor_Status_ currently","Act as if driven by a motor"
+"Attention disorder","Does.the.patient.show.any.of.the.following.behaviors?_Have.difficulty.awaiting.turn_Status_ currently","Have difficulty awaiting turn"
+"Attention disorder","Has.the.patient.ever.had.a.poor.eye.contact?","Poor eye contact"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Generalized.anxiety.disorder","Generalized anxiety disorder"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Panic.disorder","Panic disorder"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Specific.phobia","Specific phobia"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Social.anxiety","Social anxiety"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Separation.anxiety.disorder","Separation anxiety disorder"
+"Anxiety disorders","Has.the.patient.ever.exhibited.symptoms.of.or.been.diagnosed.with.an.anxiety.disorder?_Obsessive-compulsive.disorder","Obsessive-compulsive disorder"
+"Anxiety disorders","Has.the.patient.ever.exhibited.excessive.mouthing/chewing.not.associated.with.teething?","Excessive chewing not associated with teething"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Specific.food.aversion","Specific food aversion"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Over-eating","Over-eating"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Uncontrollable.appetite","Uncontrollable appetite"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Under-eating","Under-eating"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Refuses.to.eat.and.needs.to.be.force-fed","Refuses to eat and needs to be force-fed"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Pica","Pica"
+"Feeding disorders","Has.the.patient.ever.exhibited.symptoms.of.any.feeding.disorders?_Rumination","Rumination"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Demonstrate.understanding.of.the.use.of.familiar.objects.(e.g.,.gives.cup.to.doll.to.drink)","Understanding of the use of familiar objects"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Imitate.household.activities.during.play.(e.g.,.tries.to.clean.with.sponge)","Imitate household activities during play"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Act.out.recent.experiences.using.gestures,.body.languages,.words","Act out recent experiences using gestures, etc."
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Understand.difference.between.food.and.objects.(e.g.,.unwraps.candy,.does.not.eat.non-food.objects)","Understand difference between food and objects"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Play.with.interactive.games/toys","Play with interactive games/toys"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Observe.actions.of.others.and.imitate.them.at.a.later.time","Observe actions and imitate them later"
+"Cognitive development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Use.functional.toys.appropriately.(e.g.,.pounds.hammer)","Use functional toys appropriately"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dyslexia","Dyslexia"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dysphasia/Aphasia","Dysphasia/Aphasia"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Dyscalculia","Dyscalculia"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Auditory.processing.disorder","Auditory processing disorder"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Non-verbal.learning.disability","Non-verbal learning disability"
+"Learning disabilities","Has.patient.been.diagnosed.with.any.of.the.following.cognitive.impairment.or.learning.disability?_Intellectual.disability.(formerly.Mental.Retardation)","Intellectual disability"
+"Learning disabilities","Has.the.patient.ever.experienced.regression.in.cognitive.abilities?","Regression in cognitive abilities"
+"Verbal speech","With.PMS,.some.children.develop.understandable.verbal.speech.while.others.do.not..If.the.patient.is.over.age.2,.please.choose.the.response.that.most.closely.matches.your.child's.abilities.today._ currently","Verbal speech ability"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Social.smile","Social smile"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Single.syllables.utterances.(e.g..ma,.da)","Single syllables utterances"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_First.verbal.word.(e.g..'go')","First verbal word"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Verbal.two.word.sentences.(e.g..'go.car')","Verbal two word sentences"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Read.whole.words.(word.as.an.individual.unit)","Read whole words"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Phonics.type.reading.(sounds.out.words)","Phonics type reading"
+"Communication development","Has.the.patient.achieved.any.of.the.following.communication.milestones?_Write/type.using.a.keyboard","Write/type using a keyboard"
+"Communication development","What.is.the.patient's.ability.to.follow.directions?_ currently","Ability to follow directions"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Gesturing","Gesturing"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Pointing","Pointing"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Sign.language","Sign language"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Picture.Exchange.Communication.System.(PECS)","Picture Exchange Communication System"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Icons.or.symbols.for.communication.(real.photos.or.icons.to.represent.words,.actions.or.activities)","Icons or symbols for communication"
+"Communication – Non-verabl skills","What.non-verbal.communication.skills.has.the.patient.used.on.a.regular.basis?_Voice.Output.Communication.Device","Voice Output Communication Device"
+"Communication-related symptoms","Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Apraxia of speech (verbal apraxia)_Symptoms","Apraxia of speech"
+"Communication-related symptoms","Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Articulation disorder_Symptoms","Articulation disorder"
+"Communication-related symptoms","Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Expressive language disorder_Symptoms","Expressive language disorder"
+"Communication-related symptoms","Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Phonological processing disorder_Symptoms","Phonological processing disorder"
+"Communication-related symptoms","Has.a.health.care.professional.ever.indicated.that.the.patient.had.symptoms.of.the.following?_Receptive language disorder_Symptoms","Receptive language disorder"
+"Verbal speech","How.many.words.are.used.in.a.typical.sentence?_ currently","Number of words in a typical sentence"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Look.at,.reach.and.grasp.objects.placed.at.a.distance","Look at, reach and grasp distant objects"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Transfer.object.between.hands","Transfer object between hands"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Isolate.index.finger.to.point","Isolate index finger to point"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Clap.hands","Clap hands"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Deliberately.release.object.to.a.container","Deliberately release object to a container"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Hit.two.objects.together","Hit two objects together"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Acquired.pincer.grasp","Acquired pincer grasp"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Hold.and.drink.from.open.cup.unassisted","Hold and drink from open cup unassisted"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Turn.knobs","Turn knobs"
+"Fine motor milestones","How.old.was.the.patient.when.the.following.fine.motor.milestones.were.met?_Stack.and.balance.blocks","Stack and balance blocks"
+"Feeding difficulties","Did.the.baby.have.difficulties.with.feeding?_Had.difficulty.latching.on.the.breast","Difficulty latching on the breast"
+"Feeding difficulties","Did.the.baby.have.difficulties.with.feeding?_Had.difficulty.latching.on.the.bottle","Difficulty latching on the bottle"
+"Feeding difficulties","Did.the.baby.have.difficulties.with.feeding?_Had.poor.suck","Poor suck"
+"Feeding difficulties","Did.the.baby.have.difficulties.with.feeding?_Had.swallowing.problems","Swallowing problems"
+"Feeding difficulties","Did.the.baby.have.difficulties.with.feeding?_Required.special.feeds","Required special feeds"
+"Special feeds required","If.the.baby.required.special.feeds,.what.type?_Nasogastric.(NG).tube","Nasogastric (NG) tube"
+"Special feeds required","If.the.baby.required.special.feeds,.what.type?_Thickened.liquid","Thickened liquid"
+"Special feeds required","If.the.baby.required.special.feeds,.what.type?_Special.nipples","Special nipples"
+"Special feeds required","If.the.baby.required.special.feeds,.what.type?_Gavage.(force.feeding)","Gavage"
+"Special feeds required","How.long.were.special.feeds.required?","How long were special feeds required?"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Hold.head.up.on.his/her.own","Hold head up on his/her own"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Roll.over.back.to.stomach","Roll over back to stomach"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Sit.when.placed","Sit when placed"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Crawl.on.hands.and.knees","Crawl on hands and knees"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Walk.unassisted","Walk unassisted"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Climb.stairs.standing.up.without.help","Climb stairs standing up without help"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Descend.stairs.without.help","Descend stairs without help"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Jump.with.both.feet","Jump with both feet"
+"Gross motor milestones","How.old.was.the.patient.when.the.following.gross.motor.milestones.were.met?_Pedal.tricycle","Pedal tricycle"
+"Physical development","Has.the.patient.ever.shown.any.of.the.following.symptoms?_Fatigues easily_Symptoms","Fatigues easily"
+"Physical development","Has.the.patient.ever.shown.any.of.the.following.symptoms?_Floppy baby_Symptoms","Floppy baby"
+"Physical development","Has.the.patient.ever.shown.any.of.the.following.symptoms?_Ligament or joint laxity_Symptoms","Ligament or joint laxity"
+"Physical development","Has.the.patient.ever.shown.any.of.the.following.symptoms?_Poor reflexes_Symptoms","Poor reflexes"
+"Physical development","Has.the.patient.ever.shown.any.of.the.following.symptoms?_Weak muscles_Symptoms","Weak muscles"
+"Physical development","Does.the.patient.have.coordination.difficulties?.(excessive.clumsiness)","Coordination difficulties"
+"Physical development","Does.the.patient.have.difficulties.with.motor.planning.or.motor.learning?","Difficulties with motor planning or learning"
+"Physical development","Does.the.patient.have.difficulties.maintaining.balance?.(the.patient.falls.without.support)","Difficulties maintaining balance"
+"Physical development","If.the.patient.has.difficulties.maintaining.balance,.does.the.inability.to.balance.depend.on.sight?.(e.g..no.balance.in.the.dark)","Inability to balance dependant on sight"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Acne","Acne"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Mature.body.odor","Mature body odor"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.pubic.hair","Growth of pubic hair"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.underarm.hair","Growth of underarm hair"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Rapid.height.growth.–.a.growth.spurt.","Rapid height growth – a growth spurt"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Deepening.of.the.voice","Deepening of the voice"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Growth.of.chest.and.facial.hair","Growth of chest and facial hair"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Increase.in.the.size.of.the.testicles","Increase in the size of the testicles"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_Breast.development","Breast development"
+"Puberty milestones","At.what.age.did.the.patient.show.the.following.signs.of.puberty?_First.period.(menstruation)","First period"
+"Puberty","If.the.patient.has.reached.puberty,.has.he/she.had.any.of.the.following?_Precocious.puberty","Precocious puberty"
+"Puberty","If.the.patient.has.reached.puberty,.has.he/she.had.any.of.the.following?_Problems.with.sex.hormones","Problems with sex hormones"
+"Puberty","Is.the.patient's.menstrual.cycle.regular?_ currently","Regular menstrual cycle"
+"Self-help skills","Is.the.patient.able.to.undress.without.assistance?_Answer_ currently","Ability to undress without assistance"
+"Self-help skills","Is.the.patient.able.to.dress.without.assistance?_Answer_ currently","Ability to dress without assistance"
+"Self-help skills","Is.the.patient.able.to.toilet.independently?.(during.the.day)_Answer_ currently","Ability to toilet independantly"
+"Self-help skills","Is.the.patient.toilet-trained.at.night-time?_Answer_ currently","Night-time toilet trained"
+"Self-help skills","Is.the.patient.able.to.drink.independently?.(out.of.any.type.of.vessel)_Answer_ currently","Ability to drink independantly"
+"Self-help skills","Is.the.patient.able.to.feed.himself/herself.independently?_1_Answer_ currently","Ability to eat independantly"
+"Response to touch","What.is.the.level.of.patient's.response.to.touch?_Normal_ currently","Normal"
+"Response to touch","What.is.the.level.of.patient's.response.to.touch?_Highly.sensitive.to.touch.(tactile.defensiveness,.hyper-sensitivity)_ currently","Highly sensitive to touch"
+"Response to touch","What.is.the.level.of.patient's.response.to.touch?_Under-sensitive.to.touch.(under-responsiveness,.hypo-sensitivity)_ currently","Under-sensitive to touch"
+"Response to touch","What.is.the.level.of.patient's.response.to.touch?_Mixed.hypo-.and.hyper-sensitivity.to.touch.throughout.the.body_ currently","Mixed hypo- and hyper-sensitivity to touch"
+"Response to touch","What.is.the.level.of.patient's.response.to.touch?_Poor.tactile.perception.and.discrimination_ currently","Poor tactile perception and discrimination"
+"Proprioceptive sense","What.is.the.level.of.the.patient's.proprioceptive.sense_Normal_ currently","Normal"
+"Proprioceptive sense","What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.sensory.seeking.behaviors.(e.g..bumps.into.objects/wall.deliberately,.enjoys.wearing.tight-fitting.clothing)_ currently","Exhibits sensory seeking behaviors"
+"Proprioceptive sense","What.is.the.level.of.the.patient's.proprioceptive.sense_Exhibits.difficulty.grading.movement.(misjudges.how.much.to.flex/extend.muscles.during.movement,.gross.or.fine)_ currently","Exhibits difficulty grading movement"
+"Response to oral input","What.is.the.level.of.the.patient's.response.to.oral.input?_Normal_ currently","Normal"
+"Response to oral input","What.is.the.level.of.the.patient's.response.to.oral.input?_Hyper-sensitive.(e.g..prefers.bland.tasting.food.with.little.texture,.gags.or.chokes.easily,.has.problems.chewing.and.swallowing)_ currently","Hyper-sensitive"
+"Response to oral input","What.is.the.level.of.the.patient's.response.to.oral.input?_Hypo-sensitive.(e.g..grinds.teeth,.frequently.chews.on.fingers,.clothes,.non-food.items;.prefers.intensely.flavored.foods)_ currently","Hypo-sensitive"
+"Response to oral input","What.is.the.level.of.the.patient's.response.to.oral.input?_Mouthing/chewing.obsessively_ currently","Mouthing/chewing obsessively"
+"Response to temperature variations","What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Normal_ currently","Normal"
+"Response to temperature variations","What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Always.cold_ currently","Always cold"
+"Response to temperature variations","What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Overheats.easily_ currently","Overheats easily"
+"Response to temperature variations","What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Does.not.perspire_ currently","Does not perspire"
+"Response to temperature variations","What.is.the.level.of.the.patient's.response.to.environmental.temperature.variations?_Perspires.less.than.typical_ currently","Perspires less than typical"
+"Sensory","What.is.the.patient's.pain.tolerance.level?_ currently","Pain tolerance level"
+"Sensory","What.is.the.level.of.patient's.response.to.movement?_ currently","Response to movement"
+"Sensory","What.is.the.level.of.patient's.response.to.sound?_ currently","Response to sound"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Smile.at.others_Status_ currently","Smile at others"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Play.Peek-a-boo_Status_ currently","Play Peek-a-boo"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Initiate.social.interaction.by.smiling,.moving.arms.and/or.vocalizing_Status_ currently","Initiate social interaction"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Cling.to.caregivers/familiar.adult.in.presence.of.a.stranger_Status_ currently","Cling to familiar adult in presence of a stranger"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Smile.when.praised,.repeats.action.for.more.praise_Status_ currently","Smile when praised, repeats action for more praise"
+"Socio-emotional milestones","Indicate.if.the.following.social/emotional.milestones.have.been.achieved._Respond.affectionately.to.caregivers.(gives.hug/kiss.when.asked)_Status_ currently","Respond affectionately to caregivers"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.routines.without.objection.(e.g..getting.ready.for.walk,.bed)_Status_ currently","Engage in routines without objection"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Hug/kiss.caregivers,.dolls,.stuffed.animals_Status_ currently","Hug/kiss caregivers, dolls, stuffed animals"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Respond.to.others.–.emotions.(e.g..pats.someone.who.is.upset/crying)._Status_ currently","Respond to others – emotions "
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Show.variety.of.emotions_Status_ currently","Show variety of emotions"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Engage.in.pretend.play_Status_ currently","Engage in pretend play"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Shows.awareness.of.imaginary.characters.(e.g..monsters,.imaginary.friends)_Status_ currently","Shows awareness of imaginary characters"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.alongside.others.but.not.with.them_Status_ currently","Plays alongside others but not with them"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.with.caregivers.or.older.children_Status_ currently","Plays with caregivers or older children"
+"Socio-emotional development","Has.the.patient.ever.been.able.to.do.any.of.the.following?_Plays.with.peers_Status_ currently","Plays with peers"

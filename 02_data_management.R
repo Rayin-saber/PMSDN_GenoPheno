@@ -6,7 +6,7 @@ read_csv("data/demographics.csv") %>%
 
 # ==== Clinical ====
 # Variables
-read_csv2("clin_vars.csv") -> Clin_vars
+read_csv("clin_vars.csv") -> Clin_vars
 
 # Data
 read_csv("data/clinical.csv") %>%
@@ -36,7 +36,7 @@ read_csv("data/clinical.csv") %>%
 
 # ==== Developmental ====
 # Variables
-read_csv2("dev_vars.csv") -> Dev_vars
+read_csv("dev_vars.csv") -> Dev_vars
 
 read_csv("data/developmental.csv") %>%
   select(Patient.ID, one_of(Dev_vars$Variable)) %>%
