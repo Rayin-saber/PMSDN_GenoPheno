@@ -23,7 +23,7 @@ library(dplyr)
 library(pander)
 library(stringr)
 
-load("article.Rdata")
+readRDS("article.rds") -> article
 
 pvalue <- function(var)
 {
