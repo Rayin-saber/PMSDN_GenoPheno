@@ -191,8 +191,8 @@ data %>%
 
 # Plots-------------------------------------------------------------------------
 dataplot %>%
-  filter(Group == "Renal conditions") %>%
-  delPlotGroup(article$DEL_plot) -> kidney
+  filter(Group == "Mouth conditions") %>%
+  delPlotGroup(article$DEL_plot) 
 
 dataplot %>%
   group_split(Group) %>%
@@ -203,7 +203,7 @@ article$plots %>%
   map2(str_c("resultats/", names(.), ".png"),
        ~ ggsave(plot = .x,
                 filename = .y,
-                width = 15,
+                width = 18,
                 height = 10))
 
 article$results_ranges %>%
