@@ -111,8 +111,16 @@ delPlotOne <- function(plotdata)
 {
   plotdata$p.adj %>%
     unique %>%
-    prettyNum(digits = 3) %>%
-    str_c("p = ", .) -> pvalue
+    prettyNum(digits = 2) %>%
+    str_c("p= ", .) -> pvalue
+
+  plotdata %>%
+    distinct(text, .keep_all = T) %>%
+    mutate_at(vars(or, icl, icu), ~prettyNum(., digits = 2)) %>%
+    transmute(OR = str_c("OR= ", or, " [", icl, "-", icu, "]")) %>%
+    pull -> OR
+
+  str_c(pvalue, OR, sep = "\n") -> xtitle
 
   plotdata$text %>%
     unique -> titre
@@ -124,14 +132,13 @@ delPlotOne <- function(plotdata)
     aes(x = Patient.ID, ymin = 0, ymax = 1, color = value) +
     labs(title = titre,
          x = NULL,
-         y = pvalue) +
-    ylab(pvalue) +
+         y = xtitle) +
     geom_linerange(size = 1) +
     scale_x_discrete(labels = NULL, limits = unique(plotdata$Patient.ID[order(desc(plotdata$min))])) +
     scale_y_continuous(labels = NULL) +
     scale_color_grey(start = .9, end = .2, na.value = "white") +
     theme(plot.title = element_text(angle = 90, hjust = 0, vjust = 0.5),
-          axis.title.x = element_text(angle = -45, hjust = 0.5, vjust = 0.5),
+          axis.title.x = element_text(size = 9),
           axis.ticks = element_blank(),
           panel.grid = element_blank(),
           panel.background = element_blank(),
