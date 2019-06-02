@@ -212,7 +212,7 @@ In this study using data from the Phelan-McDermid Syndrome International Registr
 
 # Supplemental Data description
 
-Supplemental Data contains two figures describing the data management workflow, one table of full results from the statistical analyses, and 31 figures detailing results of the analyses by group of features.
+Supplemental Data contains two figures describing the data management workflow, one table of full results from the statistical analyses, and `r article$plots %>% length` figures detailing results of the analyses by group of features.
 
 # Acknowledgments
 
