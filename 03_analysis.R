@@ -76,13 +76,10 @@ vars %>%
 
 article$nb_pat$all_gen <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 article$genetics$all <- nrow(Genetics_ranges)
-article$genetics$Xmes <- Genetics_ranges$Chr_Gene %>% factor %>% levels
 
 # Manage Genetics_ranges -------------------------------------------------------
 Genetics_ranges %>%
-  filter(Chr_Gene == "22") %>%
-  mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) %>%
-  select(-Result.type, -Chr_Gene) -> Genetics_ranges
+  mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) -> Genetics_ranges
 
 article$genetics$X22$del <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% nrow
 article$genetics$X22$dup <- Genetics_ranges %>% filter(Gain_Loss == "Gain") %>% nrow
@@ -125,7 +122,8 @@ Genetics_ranges %>%
   mutate(End = case_when(ratio < .05 ~ lead(End),
                          T ~ End)) %>%
   filter(ratio < .05) %>%
-  select(Patient.ID, Gain_Loss, Start, End) -> merged
+  select(Patient.ID, Gain_Loss, Start, End) %>%
+  mutate(Result.type = "coordinates") -> merged
 
 Genetics_ranges %>%
   anti_join(merged) %>%

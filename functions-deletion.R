@@ -6,20 +6,25 @@ library(grid)
 cnvPlot <- function(Genetics_ranges)
 {
   Genetics_ranges %>%
-    mutate(Patient.ID = Patient.ID %>% as.character) %>%
+    mutate(Patient.ID = Patient.ID %>% as.character) ->
+    Genetics_ranges
 
+  Genetics_ranges %>%
+    filter(Result.type == "coordinates") %>%
     ggplot() +
-    aes(x = Patient.ID, ymin = Start/1e6, ymax = End/1e6) +
-    geom_linerange(size = 1, aes(color = Gain_Loss)) +
+    aes(x = Patient.ID) +
+    scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
+    geom_linerange(size = 1, aes(color = Gain_Loss, ymin = Start/1e6, ymax = End/1e6)) +
+    scale_color_manual(values = c(Gain = "blue", Loss = "red")) +
     geom_rect(ymin = 50674641/1e6,
               ymax = 50733211/1e6,
               xmin = 1,
               xmax = Genetics_ranges %>% distinct(Patient.ID) %>% nrow,
               alpha = .01,
               fill = "grey") +
-    scale_color_manual(values = c(Gain = "blue", Loss = "red", Mutation = "darkred")) +
-    scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
-    ylab("Chromosomic coordinates") +
+    geom_point(data = Genetics_ranges %>% filter(Result.type == "mutation"), aes(y = Start/1e6, shape = Result.type), alpha = .4) +
+    scale_shape_manual(values = c(mutation = 8)) +
+    ylab("Chromosomic coordinates (Mb)") +
     xlab(NULL) +
     theme_minimal() +
     theme(axis.ticks.y = element_blank(),
