@@ -222,7 +222,7 @@ The statements presented in this article are solely the responsibility of the au
 
 # Web Resources
 
-All the code for ETL and analysis is openly available on github (https://github.com/hms-dbmi/ETL/tree/master/data_projects/pms_dn/pms_registry/R-ETL, https://github.com/hms-dbmi/Avillach-Lab/tree/master/PMS_DN/GenoPheno)
+All the code for ETL and analysis is openly available on github (https://github.com/hms-dbmi/PMSDN_R-ETL, https://github.com/hms-dbmi/PMSDN_GenoPheno)
 
 # Figures titles and legends
 
