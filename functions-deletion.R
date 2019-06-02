@@ -94,6 +94,14 @@ delPlotGroup <- function(plotdata, delplot)
     map(delPlotOne) %>%
     wrap_plots(nrow = 1) -> groupplot
 
+  plotdata$text %>%
+    str_length %>%
+    max -> max_text_length
+
+  delplot +
+    ggtitle(unique(plotdata$Group)) +
+    theme(plot.title = element_text(size = 36, margin = margin(b = max_text_length * 7, t = 10, l = 10))) -> delplot
+
   delplot +
     groupplot +
     plot_layout(widths = c(1, 5))
