@@ -29,6 +29,7 @@ cnvPlot <- function(Genetics_ranges)
     theme_minimal() +
     theme(axis.ticks.y = element_blank(),
           axis.line.y = element_blank(),
+          panel.grid.major.y = element_blank(),
           legend.position = c(0.1, 0.1),
           legend.title = element_blank()) +
     coord_flip() +
