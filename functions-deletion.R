@@ -16,12 +16,6 @@ cnvPlot <- function(Genetics_ranges)
     scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
     geom_linerange(size = 1, aes(color = Gain_Loss, ymin = Start/1e6, ymax = End/1e6)) +
     scale_color_manual(values = c(Gain = "blue", Loss = "red")) +
-    geom_rect(ymin = 50674641/1e6,
-              ymax = 50733211/1e6,
-              xmin = 1,
-              xmax = Genetics_ranges %>% distinct(Patient.ID) %>% nrow,
-              alpha = .01,
-              fill = "grey") +
     geom_point(data = Genetics_ranges %>% filter(Result.type == "mutation"), aes(y = Start/1e6, shape = Result.type), alpha = .4) +
     scale_shape_manual(values = c(mutation = 8)) +
     ylab("Chromosomic coordinates (Mb)") +
@@ -33,6 +27,13 @@ cnvPlot <- function(Genetics_ranges)
           legend.position = c(0.1, 0.1),
           legend.title = element_blank()) +
     coord_flip() +
+    annotate("rect",
+             ymin = 50674641/1e6,
+             ymax = 50733211/1e6,
+             xmin = -1,
+             xmax = 2 + Genetics_ranges %>% distinct(Patient.ID) %>% nrow,
+             alpha = .3,
+             fill = "black") +
     annotate("segment", x = nrow(Genetics_ranges %>% distinct(Patient.ID)), xend = 1, y = 52, yend = 52, arrow = arrow(type = "closed", angle = 20)) +
     annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 51.95, label = "Patients", angle = 90, hjust = .5, vjust = 0) +
     annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 52.05, label = "Decreasing deletion size", angle = 90, hjust = .5, vjust = 1)
