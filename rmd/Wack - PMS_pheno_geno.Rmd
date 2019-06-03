@@ -240,10 +240,12 @@ and
 Autistic-like features (p = `r pvalue("Autistic-like features")`).
 The absence of these features, behaviors or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
-TODO: cardiovascular, ears nose and throat, gastrointestinal, immunologic, psychiatric, sleep.
-No allergy, anesthesia related, endocrine, orthopedic, nose and throat, puberty-related, sensory, and skin conditions were significantly associated with greater deletion sizes.
-Other classical dysmorphic features in PMS were not found associated with deletion size, nor forms of aggressive behavior.
-No fine motor developmental milestones were found associated with deletion size, when all major gross motor milestones were found to be associated with greater deletions.
+There were no associations with any neurological, orthopedic, nose and throat, thyroid, or allergy-related conditions.
+Responses to sounds, movement, touch, oral input, or temperature variations were not associated with greater deletions.
+Tolerance to pain levels where not associated either, even in relation to induced anesthesia.
+There were no associations with any vaccine reactions.
+
+Other classical dysmorphic features in PMS were not found associated with deletion size, and only mild forms of aggressive behavior.
 
 # Discussion
 
