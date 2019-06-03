@@ -31,7 +31,7 @@ pvalue <- function(var)
   article$results_ranges %>%
     filter(text == var) %>%
     .$p.adj %>%
-    prettyNum(digits = 3)
+    prettyNum(digits = 2)
 }
 opts_chunk$set(echo = F,
                message = F,
@@ -318,8 +318,10 @@ Supplemental Data contains two figures describing the data management workflow, 
 
 # Acknowledgments
 
-The Phelan-McDermid Syndrome Foundation, the patients and their families. Chris Botka and the Harvard Medical School Research Computing center.  
-This work was partially funded through a Patient-Centered Outcomes Research Institute (PCORI) Award (PPRN-1306-04814) phase I and II for development of the National Patient-Centered Clinical Research Network, known as PCORnet; and by Research Grand EDU_R_FY2015_Q2_HarvardMedicalSchool_Avillach-NEW from Amazon Inc. National Institutes of Health − RFA-HG-13-009 − Centers of Excellence for Big Data Computing in the Biomedical Sciences (U54) − Grant Number 1U54HG007963-01.  
+The Phelan-McDermid Syndrome Foundation, the patients and their families. Chris Botka and the Harvard Medical School Research Computing center.
+
+This work was partially funded through a Patient-Centered Outcomes Research Institute (PCORI) Award (PPRN-1306-04814) phase I and II for development of the National Patient-Centered Clinical Research Network, known as PCORnet; and by Research Grand EDU_R_FY2015_Q2_HarvardMedicalSchool_Avillach-NEW from Amazon Inc. National Institutes of Health − RFA-HG-13-009 − Centers of Excellence for Big Data Computing in the Biomedical Sciences (U54) − Grant Number 1U54HG007963-01.
+
 The statements presented in this article are solely the responsibility of the author(s) and do not necessarily represent the views of the Patient-Centered Outcomes Research Institute (PCORI), its Board of Governors or Methodology Committee or other participants in PCORnet.
 
 # Web Resources
