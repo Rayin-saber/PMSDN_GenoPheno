@@ -122,7 +122,8 @@ As of November 11 2018, date of the latest registry data export used in this stu
 Among these `r article$nb_pat$demo` patients, `r article$nb_pat$clin` completed the clinical questionnaire and `r article$nb_pat$dev` the developmental questionnaire.
 A total of `r article$nb_pat$pheno` patients had demographic and either clinical or developmental information entered.
 Demographic information for the included patients is described in Table 1.
-There were no demographic biases at inclusion regarding age or gender.
+The selected population was significantly younger than the rest of the PMS_DN cohort, and less diverse with a majority of caucasian patients.
+There were no demographic biases at inclusion regarding gender.
 Ages were compared using a non-parametric Mann & Whitney test, genders were compared using a Fisher test.
 Completion rates ranged from `r prettyNum(article$completion["Min."] * 100, digits = 2)`% to `r prettyNum(article$completion["Max."] * 100, digits = 2)`% of items, with a mean completion rate of `r prettyNum(article$completion["Mean"] * 100, digits = 2)`%.
 
@@ -148,7 +149,7 @@ The range of the *SHANK3* gene is represented as a vertical box across the figur
 Horizontal black lines help relate different chromosomal abnormalities for patients with more than one abnormality.
 
 `r article$PRO$incl` phenotypes were tested against deletion sizes for `r article$nb_pat$included` patients using the models described in the methods section.
-After correction of the p values using the FDR method, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*.
+After correction of the p values, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*.
 Complete results are presented in Supplemental data 2, and figures for all groups of phenotypes in Supplemental data 3.
 
 Significantly associated phenotypes with positive effect sizes are presented in Table 2, with their respective raw p value, FDR adjusted p value, and odds ratio with 95% confidence interval (odds ratios are expressed for every million base pair deleted).
