@@ -193,102 +193,79 @@ Horizontal black lines help relate different chromosomal abnormalities for patie
 
 `r article$PRO$incl` phenotypes were tested against deletion sizes for `r article$nb_pat$included` patients using the models described in the methods section.
 After correction of the p values, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*.
-Complete results are presented in Supplemental data 2, and figures for all groups of phenotypes in Supplemental data 3.
+The complete analysis results are available in Supplemental data 2, with accompanying figures for all groups of phenotypes in Supplemental data 3.
 
-Significantly associated phenotypes with positive effect sizes are presented in Table 2, with their respective raw p value, FDR adjusted p value, and odds ratio with 95% confidence interval (odds ratios are expressed for every million base pair deleted).
-They include the age of acquisition for all main gross motor developmental milestones: (Figure 1)
-Hold head (p = `r pvalue("Hold head up on his/her own")`),
-Crawl (p = `r pvalue("Crawl on hands and knees")`),
-Sit (p = `r pvalue("Sit when placed")`),
-Walk (p = `r pvalue("Walk unassisted")`),
-and
-Climb stairs (p = `r pvalue("Climb stairs standing up without help")`)
-where greater deletion sizes are associated with later ages of acquisition;
-certain congenital dysmorphic kidney ailments: (Figure 2)
-Vesicoureteral reflux (p = `r pvalue("Vesicoureteral Reflux")`),
-Hydronephrosis (p = `r pvalue("Hydronephrosis")`),
-Increased kidney size (p = `r pvalue("Increased kidney size")`),
-Polycystic kidney (p = `r pvalue("Polycystic kidney")`),
-Persistent fever related to kidney issues (p = `r pvalue("Persistent fever related to kidney issues")`),
-and
-Dysplastic kidney (p = `r pvalue("Dysplastic kidney")`);
-a range of phenotypes related to gross motor and muscle tone:
-Floppy baby (p = `r pvalue("Floppy baby")`),
-Neonatal hypotonia (p = `r pvalue("Hypotonia")`),
-Fatigues easily (p = `r pvalue("Fatigues easily")`),
-Apnea (p = `r pvalue("Apnea")`),
-and
-Fatigue (p = `r pvalue("Fatigues easily")`);
-multiple items related to feeding difficulties during the first-year development:
-Feeding problems (p = `r pvalue("Feeding problems")`),
-Swallowing problems (p = `r pvalue("Swallowing problems")`),
-Required special feeds (p = `r pvalue("Required special feeds")`),
-and
-Poor suck (p = `r pvalue("Poor suck")`);
-dysmorphic features commonly described in PMS:
-Too tall for age (p = `r pvalue("Too tall for age")`),
-Sacral dimple (p = `r pvalue("Sacral dimple")`),
-Large fleshy hands (p = `r pvalue("Large fleshy hands")`),
-and
-Dysplastic toenails (p = `r pvalue("Dysplastic or unusual toenails")`);
-lymphatic system issues:
-swelling of left (p = `r pvalue("Left foot")`),
-and
-right feet (p = `r pvalue("Right foot")`),
-and
-Primary Lymphedema (p = `r pvalue("Primary Lymphedema")`);
-and central nervous system anomalies:
-Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan")`),
-Abnormal MRI (p = `r pvalue("Abnormal MRI")`),
-Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
-Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
-and
-Febrile seizures (p = `r pvalue("Febrile seizures")`).
+Classical morphological features described in the literature are associated with greater deletion sizes :
+hyper-growth (p = `r pvalue("Too tall for age")`), 
+bushy eyebrows (p = `r pvalue("Bushy eyebrows")`),
+large fleshy hands (p = `r pvalue("Large fleshy hands")`),
+sacral dimple (p = `r pvalue("Sacral dimple")`),
+and dysplastic toenails (p = `r pvalue("Dysplastic or unusual toenails")`) and fingernails (p = `r pvalue("Dysplastic or unusual fingernails")`).
+Swelling of the extremities, for the most part the low limb `r result_for_group("Swelling")` was also encountered only in patients with the largest deletions.
+
+All renal conditions `r result_for_group("Renal conditions")` are strongly associated with the deletion size, with most affected patients having only the largest deletions (Figure 2). Other renal symptoms, except for persistent fevers related to the recurrent urinary tract infections, were not associated with the deletion size.
+
+Major delays in nearly all gross motor milestones `r result_for_group("Gross motor milestones")` are strongly and linearly associated with greater deletion sizes. They are shown in Figure 3.
+These delays in gross motor milestones are accompanied with a range of conditions related to muscular tone: hypotonia (p = `r pvalue("Hypotonia")`),
+hypo-reflexia (p = `r pvalue("Hypo-reflexia")`),
+apnea (p = `r pvalue("Apnea")`),
+fatigue (p = `r pvalue("Fatigues easily")`),
+weak muscles (p = `r pvalue("Weak muscles")`),
+poor reflexes (p = `r pvalue("Poor reflexes")`),
+and feeding problems (p = `r pvalue("Feeding problems")`).
+
+Feeding difficulties `r result_for_group("Feeding difficulties")`, necessitated naso-gastric tubes (p = `r pvalue("Nasogastric (NG) tube")`), and are not explained by feeding disorders (only PICA (p = `r pvalue("Pica")`) is associated, negatively, with the deletion size).
+
+Only the presence of a heart murmur (p = `r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (p = `r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (p = `r pvalue("Patent Ductus Arteriosus")`) could be used in the analysis, were associated with bigger deletions.
+
+Some behaviors such as daytime teeth grinding (p = `r pvalue("Daytime teeth grinding")`).
+
+All the significantly associated phenotypes with positive effect sizes are presented in Table 2, with their respective raw p value, FDR adjusted p value, and odds ratio with 95% confidence interval (odds ratios are expressed for every million base pair deleted).
 The presence of these features and symptoms is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
-Significantly associated phenotypes with negative effect sizes are presented in Table 3.
-They include behaviors related to hyperactivity:
-Act as if driven by a motor (p = `r pvalue("Act as if driven by a motor")`),
-Run around and climb excessively (p = `r pvalue("Run around or climb excessively when inappropriate")`),
-and
-Symptoms of ADD/ADHD (p = `r pvalue("Symptoms/diagnostic of ADD/ADHD")`);
-social behaviors:
-Plays alongside others but not with them (p = `r pvalue("Plays alongside others, alone")`),
-Engage in pretend play (p = `r pvalue("Engage in pretend play")`),
-Respond to others emotions (p = `r pvalue("Respond to others")`),
-Respond affectionately to caregivers (p = `r pvalue("Respond affectionately to caregivers")`),
-Hug/kiss caregivers, dolls, stuffed animals (p = `r pvalue("Hug/kiss caregivers, dolls")`),
-and
-Shows awareness of imaginary characters (p = `r pvalue("Awareness of imaginary characters")`);
-cognitive development:
-Understanding of the use of familiar objects (p = `r pvalue("Understanding of the use of familiar objects")`),
-Imitate household activities during play (p = `r pvalue("Imitate household activities during play")`),
-Use functional toys appropriately (p = `r pvalue("Use functional toys appropriately")`),
-Act out recent experiences using gestures, etc. (p = `r pvalue("Act out recent experiences using gestures, etc.")`),
-Understand difference between food and objects (p = `r pvalue("Understand difference between food and objects")`),
-and
-Observe actions and imitate them later (p = `r pvalue("Observe actions and imitate them later")`);
-communication development:
-Ability to follow directions (p = `r pvalue("Ability to follow directions")`),
-Receptive language disorder (p = `r pvalue("Receptive language disorder")`),
-Expressive language disorder (p = `r pvalue("Expressive language disorder")`),
-and
-Use of sign language (p = `r pvalue("Sign language")`);
-and differential diagnoses:
-ADHD (p = `r pvalue("ADHD")`),
-Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder")`),
-and
-Autism (p = `r pvalue("Autism")`)
-and
-Autistic-like features (p = `r pvalue("Autistic-like features")`).
+> TODO :
+> Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan")`),
+> Abnormal MRI (p = `r pvalue("Abnormal MRI")`),
+> Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
+> Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
+> and
+> Febrile seizures (p = `r pvalue("Febrile seizures")`).
+
+Some anxiety disorders `r result_for_group("Anxiety disorders")` are negatively associated with the deletion size.
+Attention disorder symptoms `r result_for_group("Attention disorder")` are also less present in patients with greater deletion sizes.
+Nearly all the cognitive development surveyed `r result_for_group("Cognitive development")` are significantly impaired by the size of the deletion.
+
+Basic communication milestones `r result_for_group("Communication milestones")` are acquired later than normal in patients with longer deletions, primitive non-verbal skils `r result_for_group("Communication – Non-verbal skills")` are rarer, and verbal speech `r result_for_group("Verbal speech")` is heavily impaired for patients with even small deletions.
+However, syndromic etiologies `r result_for_group("Communication-related symptoms")`, or auditory processing disorder (p = `r pvalue("Auditory processing disorder")`) cannot explain these communication development delays, as they are negatively associated with the deletion sizes.
+Hearing problems (apart from the installation of ear tubes (p = `r pvalue("Ear tubes")`) are not associated with the genetic status.
+
+We observe delays in socio-emotional development, in all activities related to socialisation `r result_for_group("Socio-emotional development")`.
+
+Sleep disturbances `r result_for_group("Sleep disturbances")` are less frequent in patients with greater deletions.
+
+The detail of all the significantly associated phenotypes with negative effect sizes are presented in Table 3.
 The absence of these features, behaviors or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
+> TODO:
+> and differential diagnoses:
+> ADHD (p = `r pvalue("ADHD")`),
+> Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder")`),
+> and
+> Autism (p = `r pvalue("Autism")`)
+> and
+> Autistic-like features (p = `r pvalue("Autistic-like features")`).
+
 There were no associations with any neurological, orthopedic, nose and throat, thyroid, or allergy-related conditions.
+Beside a mild association with chronic constipation (p = `r pvalue("Chronic constipation")`, OR = `r or("Chronic constipation")`), and aspiration (p = `r pvalue("Aspiration")`), no gastrointestinal conditions or symptoms were associated with the genetic defects.
 Responses to sounds, movement, touch, oral input, or temperature variations were not associated with greater deletions.
-Tolerance to pain levels where not associated either, even in relation to induced anesthesia.
+Tolerance to pain was not associated either, as well as pain levels around anesthesia.
 There were no associations with any vaccine reactions.
 
-Other classical dysmorphic features in PMS were not found associated with deletion size, and only mild forms of aggressive behavior.
+# TODO
+> Abdominal bloating
+> C-section
+> learning disabilities
+> ?Other classical dysmorphic features in PMS were not found associated with deletion size, and only mild forms of aggressive behavior.
 
 # Discussion
 
@@ -305,7 +282,7 @@ The extended precision of the results shows the potential of analyses on the dat
 Renal malformations, present in nearly 30% of PMS patients [@kolevzon_phelan-mcdermid_2014], are strongly associated with greater deletion sizes, with the distribution of deletion sizes hinting at a region of interest on chromosome 22, which had only been reported once for all renal abnormalities regardless of the precise condition [@soorya_prospective_2013].
 This indicates that renal malformations in PMS, absent from patients with isolated *SHANK3* mutations [@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009], but found in patients with interstitial deletions not involving *SHANK3* [@vittoria_disciglio_interstitial_2014], are related to different genes than *SHANK3* playing a role in the renal morphogenesis.
 
-Greater deletion sizes are consistently and proportionally positively associated with gross motor development delays, specifically and differentially from fine motor acquisitions, as well as phenotypes related to muscle tone in the early stages of development, and feeding difficulties.
+Greater deletion sizes are consistently and proportionally positively associated with gross motor development delays, as well as phenotypes related to muscle tone in the early stages of development, and feeding difficulties.
 Some of these findings had been uncovered separately before [@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014] but not consistently for each gross motor milestone, as previous studies only captured age at walk [@sarasua_clinical_2014 ; @sarasua_22q13.2q13.32_2014] or age at walk and crawl [@sarasua_association_2011].
 Some of these features are found in PMS patients with interstitial deletions not affecting *SHANK3* [@wilson_interstitial_2008 ; @vittoria_disciglio_interstitial_2014].
 They are also found in a lesser extent and less severity in PMS patients with isolated *SHANK3* mutations [@macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009].
@@ -314,7 +291,7 @@ The previously unreported associations of deletion sizes with gastrointestinal a
 
 Previous results of association with large fleshy hands and dysplastic toenails [@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014] could be reproduced in this study, as well as results of increased prevalence of lymphedema and swelling of extremities [@soorya_prospective_2013] and aggressive behaviors [@sarasua_22q13.2q13.32_2014].
 
-Common differential diagnoses of ADHD and ASD, as well as symptoms of both these disorders classes, are negatively associated with deletion size, meaning that patients with greater deletion sizes are less likely to present these symptoms or of having been misdiagnosed with one of these afflictions.
+Common differential diagnoses of ADHD and ASD, as well as symptoms of both these disorders classes, are negatively associated with deletion size, meaning that patients with greater deletion sizes are less likely to present these symptoms or of having been misdiagnosed with one of these conditions.
 This has previously been suggested [@sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014], for ASD, to be caused by "masking" of autistic symptoms by the depth of the disabilities due to the greater deletion size.
 Negative association with ADHD and hyperactivity symptoms can be linked with the spectrum of low muscle tone associated with greater deletion size.
 
