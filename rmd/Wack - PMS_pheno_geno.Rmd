@@ -92,6 +92,7 @@ For example, when taking the survey at a new time point, displaying the previous
 
 Because we reused already existing genetic test results, they presented a huge disparity in techniques, accuracy, and references.
 All the curated genetic test results for each patient were manually reviewed to extract the coordinates and genome assembly of the chromosomal abnormalities.
+Those results were all reviewed and confirmed by a trained geneticist specialised in the syndrome.
 Chromosomal coordinates for aCGH were extracted from the relevant structured fields (chromosome, gain/loss, start, end), from ISCN nomenclature, and from comments when necessary.
 When multiple assays were available for the same region, the most recent or most precise one was kept.
 In decreasing order of preference based on precision, we chose sequencing and SNP arrays over array CGH.
@@ -101,6 +102,7 @@ Only the terminal deletions were kept in the analyses to ensure comparability an
 Contiguous deletions separated by a gap less than 5% their total length were merged into one deletion to prevent underestimating the effect of those deletions and ensuring comparability.
 
 For the analysis reported here, we compared the extent of deleted genetic material on the terminus of chromosome 22 with the occurrence of each phenotypic feature, in a multi-phenotype-genotype association study (aka Phenome-Wide Association study - PheWas [@denny_phewas:_2010]), using the deletion extent as the genetic anomaly of interest.
+*SHANK3* mutations were treated as terminal deletions up to the mutation position.
 Phenotypic features, both physical and behavioral, including features commonly associated with the diagnosis of PMS, were selected for analysis.
 Only features with strictly more than five patients in each subgroup were selected to satisfy technical requirements of the regression models.
 Only patients with deletion coordinates available in (or translatable to) the GRCh38/hg38 human genome assembly were included, to ensure comparability and consistency of the results.
@@ -122,6 +124,7 @@ As of November 11 2018, date of the latest registry data export used in this stu
 `r article$nb_pat$demo` out of these 849 patients in the PMS_DN entered demographic information.
 Among these `r article$nb_pat$demo` patients, `r article$nb_pat$clin` completed the clinical questionnaire and `r article$nb_pat$dev` the developmental questionnaire.
 A total of `r article$nb_pat$pheno` patients had demographic and either clinical or developmental information entered.
+
 Demographic information for the included patients is described in Table 1.
 The selected population was significantly younger than the rest of the PMS_DN cohort, and less diverse with a majority of caucasian patients.
 There were no demographic biases at inclusion regarding gender.
