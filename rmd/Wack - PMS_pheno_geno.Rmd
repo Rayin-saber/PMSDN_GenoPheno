@@ -145,9 +145,8 @@ PRO items not selected were items not referring directly to a symptom or a condi
 ## Deletion analyses results
 
 `r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates were available or could be translated into the GRCh38/hg38 human genome assembly on chromosome 22.
-Figure 1 represents the terminal chromosomal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients.
-Panel A of the figure is a representation of chromosome 22 with the zoomed terminal region framed in red.
-Panel B represents the deletion sizes for each patient, one line per patient, ordered by the decreasing maximum extent of the deleted genetic material.
+Figure 1 represents the terminal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients.
+Each patient's status is represented on one line, in order of their leftmost abnormality.
 Duplicated regions are represented as blue boxes, deleted regions as red boxes, and mutations of *SHANK3* as asterisks.
 The range of the *SHANK3* gene is represented as a grey vertical box across the figure.
 Horizontal black lines help relate different chromosomal abnormalities for patients with more than one abnormality.
@@ -337,7 +336,7 @@ All the code for ETL and analysis is openly available on github (https://github.
 ## Figure 1
 
 **Title**: Genetic status on chromosome 22 for all patients with a verified genetic test result.  
-**Legend**: Deletions (in red), *SHANK3* mutations (asterisks), and duplications (in blue) on the long arm of chromosome 22 (as shown in Panel A), ordered by decreasing maximum extent of deleted genetic material, one line for each patient (Panel B)
+**Legend**: Deletions (in red), *SHANK3* mutations (asterisks), and duplications (in blue) on the long arm of chromosome 22 (as shown on top), ordered by decreasing maximum extent of deleted genetic material, one line for each patient
 
 ## Figure 2
 
