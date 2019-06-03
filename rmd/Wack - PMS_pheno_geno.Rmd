@@ -178,13 +178,13 @@ and
 Fatigue (p = `r pvalue("Fatigues easily")`);
 multiple items related to feeding difficulties during the first-year development:
 Feeding problems (p = `r pvalue("Feeding problems")`),
-Swallowing problems (p = `r pvalue("Had swallowing problems")`),
+Swallowing problems (p = `r pvalue("Swallowing problems")`),
 Required special feeds (p = `r pvalue("Required special feeds")`),
 and
-Poor suck (p = `r pvalue("Had poor suck")`);
+Poor suck (p = `r pvalue("Poor suck")`);
 dysmorphic features commonly described in PMS:
 Too tall for age (p = `r pvalue("Too tall for age")`),
-Sacral dimple (p = `r pvalue("Does the patient have a sacral dimple?")`),
+Sacral dimple (p = `r pvalue("Sacral dimple")`),
 Large fleshy hands (p = `r pvalue("Large fleshy hands")`),
 and
 Dysplastic toenails (p = `r pvalue("Dysplastic or unusual toenails")`);
@@ -195,12 +195,12 @@ right feet (p = `r pvalue("Right foot")`),
 and
 Primary Lymphedema (p = `r pvalue("Primary Lymphedema")`);
 and central nervous system anomalies:
-Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan Test result")`),
-Abnormal MRI (p = `r pvalue("Abnormal MRI Test result")`),
+Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan")`),
+Abnormal MRI (p = `r pvalue("Abnormal MRI")`),
 Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
 Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
 and
-Febrile seizures (p = `r pvalue("Has the patient ever had febrile seizures?")`).
+Febrile seizures (p = `r pvalue("Febrile seizures")`).
 The presence of these features and symptoms is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
 Significantly associated phenotypes with negative effect sizes are presented in Table 3.
@@ -210,13 +210,13 @@ Run around and climb excessively (p = `r pvalue("Run around or climb excessively
 and
 Symptoms of ADD/ADHD (p = `r pvalue("Symptoms/diagnostic of ADD/ADHD")`);
 social behaviors:
-Plays alongside others but not with them (p = `r pvalue("Plays alongside others but not with them")`),
+Plays alongside others but not with them (p = `r pvalue("Plays alongside others, alone")`),
 Engage in pretend play (p = `r pvalue("Engage in pretend play")`),
-Respond to others emotions (p = `r pvalue("Respond to others – emotions ")`),
+Respond to others emotions (p = `r pvalue("Respond to others")`),
 Respond affectionately to caregivers (p = `r pvalue("Respond affectionately to caregivers")`),
-Hug/kiss caregivers, dolls, stuffed animals (p = `r pvalue("Hug/kiss caregivers, dolls, stuffed animals")`),
+Hug/kiss caregivers, dolls, stuffed animals (p = `r pvalue("Hug/kiss caregivers, dolls")`),
 and
-Shows awareness of imaginary characters (p = `r pvalue("Shows awareness of imaginary characters")`);
+Shows awareness of imaginary characters (p = `r pvalue("Awareness of imaginary characters")`);
 cognitive development:
 Understanding of the use of familiar objects (p = `r pvalue("Understanding of the use of familiar objects")`),
 Imitate household activities during play (p = `r pvalue("Imitate household activities during play")`),
