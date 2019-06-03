@@ -115,11 +115,8 @@ article$nb_pat$included <- nrow(data)
 # Table 1 : demographics and comparison
 Demographics %>%
   mutate(included = Patient.ID %in% data$Patient.ID,
-         Race = ifelse(Race == "", NA, Race) %>% factor,
-         included = included %>% factor) -> Demographics
-
-Demographics %>%
-  ungroup() %>%
+         included = included %>% factor,
+         Race = Race %>% fct_lump(prop = .01)) %>%
   select(Age, Gender, Race, included) %>%
   group_by(included) %>%
   desctable -> article$table1
@@ -192,7 +189,7 @@ data %>%
 # Plots-------------------------------------------------------------------------
 dataplot %>%
   filter(Group == "Mouth conditions") %>%
-  delPlotGroup(article$DEL_plot) 
+  delPlotGroup(article$DEL_plot)
 
 dataplot %>%
   group_split(Group) %>%
