@@ -33,6 +33,46 @@ pvalue <- function(var)
     .$p.adj %>%
     prettyNum(digits = 2)
 }
+
+or <- function(var)
+{
+  article$results_ranges %>%
+    filter(text == var) %>%
+    mutate(or = or %>% prettyNum(digits = 2)) %>%
+    transmute(or = str_c(or, " ", IC_OR)) %>%
+    pull(or)
+}
+
+phenotypes <- function(text)
+{
+  text %>%
+    str_c(collapse = ", ")
+}
+
+range_p_or <- function(p_or)
+{
+  p_or %>%
+  range %>%
+    prettyNum(digits = 2) %>%
+    str_c(collapse = " to ")
+}
+
+result_for_group <- function(group)
+{
+  article$results_ranges %>%
+    filter(Group == group,
+           p.adj < .05) %>%
+  arrange(p.adj) -> res
+
+  str_c("(",
+        phenotypes(res$text),
+        " (*p values* from ",
+        range_p_or(res$p.adj),
+        ", *ORs* from ",
+        range_p_or(res$or),
+        "))")
+}
+
 opts_chunk$set(echo = F,
                message = F,
                error = F,
