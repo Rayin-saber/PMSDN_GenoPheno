@@ -106,7 +106,7 @@ Only features with strictly more than five patients in each subgroup were select
 The comparisons were made using only data from patients for which deletion coordinates were available or translatable to GRCh38/hg38 human genome assembly, to ensure comparability and consistency of the results.
 We built multivariate models associating the phenotypic outcome with the deletion size, adjusted for the age and gender of the patients.
 Linear regression was used when the outcome was a continuous variable (birth length, weight, head circumference and APGAR scores), logistic regression when the outcome was binary (phenotype present or not), a method used in previous deletion analyses in PMS [@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014], and proportional odds logistic regression [@valenta_proportional_2006] for ordinal outcomes (severity of a phenotype on a 4 point scale from “absent” to “always present”, and age ranges for the acquisition of developmental milestones).
-The False Discovery Rate (FDR) method was used to adjust the p values for multiple hypotheses testing [@benjamini_controlling_1995].
+The Benjamini-Hochberg procedure for False Discovery Rate (FDR) was used globally to adjust the p values for multiple hypotheses testing [@benjamini_controlling_1995].
 Odds ratios (and their 95% confidence intervals) are given for every million deleted base pairs.
 
 Statistical analyses were conducted using R version `r str_c(version$major, version$minor, sep = ".")`.
