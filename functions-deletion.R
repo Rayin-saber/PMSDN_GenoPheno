@@ -6,7 +6,8 @@ library(grid)
 cnvPlot <- function(Genetics_ranges)
 {
   Genetics_ranges %>%
-    mutate(Patient.ID = Patient.ID %>% as.character) ->
+    mutate(Patient.ID = Patient.ID %>% as.character,
+           Gain_Loss = Gain_Loss %>% fct_recode("Deletion" = "Loss", "Duplication" = "Gain")) ->
     Genetics_ranges
 
   Genetics_ranges %>%
@@ -15,7 +16,7 @@ cnvPlot <- function(Genetics_ranges)
     aes(x = Patient.ID) +
     scale_x_discrete(labels = NULL, limits = unique(Genetics_ranges$Patient.ID[order(desc(Genetics_ranges$min))])) +
     geom_linerange(size = 1, aes(color = Gain_Loss, ymin = Start/1e6, ymax = End/1e6)) +
-    scale_color_manual(values = c(Gain = "blue", Loss = "red")) +
+    scale_color_manual(values = c(Duplication = "blue", Deletion = "red")) +
     geom_point(data = Genetics_ranges %>% filter(Result.type == "mutation"), aes(y = Start/1e6, shape = Result.type), alpha = .4) +
     scale_shape_manual(values = c(mutation = 8)) +
     ylab("Chromosomic coordinates (Mb)") +
