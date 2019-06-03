@@ -82,7 +82,7 @@ The patients' families can retake the surveys for the phenotypic data any number
 Alongside phenotypic data, the registry contains curated genetic testing of chromosomal abnormalities from karyotypes, FISH probes, comparative genomic hybridization (aCGH), microarrays, and sequencing represented using the ISCN Standard Nomenclature [@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013].
 The scanned paper reports of the genetic test results are uploaded by the families on the platform then manually curated by trained genetic counselors, filling 57 structured fields to represent the genetic abnormalities.
 
-All the phenotypic and genotypic data in the PMS registry were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse to facilitate their integration with future updates of the registry and additional sources of data.
+All the phenotypic and genotypic data in the PMS registry were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse to facilitate the continuous integration of future updates of the registry and additional sources of data.
 In addition, a PMS ontology was created to tag the registry data elements in a controlled vocabulary and organizing them to allow for efficient user-selection of various stratifications of the patients in the registry.
 This required developing an automatic data cleaning and loading pipeline using the R language to provide easy integration of new data from the PMSIR into PMS_DN over time, and consistency in the way every variable is coded in the system.
 Variables representing each clinical item in the survey were categorized as being either historical or evolving over time, to facilitate further analysis by other researchers.
@@ -103,7 +103,8 @@ Contiguous deletions separated by a gap less than 5% their total length were mer
 For the analysis reported here, we compared the extent of deleted genetic material on the terminus of chromosome 22 with the occurrence of each phenotypic feature, in a multi-phenotype-genotype association study (aka Phenome-Wide Association study - PheWas [@denny_phewas:_2010]), using the deletion extent as the genetic anomaly of interest.
 Phenotypic features, both physical and behavioral, including features commonly associated with the diagnosis of PMS, were selected for analysis.
 Only features with strictly more than five patients in each subgroup were selected to satisfy technical requirements of the regression models.
-The comparisons were made using only data from patients for which deletion coordinates were available or translatable to GRCh38/hg38 human genome assembly, to ensure comparability and consistency of the results.
+Only patients with deletion coordinates available in (or translatable to) the GRCh38/hg38 human genome assembly were included, to ensure comparability and consistency of the results.
+
 We built multivariate models associating the phenotypic outcome with the deletion size, adjusted for the age and gender of the patients.
 Linear regression was used when the outcome was a continuous variable (birth length, weight, head circumference and APGAR scores), logistic regression when the outcome was binary (phenotype present or not), a method used in previous deletion analyses in PMS [@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014], and proportional odds logistic regression [@valenta_proportional_2006] for ordinal outcomes (severity of a phenotype on a 4 point scale from “absent” to “always present”, and age ranges for the acquisition of developmental milestones).
 The Benjamini-Hochberg procedure for False Discovery Rate (FDR) was used globally to adjust the p values for multiple hypotheses testing [@benjamini_controlling_1995].
@@ -124,7 +125,7 @@ A total of `r article$nb_pat$pheno` patients had demographic and either clinical
 Demographic information for the included patients is described in Table 1.
 The selected population was significantly younger than the rest of the PMS_DN cohort, and less diverse with a majority of caucasian patients.
 There were no demographic biases at inclusion regarding gender.
-Ages were compared using a non-parametric Mann & Whitney test, genders were compared using a Fisher test.
+Age was compared using the non-parametric Mann & Whitney test, gender and race were compared using the Fisher test.
 Completion rates ranged from `r prettyNum(article$completion["Min."] * 100, digits = 2)`% to `r prettyNum(article$completion["Max."] * 100, digits = 2)`% of items, with a mean completion rate of `r prettyNum(article$completion["Mean"] * 100, digits = 2)`%.
 
 Chromosomal abnormalities span all chromosomes.
@@ -140,7 +141,7 @@ PRO items not selected were items not referring directly to a symptom or a condi
 
 ## Deletion analyses results
 
-`r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates could be translated into the GRCh38/hg38 human genome assembly on chromosome 22.
+`r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates were available or could be translated into the GRCh38/hg38 human genome assembly on chromosome 22.
 Figure 1 represents the terminal chromosomal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients.
 Panel A of the figure is a representation of chromosome 22 with the zoomed terminal region framed in red.
 Panel B represents the deletion sizes for each patient, one line per patient, ordered by the decreasing maximum extent of the deleted genetic material.
