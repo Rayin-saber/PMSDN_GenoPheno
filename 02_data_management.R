@@ -82,20 +82,10 @@ read_csv("data/genetic_hg38.csv") %>%
          Result.type,
          Gain_Loss = Array.Type,
          Start = Array.Start.latest,
-         End = Array.End.latest,
-         seq_pos = SequencingGenomicChange) %>%
-  mutate(seq_pos = seq_pos %>%
-                     str_replace_all("[ ,]", "") %>%
-                     str_replace("^chr22\\(GRC[Hh]37\\):", "") %>%
-                     str_replace("^g\\.", "") %>%
-                     str_replace("^chr22:", "") %>%
-                     str_extract("^\\d+") %>%
-                     as.numeric) %>%
-  mutate(seq_pos = seq_pos - 51113070 + 50674642) %>% # convert hg19 -> hg38 for mutation positions
-  mutate(Start = ifelse(Result.type == "Sequencing", seq_pos, Start),
+         End = Array.End.latest) %>%
+  mutate(Start = ifelse(Result.type == "Sequencing",  50674642, Start),
          End = ifelse(Result.type == "Sequencing", 50733210, End)) %>%
   filter(! Start %>% is.na) %>%
-  select(-seq_pos) %>%
   mutate(Result.type = Result.type %>% fct_recode("coordinates" = "Array",
                                                   "mutation" = "Sequencing")) -> Genetics_ranges
 
