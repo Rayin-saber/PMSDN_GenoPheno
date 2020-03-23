@@ -24,14 +24,17 @@ library(pander)
 library(stringr)
 library(desctable)
 
+options("scipen" = 2)
+
 readRDS("article.rds") -> article
 
 pvalue <- function(var)
 {
   article$results_ranges %>%
     filter(text == var) %>%
-    .$p.adj %>%
-    prettyNum(digits = 2)
+    .$p.adj -> p
+
+  ifelse(p < .001, "p < 0.001", str_c("p = ", prettyNum(p, digits = 2))
 }
 
 or <- function(var)
@@ -43,10 +46,11 @@ or <- function(var)
     pull(or)
 }
 
-phenotypes <- function(text)
+phenotypes <- function(text, quotes = "", collapse = ", ")
 {
   text %>%
-    str_c(collapse = ", ")
+    str_to_lower %>%
+    str_c(quotes, ., quotes, collapse = collapse)
 }
 
 range_p_or <- function(p_or)
@@ -57,20 +61,19 @@ range_p_or <- function(p_or)
     str_c(collapse = " to ")
 }
 
-result_for_group <- function(group)
+result_for_group <- function(group, quotes = "", collapse = ", ")
 {
   article$results_ranges %>%
     filter(Group == group,
            p.adj < .05) %>%
   arrange(p.adj) -> res
 
-  str_c("(",
-        phenotypes(res$text),
+  str_c(phenotypes(res$text, quotes, collapse),
         " (*p values* from ",
         range_p_or(res$p.adj),
         ", *ORs* from ",
         range_p_or(res$or),
-        "))")
+        ")")
 }
 
 opts_chunk$set(echo = F,
@@ -171,6 +174,7 @@ We used the Benjamini-Hochberg procedure for False Discovery Rate (FDR) globally
 Odds ratios (and their 95% confidence intervals) are given for every million deleted base pairs.
 
 Statistical analyses were conducted using R version `r str_c(version$major, version$minor, sep = ".")`.
+Age was compared using the non-parametric Mann & Whitney test, while gender and race were compared using the Fisher test.
 The proportional odds logistic regression used the "clm" function from the "ordinal" package.
 The project was approved by Harvard Medical School Institutional Review Board (HMS IRB14-2161).
 
@@ -178,106 +182,104 @@ The project was approved by Harvard Medical School Institutional Review Board (H
 
 ## Population and variable selection
 
-As of November 11 2018, date of the latest registry data export used in this study, 849 families (461 in the USA), consented to participate in the network and PCORnet studies.
-`r article$nb_pat$demo` out of these 849 patients in the PMS_DN entered demographic information.
-Among these `r article$nb_pat$demo` patients, `r article$nb_pat$clin` completed the clinical questionnaire and `r article$nb_pat$dev` the developmental questionnaire.
-A total of `r article$nb_pat$pheno` patients had demographic and either clinical or developmental information entered.
+Based on the most recent date of registry data export (November 11, 2018), 849 families (461 in the US) consented to participate in the network and PCORnet studies.
+Of these, `r article$nb_pat$demo` patients in the PMS_DN had entered at least their demographic information, including `r article$nb_pat$pheno` with phenotypic information (demographic information and at least one of the clinical (`r article$nb_pat$clin` patients) or developmental (`r article$nb_pat$dev` patients) questionnaires), and `r article$nb_pat$all_gen` provided genetic test results, including `r article$nb_pat$term_del` with terminal deletions or point mutations (`r article$mut_sel` patients) within *SHANK3*.
+Deletion sizes ranged from `r prettyNum(article$genetics$range["Min."]/10^3, digits = 2)` kb to `r prettyNum(article$genetics$range["Max."]/10^6, digits = 2)` Mb, with a median deletion size of `r prettyNum(article$genetics$range["Median"]/10^6, digits = 2)` Mb.
 
-Demographic information for the included patients is described in Table 1.
-The selected population was significantly younger than the rest of the PMS_DN cohort, and less diverse with a majority of caucasian patients.
-There were no demographic biases at inclusion regarding gender.
-Age was compared using the non-parametric Mann & Whitney test, gender and race were compared using the Fisher test.
+To analyse phenotypes, we selected `r article$nb_pat$included` patients who both carried terminal deletions of chromosome 22 or point mutations within *SHANK3* and had entered phenotypic information.
+
+Upon analysis of their demographic information (Table 1), we found that our selected population was significantly younger and less diverse than the larger PMS_DN cohort.
+The majority of patients studied was Caucasian.
+At the same time, we saw no demographic biases toward gender.
 Completion rates ranged from `r prettyNum(article$completion["Min."] * 100, digits = 2)`% to `r prettyNum(article$completion["Max."] * 100, digits = 2)`% of items, with a mean completion rate of `r prettyNum(article$completion["Mean"] * 100, digits = 2)`%.
 
-Chromosomal abnormalities span all chromosomes.
-From the test results of `r article$nb_pat$all_gen` patients we extracted `r article$genetics$all` validated deletion/duplication ranges expressed relative to GRCh38/hg38 on the chromosome 22: `r article$genetics$X22$mut` mutations, `r article$genetics$X22$del` deletions, and `r article$genetics$X22$dup` duplications.
-`r article$nb_pat$term_del` patients presented terminal deletion of the chromosome 22, including `r article$nb_pat$mut_sel` patients with point mutations of *SHANK3*.
-Deletion sizes ranged between `r prettyNum(article$genetics$range["Min."]/10^3, digits = 2)` kb to `r prettyNum(article$genetics$range["Max."]/10^6, digits = 2)` Mb, with a median deletion size of `r prettyNum(article$genetics$range["Median"]/10^6, digits = 2)` Mb.
-
-A total of `r article$nb_pat$included` patients who entered demographic and clinical or developmental phenotypic information, as well as presented terminal deletion of chromosome 22 or point mutation of *SHANK3*, were included for analysis.
-
-Of the 1,300 patient-reported outcome (PRO) items present in the registry, `r article$PRO$sel` were selected as representing phenotypic outcomes.
-PRO items not selected were items not referring directly to a symptom or a condition, such as “Does the patient have a primary cardiologist?”, “How was the genetic test paid?”, “Has the patient had any of the following tests – Manometry testing”, etc.
-`r article$PRO$incl` phenotypes satisfied the inclusion criteria and were included in the analyses.
+To represent phenotypic outcomes, we chose `r article$PRO$sel` of the 1,300 total PRO items available in the registry.
+The excluded items were those not directly referring to a symptom or a condition, such as “Does the patient have a primary cardiologist?” “How was the genetic test paid for?” “Has the patient had any of the following tests: Manometry testing,” etc.
+Overall, `r article$PRO$incl` phenotypes satisfied our inclusion criteria.
 
 ## Deletion analyses results
 
-`r article$nb_pat$all_gen` patients had at least one genetic test result for which deletion/duplication coordinates were available or could be translated into the GRCh38/hg38 human genome assembly on chromosome 22.
-Figure 1 represents the terminal abnormalities on chromosome 22 for these `r article$nb_pat$all_gen` patients.
-Each patient's status is represented on one line, in order of their leftmost abnormality.
-Duplicated regions are represented as blue boxes, deleted regions as red boxes, and mutations of *SHANK3* as asterisks.
+Of the total registry, `r article$nb_pat$all_gen` patients had reported at least one genetic test result containing deletion/duplication coordinates that either were available or could be translated into the GRCh38/hg38 human genome assembly on chromosome 22 (Figure 1).
+Each patient's status is represented on one line, with patients with the most extended deletions on top.
+Duplicated regions are represented as blue boxes; deleted regions as red boxes; and mutations of *SHANK3* as asterisks.
 The range of the *SHANK3* gene is represented as a grey vertical box across the figure.
-Horizontal black lines help relate different chromosomal abnormalities for patients with more than one abnormality.
+For patients with multiple, different chromosomal anomalies, we linked them with horizontal black lines.
 
-`r article$PRO$incl` phenotypes were tested against deletion sizes for `r article$nb_pat$included` patients using the models described in the methods section.
-After correction of the p values, `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with deletions of greater size, meaning that these phenotypes are probably associated with at least one other gene than *SHANK3* on the long arm of chromosome 22, independently or in association with *SHANK3*.
-The complete analysis results are available in Supplemental data 2, with accompanying figures for all groups of phenotypes in Supplemental data 3.
+We tested `r article$PRO$incl` phenotypes expressed by `r article$nb_pat$included` patients in relation to their chromosomal deletion sizes, using the models described in Methods.
+We found that `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with larger genetic deletions, validating previous reports in the literature.
+This signifies that larger deletions likely involve additional genes on the long arm of chromosome 22, independently or in association with *SHANK3*.
+(For complete analyses and figures, see Supplemental data 2, and 3.)
 
-Classical morphological features described in the literature are associated with greater deletion sizes :
-hyper-growth (p = `r pvalue("Too tall for age")`),
-bushy eyebrows (p = `r pvalue("Bushy eyebrows")`),
-large fleshy hands (p = `r pvalue("Large fleshy hands")`),
-sacral dimple (p = `r pvalue("Sacral dimple")`),
-and dysplastic toenails (p = `r pvalue("Dysplastic or unusual toenails")`) and fingernails (p = `r pvalue("Dysplastic or unusual fingernails")`).
-Swelling of the extremities, for the most part the low limb `r result_for_group("Swelling")` was also encountered only in patients with the largest deletions.
+In terms of phenotypic expression, we discovered the following classical morphological features of PMS to be associated with greater deletion sizes:
+hyper-growth (`r pvalue("Too tall for age")`),
+bushy eyebrows (`r pvalue("Bushy eyebrows")`),
+large fleshy hands (`r pvalue("Large fleshy hands")`),
+sacral dimple (`r pvalue("Sacral dimple")`),
+and dysplastic toenails (`r pvalue("Dysplastic or unusual toenails")`) and fingernails (`r pvalue("Dysplastic or unusual fingernails")`).
+Patients with the largest deletions also showed swelling of the extremities, particularly the lower limbs (`r result_for_group("Swelling")`).
 
-All renal conditions `r result_for_group("Renal conditions")` are strongly associated with the deletion size, with most affected patients having only the largest deletions (Figure 2). Other renal symptoms, except for persistent fevers related to the recurrent urinary tract infections, were not associated with the deletion size.
+All renal conditions (`r result_for_group("Renal conditions")`) were strongly associated with deletion size, with the most severely affected patients carrying the largest deletions (Figure 2).
+While persistent fevers related to the recurrent urinary tract infections were associated with deletion size, other renal symptoms were not.
 
-Major delays in nearly all gross motor milestones `r result_for_group("Gross motor milestones")` are strongly and linearly associated with greater deletion sizes. They are shown in Figure 3.
-These delays in gross motor milestones are accompanied with a range of conditions related to muscular tone: hypotonia (p = `r pvalue("Hypotonia")`),
-hypo-reflexia (p = `r pvalue("Hypo-reflexia")`),
-apnea (p = `r pvalue("Apnea")`),
-fatigue (p = `r pvalue("Fatigues easily")`),
-weak muscles (p = `r pvalue("Weak muscles")`),
-poor reflexes (p = `r pvalue("Poor reflexes")`),
-and feeding problems (p = `r pvalue("Feeding problems")`).
+Major delays in nearly all gross motor milestones were strongly and linearly associated with greater deletion sizes.
+These included `r result_for_group("Gross motor milestones", quotes = '"', collapse = " ")` (See Figure 3).
+These delays were accompanied by a range of conditions related to muscular tone: hypotonia (`r pvalue("Hypotonia")`),
+hypo-reflexia (`r pvalue("Hypo-reflexia")`),
+apnea (`r pvalue("Apnea")`),
+fatigue (`r pvalue("Fatigues easily")`),
+weak muscles (`r pvalue("Weak muscles")`),
+poor reflexes (`r pvalue("Poor reflexes")`),
+and feeding problems (`r pvalue("Feeding problems")`).
 
-Feeding difficulties `r result_for_group("Feeding difficulties")`, necessitated naso-gastric tubes (p = `r pvalue("Nasogastric (NG) tube")`), and are not explained by feeding disorders (only PICA (p = `r pvalue("Pica")`) is associated, negatively, with the deletion size).
+Feeding difficulties were negatively associated with deletion size, the greater the deletion, the lesser the difficulty.
+These symptoms included `r result_for_group("Feeding difficulties")`, as well as the need for naso-gastric tubes (`r pvalue("Nasogastric (NG) tube")`) and difficulties are not explained by feeding disorders (e.g. PICA (`r pvalue("Pica")`)).
 
-Only the presence of a heart murmur (p = `r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (p = `r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (p = `r pvalue("Patent Ductus Arteriosus")`) could be used in the analysis, were associated with bigger deletions.
+In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (`r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (`r pvalue("Patent Ductus Arteriosus")`) could be used in the analysis, were associated with larger deletions.
 
-Some behaviors such as daytime teeth grinding (p = `r pvalue("Daytime teeth grinding")`).
+Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
 
-All the significantly associated phenotypes with positive effect sizes are presented in Table 2, with their respective raw p value, FDR adjusted p value, and odds ratio with 95% confidence interval (odds ratios are expressed for every million base pair deleted).
-The presence of these features and symptoms is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
+All phenotypes positively associated with deletion sizes, and related analyses, are presented in Table 2.
+Because the presence of these features/symptoms is associated with greater deletion sizes, we assert they are likely due to the deletion of an upstream gene(s) on chromosome 22.
 
 > TODO :
-> Abnormal Cranial CAT scan (p = `r pvalue("Abnormal Cranial CAT scan")`),
-> Abnormal MRI (p = `r pvalue("Abnormal MRI")`),
-> Irregular Ventricles (p = `r pvalue("Irregular Ventricles")`),
-> Decreased Grey Matter (p = `r pvalue("Decreased Grey Matter")`),
+> Abnormal Cranial CAT scan (`r pvalue("Abnormal Cranial CAT scan")`),
+> Abnormal MRI (`r pvalue("Abnormal MRI")`),
+> Irregular Ventricles (`r pvalue("Irregular Ventricles")`),
+> Decreased Grey Matter (`r pvalue("Decreased Grey Matter")`),
 > and
-> Febrile seizures (p = `r pvalue("Febrile seizures")`).
+> Febrile seizures (`r pvalue("Febrile seizures")`).
 
-Some anxiety disorders `r result_for_group("Anxiety disorders")` are negatively associated with the deletion size.
-Attention disorder symptoms `r result_for_group("Attention disorder")` are also less present in patients with greater deletion sizes.
-Nearly all the cognitive development surveyed `r result_for_group("Cognitive development")` are significantly impaired by the size of the deletion.
+In terms of behavior, we found that some anxiety disorders were negatively associated with the size of deletion, namerly `r result_for_group("Anxiety disorders")`.
+Attention disorder symptoms were also less prevalent in patients with greater deletion sizes: specifically, `r result_for_group("Attention disorder", quotes = '"', collapse = " ")`.
+Nearly all cognitive development milestones surveyed showed significant impairment proportional to the size of the deletion.
+These included, `r result_for_group("Cognitive development", quotes = '"', collapse = " ")`.
 
-Basic communication milestones `r result_for_group("Communication milestones")` are acquired later than normal in patients with longer deletions, primitive non-verbal skils `r result_for_group("Communication – Non-verbal skills")` are rarer, and verbal speech `r result_for_group("Verbal speech")` is heavily impaired for patients with even small deletions.
-However, syndromic etiologies `r result_for_group("Communication-related symptoms")`, or auditory processing disorder (p = `r pvalue("Auditory processing disorder")`) cannot explain these communication development delays, as they are negatively associated with the deletion sizes.
-Hearing problems (apart from the installation of ear tubes (p = `r pvalue("Ear tubes")`) are not associated with the genetic status.
+We observed that basic communication milestones (`r result_for_group("Communication milestones")`) were delayed in patients with larger deletions.
+Primitive non-verbal skills, including `r result_for_group("Communication – Non-verbal skills")` were rarer.
+At the same time, verbal speech (`r result_for_group("Verbal speech")`) was heavily impaired for patients, even those with even small deletions.
+However, syndromic etiologies (`r result_for_group("Communication-related symptoms")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
+Hearing problems (apart from the installation of ear tubes (`r pvalue("Ear tubes")`) were not associated with the genetic status.
 
-We observe delays in socio-emotional development, in all activities related to socialisation `r result_for_group("Socio-emotional development")`.
+We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"', collapse = " ")`).
 
-Sleep disturbances `r result_for_group("Sleep disturbances")` are less frequent in patients with greater deletions.
+Sleep disturbances (`r result_for_group("Sleep disturbances")`) are all less frequent in patients with greater deletions.
 
-The detail of all the significantly associated phenotypes with negative effect sizes are presented in Table 3.
-The absence of these features, behaviors or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
+The details of all phenotypes significantly associated with negative effect sizes are presented in Table 3.
+The absence of these features, behaviors, or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
 
 > TODO:
 > and differential diagnoses:
-> ADHD (p = `r pvalue("ADHD")`),
-> Pervasive Developmental Disorder (p = `r pvalue("Pervasive Developmental Disorder")`),
+> ADHD (`r pvalue("ADHD")`),
+> Pervasive Developmental Disorder (`r pvalue("Pervasive Developmental Disorder")`),
 > and
-> Autism (p = `r pvalue("Autism")`)
+> Autism (`r pvalue("Autism")`)
 > and
-> Autistic-like features (p = `r pvalue("Autistic-like features")`).
+> Autistic-like features (`r pvalue("Autistic-like features")`).
 
 There were no associations with any neurological, orthopedic, nose and throat, thyroid, or allergy-related conditions.
-Beside a mild association with chronic constipation (p = `r pvalue("Chronic constipation")`, OR = `r or("Chronic constipation")`), and aspiration (p = `r pvalue("Aspiration")`), no gastrointestinal conditions or symptoms were associated with the genetic defects.
+Apart from a mild association of deletion size with chronic constipation (`r pvalue("Chronic constipation")`, OR = `r or("Chronic constipation")`) and aspiration (`r pvalue("Aspiration")`), no gastrointestinal conditions or symptoms were associated with the genetic defects.
 Responses to sounds, movement, touch, oral input, or temperature variations were not associated with greater deletions.
-Tolerance to pain was not associated either, as well as pain levels around anesthesia.
-There were no associations with any vaccine reactions.
+Tolerance to pain was not associated, nor was pain levels in the presence of anesthesia.
 
 # TODO
 > Abdominal bloating
