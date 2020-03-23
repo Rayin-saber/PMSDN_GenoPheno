@@ -124,44 +124,50 @@ Our results have implications not only for PMS but also for those interested in 
 
 # Methods
 
-The mission of the Phelan-McDermid Syndrome Data Network (PMS_DN) project, funded by the US Patient Centered Outcome Research Institute (PCORI) is to advance knowledge of Phelan-McDermid Syndrome and related conditions by integrating 1) Patient-reported outcomes from a patient registry, 2) Curated genetic test results, in the centralized i2b2/tranSMART platform to facilitate patient-centered research, and 3) clinical knowledge extracted from clinical notes.
-The latter was not used in this study.
-The network promotes a culture of transparency and authentic engagement and leadership of families in network vision, governance, and generation of research priorities.
-PMS_DN uses data entered on the online Phelan-McDermid Syndrome International Registry by the patients' parents.
-The registry comprises 1,300 patient-reported outcome (PRO) items over three distinct questionnaires, a “clinical” questionnaire with questions regarding diagnosed comorbidities, symptoms, tests, and treatments for the whole range of known pathologies and features associated with PMS; a “developmental” questionnaire, focusing on physical, motor, behavioral, cognitive, and social development; and an “adult” questionnaire with specific questions aimed at patients aged 12 or more, regarding the evolution of symptoms after puberty.
-The latter was not used in this study.
-The patients' families can retake the surveys for the phenotypic data any number of times, allowing for longitudinal analysis and ensuring the most complete information for each patient.
-Alongside phenotypic data, the registry contains curated genetic testing of chromosomal abnormalities from karyotypes, FISH probes, comparative genomic hybridization (aCGH), microarrays, and sequencing represented using the ISCN Standard Nomenclature [@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013].
-The scanned paper reports of the genetic test results are uploaded by the families on the platform then manually curated by trained genetic counselors, filling 57 structured fields to represent the genetic abnormalities.
+Funded by the US Patient Centered Outcome Research Institute (PCORI), the Phelan-McDermid Syndrome Data Network (PMS_DN) project aims to advance knowledge of PMS and related conditions by integrating patient-reported outcomes, curated genetic test results, and knowledge extracted from clinical notes in the centralized i2b2/tranSMART platform to facilitate patient-centered research.
+The clinical notes were not used in this study.
+The network promotes a culture of transparency, as well as authentic engagement and leadership of families in the network's vision, governance, and generation of research priorities.
+PMS_DN uses data entered onto the online Phelan-McDermid Syndrome International Registry by patients families.
+The registry is comprised of 1,300 patient-reported outcome (PRO) items over three distinct questionnaires: a “clinical” questionnaire, based on diagnosed comorbidities, symptoms, tests, and treatments for the entire range of known pathologies and features associated with PMS; a “developmental” questionnaire, focusing on physical, motor, behavioral, cognitive, and social development; and an “adult” questionnaire aimed at patients aged 12 or older, regarding the evolution of symptoms after puberty.
+(The latter was not used in this study.)
+Patient families can retake the surveys any number of times, allowing for longitudinal analysis and ensuring the most complete and accurate information.
 
-All the phenotypic and genotypic data in the PMS registry were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse to facilitate the continuous integration of future updates of the registry and additional sources of data.
-In addition, a PMS ontology was created to tag the registry data elements in a controlled vocabulary and organizing them to allow for efficient user-selection of various stratifications of the patients in the registry.
-This required developing an automatic data cleaning and loading pipeline using the R language to provide easy integration of new data from the PMSIR into PMS_DN over time, and consistency in the way every variable is coded in the system.
-Variables representing each clinical item in the survey were categorized as being either historical or evolving over time, to facilitate further analysis by other researchers.
-All historical data was kept for each time point, and the most recent entry for historical items was kept as the most accurate value (Supplemental data 1a and 1b).
-This has enabled greater reliability in data entry.
-For example, when taking the survey at a new time point, displaying the previous entry prevents erasure or duplication of previously entered data, guaranteeing that the most recent record holds up to date information.
+Alongside phenotypic data, the registry also contains curated genetic testing of chromosomal abnormalities from karyotypes, FISH probes, comparative genomic hybridization (aCGH), microarrays, and sequencing results represented using ISCN Standard Nomenclature.[@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013]
+The scanned paper reports of genetic test results are uploaded by families onto the platform, then manually curated by trained genetic counselors, who fill 57 structured fields documenting genetic abnormalities.
 
-Because we reused already existing genetic test results, they presented a huge disparity in techniques, accuracy, and references.
-All the curated genetic test results for each patient were manually reviewed to extract the coordinates and genome assembly of the chromosomal abnormalities.
-Those results were all reviewed and confirmed by a trained geneticist specialised in the syndrome.
-Chromosomal coordinates for aCGH were extracted from the relevant structured fields (chromosome, gain/loss, start, end), from ISCN nomenclature, and from comments when necessary.
-When multiple assays were available for the same region, the most recent or most precise one was kept.
-In decreasing order of preference based on precision, we chose sequencing and SNP arrays over array CGH.
-Chromosomal coordinates were transformed from each original human genome assembly to the latest one available at the time of this study, GRCh38/hg38[@rosenbloom_ucsc_2015], using the UCSC liftOver tool.
+To facilitate the continuous updating of the PMS registry, all phenotypic and genotypic data were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse.
+In addition, a PMS ontology was created to tag and organize the registry data elements in a controlled vocabulary.
+The aim was to enable efficient user-selection of various stratifications of registry patients.
+This required developing an automatic data cleaning and loading pipeline (using the R language) to provide easy integration of new data from the PMSIR into PMS_DN over time with consistent variable coding.
+To facilitate further analysis by other researchers, variables representing clinical items in the survey were categorized as being either "historical" or "evolving".
+"Historical" variables are immutable (e.g. birth weight), whereas "evolving" variables change over time (e.g. current weight).
+On PMSIR, when a patient family retakes a survey, the previous entry is displayed to prevent erasure or duplication of earlier data.
+Thus, we considered changing an "evolving" variable as updating it with the current value, and changing an "historical" variable as correcting a previous mistake.
+All "evolving" data was stored for each time point, and the most recent entry for "historical" items was considered the most accurate (Supplemental data 1a and 1b).
+This guarantees that the most recent record carries the most up-to-date "historical" information while storing the "evolving" parameters histories.
+
+By reusing pre-existing genetic test results, we encountered a huge disparity in data collection techniques, accuracy, and references.
+To circumvent this problem, we manually reviewed all genetic test results and extracted the coordinates and genome assembly of reported chromosomal abnormalities.
+In addition, a trained geneticist specializing in the PMS further reviewed and confirmed genetic results.
+Chromosomal coordinates for aCGH were extracted from the relevant structured fields (chromosome, gain/loss, start, end), from ISCN nomenclature, and from comments, when necessary.
+When multiple assays surveying the same region were available, we choose for further analysis the most recent or most precise.
+Specifically, we chose sequencing and SNP arrays over aCGH.
+Using the UCSC LiftOver tool, chromosomal coordinates were transformed from their original human reference genome to the most recent assembly, GRCh38/hg38.[@rosenbloom_ucsc_2015]
 Coordinates that did not map to GRCh38/hg38 were not used in the analysis.
-Only the terminal deletions were kept in the analyses to ensure comparability and relevant use of the models and their interpretation.
-Contiguous deletions separated by a gap less than 5% their total length were merged into one deletion to prevent underestimating the effect of those deletions and ensuring comparability.
+We entered only terminal deletions in the subsequent analyses to ensure comparability and relevant use and interpretations of our models.
+Contiguous deletions that were separated by a gap less than 5% of their total length were merged into one deletion to prevent underestimating their effect.
 
-For the analysis reported here, we compared the extent of deleted genetic material on the terminus of chromosome 22 with the occurrence of each phenotypic feature, in a multi-phenotype-genotype association study (aka Phenome-Wide Association study - PheWas [@denny_phewas:_2010]), using the deletion extent as the genetic anomaly of interest.
-*SHANK3* mutations were treated as terminal deletions up to the mutation position.
-Phenotypic features, both physical and behavioral, including features commonly associated with the diagnosis of PMS, were selected for analysis.
-Only features with strictly more than five patients in each subgroup were selected to satisfy technical requirements of the regression models.
-Only patients with deletion coordinates available in (or translatable to) the GRCh38/hg38 human genome assembly were included, to ensure comparability and consistency of the results.
+In the multi-Phenome-Wide Association study (PheWas [@denny_phewas:_2010]) reported here, we compared the extent of deleted genetic material on the terminus of chromosome 22 with the occurrence of each phenotypic feature, equating the extent of each deletion with the genetic anomaly of interest.
+To this effect, we treated patients with *SHANK3* mutations as patients with terminal deletions going from the end of the chromosome up to the starting position of *SHANK3*.
+We selected for analysis both physical and behavioral phenotypic features, including those commonly associated with PMS.
+In order to satisfy the technical requirements of the regression models, we chose features with at least 5 respondents for each option.
 
-We built multivariate models associating the phenotypic outcome with the deletion size, adjusted for the age and gender of the patients.
-Linear regression was used when the outcome was a continuous variable (birth length, weight, head circumference and APGAR scores), logistic regression when the outcome was binary (phenotype present or not), a method used in previous deletion analyses in PMS [@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014], and proportional odds logistic regression [@valenta_proportional_2006] for ordinal outcomes (severity of a phenotype on a 4 point scale from “absent” to “always present”, and age ranges for the acquisition of developmental milestones).
-The Benjamini-Hochberg procedure for False Discovery Rate (FDR) was used globally to adjust the p values for multiple hypotheses testing [@benjamini_controlling_1995].
+We built multivariate models that associated phenotypic outcome with the deletion size, adjusting for the age and gender of patients.
+When the outcome was a continuous variable (birth length, weight, head circumference and APGAR scores), we used linear regression.
+When the outcome was binary (phenotype present or not), we utilized logistic regression.
+Note: this method was used in previous deletion analyses of PMS.[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
+For ordinal outcomes (severity of phenotype based on a four-point scale from “absent” to “always present,” and age ranges for the acquisition of developmental milestones), we used proportional odds logistic regression.[@valenta_proportional_2006]
+We used the Benjamini-Hochberg procedure for False Discovery Rate (FDR) globally to adjust the p values for multiple hypotheses testing.[@benjamini_controlling_1995]
 Odds ratios (and their 95% confidence intervals) are given for every million deleted base pairs.
 
 Statistical analyses were conducted using R version `r str_c(version$major, version$minor, sep = ".")`.
