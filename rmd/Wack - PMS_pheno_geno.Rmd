@@ -358,10 +358,12 @@ We expect that this will provide a range of phenotypes that were not captured by
 
 # Conclusions
 
-In this study using data from the Phelan-McDermid Syndrome International Registry, we proceeded to demonstrate the viability of this source of data to conduct genotype-phenotype analyses.
-We begin by providing a method of data curation and integration dealing with the shortcomings of the registry, and which should serve as a reference for future projects on this data.
-We show that deletion size is associated with gross motor development, a number of diverse conditions painting a picture of a spectrum of generalized muscle tone impairments, with novel associations previously unreported.
-We confirm the previous findings of association between greater deletion sizes and large fleshy hands, dysplastic toenails, sacral dimple, verbal speech ability, and socio-emotional development.
+In this study, we provided a method of data curation and integration that overcame the limitations of a patient-driven registry, namely the Phelan-McDermid Syndrome International Registry.
+We used this unusual data source to demonstrate that deletion size of chromosomes in patients is associated with the severity of their delays in gross motor development, as well as a number of diverse conditions.
+This builds the case for a spectrum of generalized muscle tone impairments in PMS that are linked to novel, unreported associations.
+We also confirmed previous findings in which greater deletion sizes were associated with large fleshy hands, dysplastic toenails, sacral dimple, verbal speech ability, and socio-emotional development.
+Overall the work demonstrated the feasibility of this data source to conduct genotype-phenotype analyses.
+Our method can serve as a reference for future projects related to this and similar data sources.
 
 # Supplemental Data description
 
