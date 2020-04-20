@@ -1,5 +1,5 @@
 ---
-title: "Identification of genotype-phenotype associations in Phelan-McDermid Syndrome using patient-sourced data from an international registry"
+title: "Identification of genotype-phenotype associations in Phelan-McDermid syndrome using patient/family-sourced data from an international registry"
 keep_md: true
 output:
   pdf_document:
@@ -10,10 +10,10 @@ output:
     reference_docx: template.docx
 bibliography: PMS_DN_biblatex.bib
 csl: humangenet.csl
-author: Maxime Wack, Claire Hassen-Khodja, Michael T. McDuffie, Geraldine Bliss, Liz Horn, Andria Cornell, Cartik Kothari, Catalina Betancur, Rebecca C. Davis, Megan O'Boyle, Isaac Kohane, Paul Avillach
+author: Maxime Wack, Claire Hassen-Khodja, Michael T. McDuffie, Geraldine Bliss, Liz Horn, Andria Cornell, Cartik Kothari, Brittany McLarney, Rebecca C. Davis, Megan O'Boyle, Catalina Betancur, Isaac Kohane, Paul Avillach
 abstract: |
   # **Abstract**
-  Phelan-McDermid Syndrome (PMS) is a syndromic form of autism caused by terminal deletions in the long arm of chromosome 22. These affect the SHANK3 gene and variably associate with autism, global developmental delay, delayed speech, neonatal hypotonia, and mild dysmorphic features. Further confirming the role of SHANK3 in PMS, isolated haploinsufficiency of the gene has been linked to of a subset of PMS features. We utilized the PMS International Registry (PMSIR), which compiles clinical data in the form of patient-reported outcomes (PRO), as well as patient-sourced genetic test results. Data from the PMSIR had been harmonized and integrated into the i2b2/tranSMART clinical & genomics data warehouse. For this study, we conducted genotype-phenotype analyses using regression models with deletion size as a potential predictor of clinical outcomes. We gathered data from `r article$nb_pat$included` who either had deletions, ranging from `r round(article$genetics$range["Min."]/1000, digits = 3)` kb to `r round(article$genetics$range["Max."]/10^6, digits = 3)` Mb, or small isolated SHANK3 mutations (`r article$nb_pat$mut_sel` patients). We showed that increased deletion size was significantly associated with delay in gross motor acquisitions, renal malformations, mild dysmorphic features (large fleshy hands, dysplastic toenails and sacral dimple), and a spectrum of conditions related to poor muscle tone. These results suggest that genes upstream of SHANK3 also play a role in PMS. Overall, we demonstrated the feasibility of using data from an entirely patient-sourced registry (PROs and curated genetic test reports) to conduct genotype-phenotype analyses. We both replicated previous results and presented novel findings to verify the ability of registry data to uncover new associations between comorbidities and deleted chromosomal regions in PMS.
+  Phelan-McDermid syndrome (PMS) is a neurodevelopmental disorder caused by terminal deletions in the long arm of chromosome 22. These affect the SHANK3 gene and variably associate with autism, global developmental delay, intellectual disability, delayed or absent speech, neonatal hypotonia, and mild dysmorphic features. Further confirming the role of SHANK3 in PMS, haploinsufficiency of the gene has been linked to a subset of PMS features. We utilized the PMS International Registry (PMSIR), which compiles clinical data in the form of patient/family-reported outcomes (PRO), as well as patient/family-sourced genetic test results. Data from the PMSIR had been harmonized and integrated into the i2b2/tranSMART clinical & genomics data warehouse. For this study, we conducted genotype-phenotype analyses using regression models with deletion size as a potential predictor of clinical outcomes. We gathered data from `r article$nb_pat$included` patients who either had deletions, ranging from `r round(article$genetics$range["Min."]/1000, digits = 3)` kb to `r round(article$genetics$range["Max."]/10^6, digits = 3)` Mb, or deleterious SHANK3 sequence variants (`r article$nb_pat$mut_sel` patients). We showed that increased deletion size was significantly associated with delay in gross motor acquisitions, renal malformations, mild dysmorphic features (large fleshy hands, dysplastic toenails and sacral dimple), and a spectrum of conditions related to poor muscle tone. These results suggest that genes upstream of SHANK3 also play a role in PMS. Overall, we demonstrated the feasibility of using data from a patient-sourced registry (PROs and curated genetic test reports) to conduct genotype-phenotype analyses. We both replicated previous results and presented novel findings to verify the ability of registry data to uncover new associations between comorbidities and deleted chromosomal regions in PMS.
 ---
 
 ```{r load, echo = F, message = F}
@@ -34,7 +34,7 @@ pvalue <- function(var)
     filter(text == var) %>%
     .$p.adj -> p
 
-  ifelse(p < .001, "p < 0.001", str_c("p = ", prettyNum(p, digits = 2))
+  ifelse(p < .001, "p < 0.001", str_c("p = ", prettyNum(p, digits = 2)))
 }
 
 or <- function(var)
@@ -86,59 +86,57 @@ opts_chunk$set(echo = F,
 
 # Introduction
 
-The 22q13 deletion syndrome (OMIM 606232), also called Phelan-McDermid Syndrome (PMS) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], is a syndromic form of Autism Spectrum Disorder (ASD).[@phelan_22q13.3_2012]
-Approximately 2,200 cases have been diagnosed worldwide, 559 of which have been confirmed in the US and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
-No treatment are yet available, although one drug candidate, IGF1, has used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
+Phelan-McDermid Syndrome (PMS, OMIM 606232) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], also called 22q13.3 deletion syndrome, is a rare genetic condition.[@phelan_22q13.3_2012]
+Approximately 2,200 cases have been diagnosed worldwide (559 in the US) and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
+No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
 
-Clinically, PMS patients present with autistic features and autism or autistic-like behavior at a rate ranging from 44% to 94% of patients.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
-An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the Autism Diagnostic Observation Schedule, a gold standard of diagnosis.[@soorya_prospective_2013]
-More than 98% of patients suffer global developmental delay,[@phelan_22q13.3_2012 ; @phelan_deletion_2008] and nearly 100% show intellectual disability (ID) with delayed or absent speech.[@phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @soorya_prospective_2013 ; @phelan_deletion_2008 ; @durand_mutations_2007 ; @leblond_meta-analysis_2014]
-Overall, PMS accounts for an estimated 0.5% of ASD cases [@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @leblond_meta-analysis_2014 ; @gong_high_2012 ; @betancur_shank3_2013] and 2% of ID cases,[@kolevzon_phelan-mcdermid_2014 ; @leblond_meta-analysis_2014 ; @gong_high_2012 @cooper_copy_2011] with an equal number of male and female patients.[@costales_phelanmcdermid_2015 ; @phelan_deletion_2008]
-In addition, PMS patients are characterized by specific behavioral features, such as impairments in communication and social activities, chewing non-food items (80-90%), teeth grinding (~25%), and aggressive behavior (10-15%).[@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @phelan_deletion_2008 ; @sarasua_clinical_2014]
+Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94% of patients.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
+An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the Autism Diagnostic Observation Schedule and the Autism Diagnostic Interview, Revised, gold standard instruments of autism diagnosis.[@soorya_prospective_2013]
+Nearly 100% of patients suffer global developmental delay/ intellectual disability (ID)[@phelan_22q13.3_2012 ; @phelan_deletion_2008] with delayed or absent speech.[@phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @soorya_prospective_2013 ; @phelan_deletion_2008 ; @durand_mutations_2007 ; @leblond_meta-analysis_2014]
+Overall, PMS accounts for an estimated 0.5% of ASD cases [@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @leblond_meta-analysis_2014 ; @gong_high_2012 ; @betancur_shank3_2013] and up to 2% of ID cases,[@leblond_meta-analysis_2014 ; @gong_high_2012] with an equal number of affected males and females.[@costales_phelanmcdermid_2015 ; @phelan_deletion_2008]
+In addition, PMS patients also exhibit other behavioral features, such as chewing non-food items (80-90%), teeth grinding (~25%), and aggressive behavior (10-15%), as well as clinical features such as hypotonia, minor dysmorphic features, seizures, and various malformations.[@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @phelan_deletion_2008 ; @sarasua_clinical_2014]
 
-From a genetic perspective, PMS is caused by random deletions in the distal long arm of chromosome 22.
+From a genetic perspective, PMS is caused by deletions of varying sizes in the distal long arm of chromosome 22.
 These remove a gene, called *SHANK3*——for SH3 and multiple ankyrin repeat domain3——which is located at the chromosome's end.
-The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.3 (with involvment of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
-A potential treatment, IGF1, as been shown to restore the *SHANK3* pathway.[@shcheglovitov_shank3_2013]
+The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.33 (with involvment of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
+A potential treatment, IGF1, as been shown to restore the *SHANK3* pathway.[@shcheglovitov_shank3_2013, @costales_therapeutic_2016]
 
 *SHANK3* encodes a post-synaptic scaffolding protein that binds to several different neurotransmitter receptors.
-It is thought to be play a critical role in the assembly and plasticity of the postsynaptic density (PSD) in brain synapses.
-Researchers have also demonstrated *SHANK3* involvment in non-PMS autistic spectrum disorders,[@durand_mutations_2007 ; @leblond_meta-analysis_2014 ; @betancur_shank3_2013 ; @shao_commonly_2014 ; @moessner_contribution_2007 ; @boccuto_prevalence_2013 ; @uchino_shank3_2013 ; @herbert_shank3_2011] further indicating its role in the neurobehavioral features of PMS.
+It is thought to be play a critical role in the assembly and plasticity of the postsynaptic density in brain synapses.[ref]
 
-Deficiency (deletion or loss of function) of a single copy of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003] in both patient cases and murine models that involve *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
-PMS patients with isolated *SHANK3* mutations or deletions show major speech delays and profound ID, global developmental delay, ASD symptoms, slightly delayed motor milestones, mild hypotonia, and minor dysmorphic features (dolichocephaly, epicanthic folds).
-*SHANK3* haploinsufficiency and Fragile X Syndrome are the two most frequent single gene genetic causes of autism/autism spectrum disorder.
+Haploinsufficiency (deletion or loss of function of a single copy) of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003 ; durand_mutations_2007] in both patient cases and murine models with *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
+PMS patients with *SHANK3* sequence variants or single-gene deletions show global developmental delay, major speech delay or severely impaired speech, moderate to profound ID, autistic behavior, hypotonia, and minor dysmorphic features (dolichocephaly, epicanthic folds).[ref]
 
-PMS patients exhibit heterogeneous chromosomal abnormalities in the 22q13 region: terminal deletions, interstitial deletions, duplications and ring chromosome.
-These result in an overall population of patients with randomly distributed deletions, ranging in size from 100 kb to over 9 Mb.[@phelan_deletion_2008]
+PMS patients exhibit heterogeneous chromosomal abnormalities in the 22q13.33 region, including terminal deletions, interstitial deletions, sequence variants, translocations, inversions, and ring chromosome.
+These result in an overall population of patients with deletions ranging in size from 10 kb to over 9 Mb.
 Previous studies have shown a gradient in the severity of cognitive impairments.[@leblond_meta-analysis_2014]
 These are associated with the size of the deletions and linked to the presence of other phenotypic features.[@soorya_prospective_2013 ; @sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
 
 At the same time, a growing number of cases involve symptoms consistent with a diagnosis of 22q13 deletion syndrome (severe developmental delays, hypotonia with feeding difficulties, overgrowth, speech impairments, seizures, abnormal neuroimaging, …) but in patients lacking a classical terminal 22q deletion.
 More intriguing, the non-classical cases present interstitial deletions as small as 0.72Mb beyond the locus of *SHANK3*.
-This indicates that a subset of features of PMS are not caused solely by *SHANK3* haploinsufficiency.[@fujita_girl_2000 ; @wilson_interstitial_2008 ; @simenson_patient_2014 ; @vittoria_disciglio_interstitial_2014 ; @maitz_expanding_2008]
+This suggests that a subset of features of PMS are not caused solely by *SHANK3* haploinsufficiency.[@fujita_girl_2000 ; @wilson_interstitial_2008 ; @simenson_patient_2014 ; @vittoria_disciglio_interstitial_2014 ; @maitz_expanding_2008]
 
-To explore this phenomenon more closely, we utilized the Phelan-McDermid Syndrome International Registry (PMSIR),[@PMSIR_phelan-mcdermid_2011] a patient/family-driven registry, founded by the parents of PMS patients and launched in 2011 by the Phelan-McDermid Syndrome Foundation (PMSF).
-The only international registry for PMS, the registry today includes 1,198 of the 2,200 known patients.
+To explore this phenomenon more closely, we utilized the PMS International Registry (PMSIR),[@PMSIR_phelan-mcdermid_2011] a patient/family-driven registry, founded by the relatives of PMS patients and launched in 2011 by the PMSF.
+The only international registry for PMS, the registry today includes 1,353 of the 2,200 patients registered with the PMSF.
 Its phenotypic and genotypic information is annotated by the patient families.
 
-We hypothesized that while retrospective and not recorded in the context of a clinic, still patient-reported data (including genetic test results obtained from the Phelan-McDermid Syndrome International Registry)[@PMSIR_phelan-mcdermid_2011] could be used to conduct deletion analyses and uncover phenotypes and comorbidities significantly linked to genes other than *SHANK3*.
+We hypothesized that while retrospective and not recorded in the context of a clinic, still patient-reported data (including genetic test results obtained from the PMSIR)[@PMSIR_phelan-mcdermid_2011] could be used to conduct deletion analyses and uncover phenotypes and comorbidities significantly linked to genes other than *SHANK3*.
 Our results have implications not only for PMS but also for those interested in using patient-reported data to shed new light on other rare diseases.
 
 # Methods
 
-Funded by the US Patient Centered Outcome Research Institute (PCORI), the Phelan-McDermid Syndrome Data Network (PMS_DN) project aims to advance knowledge of PMS and related conditions by integrating patient-reported outcomes, curated genetic test results, and knowledge extracted from clinical notes in the centralized i2b2/tranSMART platform to facilitate patient-centered research.
+Funded by the US Patient Centered Outcome Research Institute (PCORI), the PMS Data Network (PMS_DN) project aims to advance knowledge of PMS and related conditions by integrating patient-reported outcomes, curated genetic test results, and knowledge extracted from clinical notes in the centralized i2b2/tranSMART platform to facilitate patient-centered research.
 The clinical notes were not used in this study.
 The network promotes a culture of transparency, as well as authentic engagement and leadership of families in the network's vision, governance, and generation of research priorities.
-PMS_DN uses data entered onto the online Phelan-McDermid Syndrome International Registry by patients families.
-The registry is comprised of 1,300 patient-reported outcome (PRO) items over three distinct questionnaires: a “clinical” questionnaire, based on diagnosed comorbidities, symptoms, tests, and treatments for the entire range of known pathologies and features associated with PMS; a “developmental” questionnaire, focusing on physical, motor, behavioral, cognitive, and social development; and an “adult” questionnaire aimed at patients aged 12 or older, regarding the evolution of symptoms after puberty.
+PMS_DN uses data entered onto the online PMSIR by patients families.
+The registry is comprised of 1,300 patient-reported outcome (PRO) items over three distinct questionnaires: a “clinical” questionnaire, based on diagnosed comorbidities, symptoms, tests, and treatments for the entire range of known pathologies and features associated with PMS; a “developmental” questionnaire, focusing on physical, motor, behavioral, cognitive, and social development; and an “adult” questionnaire aimed at patients aged 12 or older, regarding the evolution of manifestations after puberty.
 (The latter was not used in this study.)
 Patient families can retake the surveys any number of times, allowing for longitudinal analysis and ensuring the most complete and accurate information.
 
-Alongside phenotypic data, the registry also contains curated genetic testing of chromosomal abnormalities from karyotypes, FISH probes, comparative genomic hybridization (aCGH), microarrays, and sequencing results represented using ISCN Standard Nomenclature.[@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013]
-The scanned paper reports of genetic test results are uploaded by families onto the platform, then manually curated by trained genetic counselors, who fill 57 structured fields documenting genetic abnormalities.
+Alongside phenotypic data, the registry also contains curated genetic testing of chromosomal abnormalities from karyotypes, fluorescent *in situ* hybridization (FISH), chromosomal microarrays, or *SHANK3* sequencing, represented using ISCN Standard Nomenclature.[@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013]
+The scanned paper reports of genetic test results are uploaded by families onto the platform, then manually curated by a team of trained genetic counselors and clinicans, who fill structured fields documenting genetic abnormalities.
 
-To facilitate the continuous updating of the PMS registry, all phenotypic and genotypic data were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse.
+To facilitate the continuous updating of the PMS registry, all phenotypic and genetic data were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse.
 In addition, a PMS ontology was created to tag and organize the registry data elements in a controlled vocabulary.
 The aim was to enable efficient user-selection of various stratifications of registry patients.
 This required developing an automatic data cleaning and loading pipeline (using the R language) to provide easy integration of new data from the PMSIR into PMS_DN over time with consistent variable coding.
@@ -149,24 +147,22 @@ Thus, we considered changing an "evolving" variable as updating it with the curr
 All "evolving" data was stored for each time point, and the most recent entry for "historical" items was considered the most accurate (Supplemental data 1a and 1b).
 This guarantees that the most recent record carries the most up-to-date "historical" information while storing the "evolving" parameters histories.
 
-By reusing pre-existing genetic test results, we encountered a huge disparity in data collection techniques, accuracy, and references.
-To circumvent this problem, we manually reviewed all genetic test results and extracted the coordinates and genome assembly of reported chromosomal abnormalities.
-In addition, a trained geneticist specializing in the PMS further reviewed and confirmed genetic results.
-Chromosomal coordinates for aCGH were extracted from the relevant structured fields (chromosome, gain/loss, start, end), from ISCN nomenclature, and from comments, when necessary.
-When multiple assays surveying the same region were available, we choose for further analysis the most recent or most precise.
-Specifically, we chose sequencing and SNP arrays over aCGH.
-Using the UCSC LiftOver tool, chromosomal coordinates were transformed from their original human reference genome to the most recent assembly, GRCh38/hg38.[@rosenbloom_ucsc_2015]
-Coordinates that did not map to GRCh38/hg38 were not used in the analysis.
-We entered only terminal deletions in the subsequent analyses to ensure comparability and relevant use and interpretations of our models.
+By reusing pre-existing genetic test results, we encountered a huge disparity in data collection techniques, accuracy, and reference assembly use.
+To circumvent this problem, a team of trained genetic counselors manually reviewed all genetic test results and extracted the coordinates and genome assembly of reported chromosomal abnormalities.
+In addition, an MD-PhD geneticist specializing in the PMS further reviewed and confirmed genetic results.
+Chromosomal coordinates from microarrays were extracted from the relevant structured fields (chromosome, gain/loss, start, end) and ISCN nomenclature.
+When multiple arrays surveying the same region were available, we choose for further analysis the one with the highest resolution.
+Chromosomal coordinates were transformed to the most recent assembly, GRCh38/hg38.[@rosenbloom_ucsc_2015]
+We entered only terminal deletions and *SHANK3* point mutations and interstitial deletions in the subsequent analyses to ensure comparability and relevant use and interpretations of our models.
 Contiguous deletions that were separated by a gap less than 5% of their total length were merged into one deletion to prevent underestimating their effect.
 
 In the multi-Phenome-Wide Association study (PheWas [@denny_phewas:_2010]) reported here, we compared the extent of deleted genetic material on the terminus of chromosome 22 with the occurrence of each phenotypic feature, equating the extent of each deletion with the genetic anomaly of interest.
-To this effect, we treated patients with *SHANK3* mutations as patients with terminal deletions going from the end of the chromosome up to the starting position of *SHANK3*.
+To this effect, we treated patients with *SHANK3* sequence variants as patients with terminal deletions going from the end of the chromosome up to the starting position of *SHANK3*.
 We selected for analysis both physical and behavioral phenotypic features, including those commonly associated with PMS.
 In order to satisfy the technical requirements of the regression models, we chose features with at least 5 respondents for each option.
 
 We built multivariate models that associated phenotypic outcome with the deletion size, adjusting for the age and gender of patients.
-When the outcome was a continuous variable (birth length, weight, head circumference and APGAR scores), we used linear regression.
+When the outcome was a continuous variable (birth length, weight, head circumference, and APGAR scores), we used linear regression.
 When the outcome was binary (phenotype present or not), we utilized logistic regression.
 Note: this method was used in previous deletion analyses of PMS.[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
 For ordinal outcomes (severity of phenotype based on a four-point scale from “absent” to “always present,” and age ranges for the acquisition of developmental milestones), we used proportional odds logistic regression.[@valenta_proportional_2006]
@@ -177,6 +173,7 @@ Statistical analyses were conducted using R version `r str_c(version$major, vers
 Age was compared using the non-parametric Mann & Whitney test, while gender and race were compared using the Fisher test.
 The proportional odds logistic regression used the "clm" function from the "ordinal" package.
 The project was approved by Harvard Medical School Institutional Review Board (HMS IRB14-2161).
+All the data was treated anonymously, from the integration into i2b2/transmart to the analysis.
 
 # Results
 
@@ -189,18 +186,18 @@ Deletion sizes ranged from `r prettyNum(article$genetics$range["Min."]/10^3, dig
 To analyse phenotypes, we selected `r article$nb_pat$included` patients who both carried terminal deletions of chromosome 22 or point mutations within *SHANK3* and had entered phenotypic information.
 
 Upon analysis of their demographic information (Table 1), we found that our selected population was significantly younger and less diverse than the larger PMS_DN cohort.
-The majority of patients studied was Caucasian.
+The majority of patients studied was Caucasian, a likely result of the socio-economic factors involved in the referral for genetic testing patients with ASD/ID.
 At the same time, we saw no demographic biases toward gender.
-Completion rates ranged from `r prettyNum(article$completion["Min."] * 100, digits = 2)`% to `r prettyNum(article$completion["Max."] * 100, digits = 2)`% of items, with a mean completion rate of `r prettyNum(article$completion["Mean"] * 100, digits = 2)`%.
+Completion rates ranged from `r prettyNum(article$completion["Min."] * 100, digits = 1)`% to `r prettyNum(article$completion["Max."] * 100, digits = 1)`% of items, with a mean completion rate of `r prettyNum(article$completion["Mean"] * 100, digits = 1)`%.
 
-To represent phenotypic outcomes, we chose `r article$PRO$sel` of the 1,300 total PRO items available in the registry.
+To represent phenotypic outcomes, we pre-selected `r article$PRO$sel` out of the 1,300 total PRO items available in the registry.
 The excluded items were those not directly referring to a symptom or a condition, such as “Does the patient have a primary cardiologist?” “How was the genetic test paid for?” “Has the patient had any of the following tests: Manometry testing,” etc.
 Overall, `r article$PRO$incl` phenotypes satisfied our inclusion criteria.
 
-## Deletion analyses results
+## Genotype-phenotype analyses
 
-Of the total registry, `r article$nb_pat$all_gen` patients had reported at least one genetic test result containing deletion/duplication coordinates that either were available or could be translated into the GRCh38/hg38 human genome assembly on chromosome 22 (Figure 1).
-Each patient's status is represented on one line, with patients with the most extended deletions on top.
+Of the total registry, `r article$nb_pat$all_gen` patients had reported at least one genetic test result containing deletion coordinates that either were available or translated into the GRCh38/hg38 human genome assembly on chromosome 22 (Figure 1).
+Each patient's status is represented on one line, with patients with the most extended deletions above.
 Duplicated regions are represented as blue boxes; deleted regions as red boxes; and mutations of *SHANK3* as asterisks.
 The range of the *SHANK3* gene is represented as a grey vertical box across the figure.
 For patients with multiple, different chromosomal anomalies, we linked them with horizontal black lines.
@@ -222,7 +219,7 @@ All renal conditions (`r result_for_group("Renal conditions")`) were strongly as
 While persistent fevers related to the recurrent urinary tract infections were associated with deletion size, other renal symptoms were not.
 
 Major delays in nearly all gross motor milestones were strongly and linearly associated with greater deletion sizes.
-These included `r result_for_group("Gross motor milestones", quotes = '"', collapse = " ")` (See Figure 3).
+These included `r result_for_group("Gross motor milestones", quotes = '"', collapse = " ")` (Figure 3).
 These delays were accompanied by a range of conditions related to muscular tone: hypotonia (`r pvalue("Hypotonia")`),
 hypo-reflexia (`r pvalue("Hypo-reflexia")`),
 apnea (`r pvalue("Apnea")`),
@@ -242,7 +239,7 @@ All phenotypes positively associated with deletion sizes, and related analyses, 
 Because the presence of these features/symptoms is associated with greater deletion sizes, we assert they are likely due to the deletion of an upstream gene(s) on chromosome 22.
 
 > TODO :
-> Abnormal Cranial CAT scan (`r pvalue("Abnormal Cranial CAT scan")`),
+> Abnormal Cranial CT scan (`r pvalue("Abnormal Cranial CAT scan")`),
 > Abnormal MRI (`r pvalue("Abnormal MRI")`),
 > Irregular Ventricles (`r pvalue("Irregular Ventricles")`),
 > Decreased Grey Matter (`r pvalue("Decreased Grey Matter")`),
@@ -265,7 +262,7 @@ We observed delays in socio-emotional development, in all activities related to 
 Sleep disturbances (`r result_for_group("Sleep disturbances")`) are all less frequent in patients with greater deletions.
 
 The details of all phenotypes significantly associated with negative effect sizes are presented in Table 3.
-The absence of these features, behaviors, or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene on chromosome 22.
+The absence of these features, behaviors, or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene(s) on chromosome 22.
 
 > TODO:
 > and differential diagnoses:
@@ -289,42 +286,42 @@ Tolerance to pain was not associated, nor was pain levels in the presence of ane
 
 # Discussion
 
-We demonstrated the feasibility of using registry data based on patient-reported outcome questionnaires to conduct a multi-phenotype-genotype association study.
-We further replicated findings of previous prospective association studies.
-We also confirmed the discovery of novel findings in renal malformations and gross motor development.
+We demonstrated the feasibility of using registry data based on patient/family-reported outcome questionnaires to conduct a multi-phenotype-genotype association study.
+We further replicated findings of previous association studies.
+We also confirmed the discovery of novel findings concerning renal malformations and gross motor development.
 
-This is the largest study of its kind in PMS and the first using the Phelan-McDermid Syndrome International Registry.
-Access to the PMSIR allowed us to recruit the largest sample size (`r article$nb_pat$included` patients) for a genotype-phenotype association analysis for PMS (Soorya et al.(2013), 32 patients,[@soorya_prospective_2013] Sarasua et al.(2014), 70 patients,[@sarasua_22q13.2q13.32_2014] Sarasua et al.(2011), 71 patients,[@sarasua_association_2011] Sarasua et al.(2014), 201 patients [@sarasua_clinical_2014]).
-The data provided by this patient-driven network differs from that obtained from medical records.
+This is the largest study of its kind in PMS and the first using the PMSIR.
+Access to the PMSIR allowed us to recruit the largest sample size (`r article$nb_pat$included` patients) for a genotype-phenotype association analysis for PMS (32 patients,[@soorya_prospective_2013] 70 patients,[@sarasua_22q13.2q13.32_2014] 71 patients,[@sarasua_association_2011] 201 patients [@sarasua_clinical_2014]).
+The data provided by this patient/family-driven network differs from that obtained from medical records.
 Patient-driven data is rich in information that only caregivers and families can provide and because it is being reported by the parents themselves, as a proxy for the patients, the approach allows a greater volume and specificity of registry items in all domains.
 Such a repository would be very difficult and costly to amass through a conventional academic-institution-led prospective study.
 For example, children with PMS exhibit hyperactive and aggressive behaviors and can be difficult to manage.
 Thus, parents have a difficult time trying to complete extensive surveys during interviews with their pediatricians.
 Furthermore, the information is subject to recall bias.
-At home, parents have more time and flexibility to fill the surveys; find it easier to make corrections to entered data; and are more likely to answer items more thoroughly and update surveys.
+At home, parents have more time and flexibility to fill the surveys; find it easier to make corrections to entered data, making it more accurate; and are more likely to answer items more thoroughly and update surveys, being able to refer to the child's medical records when answering questions.
 We assert that the reliability of registry information is demonstrated by the consistency of the results throughout different analyses——and with previous findings.
 Overall, the higher quality of results shows the potential of analyses using data from the PMSIR to pinpoint very specific phenotype associations in this syndrome.
 
 Renal malformations, present in nearly 30% of PMS patients,[@kolevzon_phelan-mcdermid_2014] are strongly associated with greater deletion sizes, with the distribution of deletion sizes hinting at a potentially causative region of interest on chromosome 22.
 This had only been cited in one report, which analyzed all renal abnormalities regardless of the precise condition.[@soorya_prospective_2013]
-This indicates that renal malformations in PMS that are absent from patients with isolated *SHANK3* mutations,[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009] yet found in patients with interstitial deletions not involving *SHANK3*,[@vittoria_disciglio_interstitial_2014] are related to different genes than *SHANK3*, at least in the case of renal morphogenesis.
+This indicates that renal malformations in PMS that are absent from patients with isolated *SHANK3* sequence variants,[@durand_mutations_2007 ; @moessner_contribution_2007 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001] yet found in certain patients with interstitial deletions not involving *SHANK3*,[@vittoria_disciglio_interstitial_2014] are related to different genes than *SHANK3*, at least in the case of renal morphogenesis.
 
 Greater deletion sizes are consistently and proportionally associated with more severe gross motor development delays, as well as phenotypes related to muscle tone in the early stages of development, and feeding difficulties.
 Some of these findings had been independently discovered previously.[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
 However, previous studies merely captured "age at walk"[@sarasua_clinical_2014 ; @sarasua_22q13.2q13.32_2014] or "age at walk and crawl",[@sarasua_association_2011] and therefore did not capture positive associations in a consistent manner for each gross motor milestone.
-Some of these features were found in PMS patients with interstitial deletions not affecting *SHANK3*.[@wilson_interstitial_2008 ; @vittoria_disciglio_interstitial_2014]
-Such features were also found to be present to a lesser extent and severity in PMS patients with isolated *SHANK3* mutations.[@macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
+Some of these features were found in patients with interstitial deletions not affecting *SHANK3*.[@wilson_interstitial_2008 ; @vittoria_disciglio_interstitial_2014]
+Such features were also found to be present to a lesser extent and severity in PMS patients with isolated *SHANK3* mutations.[ref]
 The fact that all these tone-related conditions appeared even in patients with the smallest deletions, and that the severity of features increased proportionally to deletion size, suggests a cumulative role of multiple genes on the long arm of chromosome 22, including *SHANK3.*
 Another non obvious contributors to the muscle tone severity gradient might be gastrointestinal aspiration symptoms and apnea, which we discovered for the first time as associated with deletion size.
 
 Our results also confirmed previous studies showing deletion size association with large fleshy hands and dysplastic toenails,[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014] as well as aggressive behaviors,[@sarasua_22q13.2q13.32_2014] increased prevalence of lymphedema and swelling of extremities.[@soorya_prospective_2013]
 
-We found that patients with greater deletion sizes were less likely to present common differential diagnoses (or misdiagnoses) of ADHD and ASD, as well as symptoms of both these disorders.
-As previously suggested,[@sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014] this phenomenon might be due to the depth of the disabilities due to the greater deletion size "masking" autostic symptoms.
+We found that patients with greater deletion sizes were less likely to present common concurrent diagnoses of ADHD and ASD, as well as behavioral features of both these disorders.
+As previously suggested,[@sarasua_22q13.2q13.32_2014] this phenomenon might be due to the depth of the disabilities due to the greater deletion size "masking" autostic symptoms.
 In fact, the negative association between ADHD and hyperactivity symptoms might further be linked to the spectrum of low muscle tone severity and its association with greater deletion size.
 
-Also associated with greater deletion sizes, were abnormal IRM and CAT scans, which are well-documented in PMS patients [@soorya_prospective_2013] as with reports of abnormal ventricles and decreased grey matter.
-No other neurological morphological abnormalities or symptoms were associated with greater deletion sizes (such as the presence of an arachnoid cyst, motion sickness, or sensitivity to light).
+Also associated with greater deletion sizes, were abnormal MRI and CT scans, which are well-documented in PMS patients [@soorya_prospective_2013] as with reports of abnormal ventricles and decreased grey matter.
+No other neurological morphological abnormalities or symptoms were associated with greater deletion sizes (such as the presence of an arachnoid cyst or sensitivity to light).
 
 Social, cognitive and communication development, which represented the depth and breadth of intellectual disability,[@leblond_meta-analysis_2014 ; @wilson_interstitial_2008] were inversely associated with deletion size.
 Most affected were abilities related to understanding social conventions and interacting with others, whereas individual abilities and anxiety were evenly distributed throughout the sample.
@@ -341,24 +338,24 @@ This is supported by the inconsistency of patients with very large terminal dele
 
 For those phenotypes not associated with greater deletion sizes, we suggest that they may not be actually associated with PMS.
 This is evidenced by the fact that their prevalence in our cohort is similar to that in the general population (for example, pain urinating, night terrors, enuresis, or congenital heart disease).
-An alternative explanation is that these phenotypes are part of the core 22q13 deletion syndrome caused by the absence of *SHANK3*, and are present in nearly all of the patients in the sample.
+An alternative explanation is that these phenotypes are part of the core PMS caused by the defects of *SHANK3*, and are present in nearly all of the patients in the sample.
 This holds for intellectual disability, teeth grinding, joint laxity, or high pain tolerance level.
 
-On *caveat* is that, when used as a predictor for binomial outcomes——such as the occurrence of a clearly defined somatic phenotype——deletions can only act as a proxy for the contribution of chromosomal regions of interest and hint at potential locations for breakpoints.
+One *caveat* is that, when used as a predictor for binomial outcomes——such as the occurrence of a clearly defined somatic phenotype——deletions can only act as a proxy for the contribution of chromosomal regions of interest and hint at potential locations for breakpoints.
 We suggest that one could make comparisons between individual genes to help narrow down the ranges of true genetic contributors to phenotype.
 
-To do this, however, we need a specific model developments as gene statuses inferred from this data would generate strong collinearity between contiguous genes affected in the same deletion ranges.
+To do this, however, we would need a specific model developments as gene statuses inferred from this data would generate strong collinearity between contiguous genes affected in the same deletion ranges.
 
-We also note that the majority of patients diagnosed with PMS as caused by 22q13 deletions, are tested solely for genetic defects on chromosome 22, specifically using array CGH or FISH techniques and providing ranges of deletions.
-This creates a bias in the data, ignoring possible additional chromosomal aberrations for which no testing has been done.
-Therefore, in this analysis, we had to assume that other potential defects were randomly distributed and did not affect outcome.
+We also note that some of the patients diagnosed with PMS as caused by 22q13.33 deletions, are tested solely for genetic defects on chromosome 22, specifically using array CGH and providing ranges of deletions.
+This possibly creates a bias in the data, ignoring possible additional chromosomal aberrations for which no testing has been done.
+Therefore, in this analysis where we assessed the impact of terminal chromosome 22 deletions and *SHANK3* sequence variants, we had to assume that other potential defects were randomly distributed and did not affect outcome.
 
 In terms of future directions, there exists a third source of data based upon natural language processing of the patients' clinical notes, encoded as UMLS concepts.
 We expect that this will provide a range of phenotypes that were not captured by the registry questionnaires and enable further detailed analyses.
 
 # Conclusions
 
-In this study, we provided a method of data curation and integration that overcame the limitations of a patient-driven registry, namely the Phelan-McDermid Syndrome International Registry.
+In this study, we provided a method of data curation and integration that overcame the limitations of a patient-driven registry, namely the PMSIR.
 We used this unusual data source to demonstrate that deletion size of chromosomes in patients is associated with the severity of their delays in gross motor development, as well as a number of diverse conditions.
 This builds the case for a spectrum of generalized muscle tone impairments in PMS that are linked to novel, unreported associations.
 We also confirmed previous findings in which greater deletion sizes were associated with large fleshy hands, dysplastic toenails, sacral dimple, verbal speech ability, and socio-emotional development.
@@ -371,15 +368,14 @@ Supplemental Data contains two figures describing the data management workflow, 
 
 # Acknowledgments
 
-The Phelan-McDermid Syndrome Foundation, the patients and their families. Chris Botka and the Harvard Medical School Research Computing center.
+We are grateful to the Phelan-McDermid Syndrome Foundation, the patients and their families. We also thank Chris Botka and the Harvard Medical School Research Computing center.
 
-This work was partially funded through a Patient-Centered Outcomes Research Institute (PCORI) Award (PPRN-1306-04814) phase I and II for development of the National Patient-Centered Clinical Research Network, known as PCORnet; and by Research Grand EDU_R_FY2015_Q2_HarvardMedicalSchool_Avillach-NEW from Amazon Inc. National Institutes of Health − RFA-HG-13-009 − Centers of Excellence for Big Data Computing in the Biomedical Sciences (U54) − Grant Number 1U54HG007963-01.
-
+This work was partially funded through a Patient-Centered Outcomes Research Institute (PCORI) Award (PPRN-1306-04814) phase I and II for development of the National Patient-Centered Clinical Research Network, known as PCORnet; by Amazon Inc (research grant EDU_R_FY2015_Q2_HarvardMedicalSchool_Avillach-NEW), and the National Institutes of Health (RFA-HG-13-009, Centers of Excellence for Big Data Computing in the Biomedical Sciences, U54, grant number 1U54HG007963-01).
 The statements presented in this article are solely the responsibility of the author(s) and do not necessarily represent the views of the Patient-Centered Outcomes Research Institute (PCORI), its Board of Governors or Methodology Committee or other participants in PCORnet.
 
 # Web Resources
 
-All the code for ETL and analysis is openly available on github (https://github.com/hms-dbmi/PMSDN_R-ETL, https://github.com/hms-dbmi/PMSDN_GenoPheno)
+All the code for ETL and analysis is openly available on github (https://github.com/hms-dbmi/PMSDN_R-ETL, https://github.com/hms-dbmi/PMSDN_GenoPheno).
 
 # Figures titles and legends
 
