@@ -97,14 +97,14 @@ Overall, PMS accounts for an estimated 0.5% of ASD cases [@kolevzon_phelan-mcder
 In addition, PMS patients also exhibit other behavioral features, such as chewing non-food items (80-90%), teeth grinding (~25%), and aggressive behavior (10-15%), as well as clinical features such as hypotonia, minor dysmorphic features, seizures, and various malformations.[@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @phelan_deletion_2008 ; @sarasua_clinical_2014]
 
 From a genetic perspective, PMS is caused by deletions of varying sizes in the distal long arm of chromosome 22.
-These remove a gene, called *SHANK3*——for SH3 and multiple ankyrin repeat domain3——which is located at the chromosome's end.
+These remove a gene, called *SHANK3*—for SH3 and multiple ankyrin repeat domain3—which is located at the chromosome's end.
 The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.33 (with involvment of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
 A potential treatment, IGF1, as been shown to restore the *SHANK3* pathway.[@shcheglovitov_shank3_2013, @costales_therapeutic_2016]
 
 *SHANK3* encodes a post-synaptic scaffolding protein that binds to several different neurotransmitter receptors.
 It is thought to be play a critical role in the assembly and plasticity of the postsynaptic density in brain synapses.[ref]
 
-Haploinsufficiency (deletion or loss of function of a single copy) of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003 ; durand_mutations_2007] in both patient cases and murine models with *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
+Haploinsufficiency (deletion or loss of function of a single copy) of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003 ; @durand_mutations_2007] in both patient cases and murine models with *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
 PMS patients with *SHANK3* sequence variants or single-gene deletions show global developmental delay, major speech delay or severely impaired speech, moderate to profound ID, autistic behavior, hypotonia, and minor dysmorphic features (dolichocephaly, epicanthic folds).[ref]
 
 PMS patients exhibit heterogeneous chromosomal abnormalities in the 22q13.33 region, including terminal deletions, interstitial deletions, sequence variants, translocations, inversions, and ring chromosome.
@@ -299,7 +299,7 @@ For example, children with PMS exhibit hyperactive and aggressive behaviors and 
 Thus, parents have a difficult time trying to complete extensive surveys during interviews with their pediatricians.
 Furthermore, the information is subject to recall bias.
 At home, parents have more time and flexibility to fill the surveys; find it easier to make corrections to entered data, making it more accurate; and are more likely to answer items more thoroughly and update surveys, being able to refer to the child's medical records when answering questions.
-We assert that the reliability of registry information is demonstrated by the consistency of the results throughout different analyses——and with previous findings.
+We assert that the reliability of registry information is demonstrated by the consistency of the results throughout different analyses—and with previous findings.
 Overall, the higher quality of results shows the potential of analyses using data from the PMSIR to pinpoint very specific phenotype associations in this syndrome.
 
 Renal malformations, present in nearly 30% of PMS patients,[@kolevzon_phelan-mcdermid_2014] are strongly associated with greater deletion sizes, with the distribution of deletion sizes hinting at a potentially causative region of interest on chromosome 22.
@@ -341,7 +341,7 @@ This is evidenced by the fact that their prevalence in our cohort is similar to 
 An alternative explanation is that these phenotypes are part of the core PMS caused by the defects of *SHANK3*, and are present in nearly all of the patients in the sample.
 This holds for intellectual disability, teeth grinding, joint laxity, or high pain tolerance level.
 
-One *caveat* is that, when used as a predictor for binomial outcomes——such as the occurrence of a clearly defined somatic phenotype——deletions can only act as a proxy for the contribution of chromosomal regions of interest and hint at potential locations for breakpoints.
+One *caveat* is that, when used as a predictor for binomial outcomes—such as the occurrence of a clearly defined somatic phenotype—deletions can only act as a proxy for the contribution of chromosomal regions of interest and hint at potential locations for breakpoints.
 We suggest that one could make comparisons between individual genes to help narrow down the ranges of true genetic contributors to phenotype.
 
 To do this, however, we would need a specific model developments as gene statuses inferred from this data would generate strong collinearity between contiguous genes affected in the same deletion ranges.
