@@ -87,7 +87,7 @@ opts_chunk$set(echo = F,
 # Introduction
 
 Phelan-McDermid Syndrome (PMS, OMIM 606232) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], also called 22q13.3 deletion syndrome, is a rare genetic condition.[@phelan_22q13.3_2012]
-Approximately 2,200 cases have been diagnosed worldwide (559 in the US) and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
+Approximately 2,255 cases have been diagnosed worldwide (917 in the US) and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
 No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
 
 Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94% of patients.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
@@ -117,7 +117,7 @@ More intriguing, the non-classical cases present interstitial deletions as small
 This suggests that a subset of features of PMS are not caused solely by *SHANK3* haploinsufficiency.[@fujita_girl_2000 ; @wilson_interstitial_2008 ; @simenson_patient_2014 ; @vittoria_disciglio_interstitial_2014 ; @maitz_expanding_2008]
 
 To explore this phenomenon more closely, we utilized the PMS International Registry (PMSIR),[@PMSIR_phelan-mcdermid_2011] a patient/family-driven registry, founded by the relatives of PMS patients and launched in 2011 by the PMSF.
-The only international registry for PMS, the registry today includes 1,353 of the 2,200 patients registered with the PMSF.
+The only international registry for PMS, the registry today includes 1,353 of the 2,255 patients registered with the PMSF.
 Its phenotypic and genotypic information is annotated by the patient families.
 
 We hypothesized that while retrospective and not recorded in the context of a clinic, still patient-reported data (including genetic test results obtained from the PMSIR)[@PMSIR_phelan-mcdermid_2011] could be used to conduct deletion analyses and uncover phenotypes and comorbidities significantly linked to genes other than *SHANK3*.
