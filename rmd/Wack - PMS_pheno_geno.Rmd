@@ -183,7 +183,7 @@ All the data was treated anonymously, from the integration into i2b2/transmart t
 ## Population and variable selection
 
 Based on the most recent date of registry data export (November 11, 2018), 849 families (461 in the US) consented to participate in the network and PCORnet studies.
-Of these, `r article$nb_pat$demo` patients in the PMS_DN had entered at least their demographic information, including `r article$nb_pat$pheno` with phenotypic information (demographic information and at least one of the clinical (`r article$nb_pat$clin` patients) or developmental (`r article$nb_pat$dev` patients) questionnaires), and `r article$nb_pat$all_gen` provided genetic test results, including `r article$nb_pat$term_del` with terminal deletions or point mutations (`r article$mut_sel` patients) within *SHANK3*.
+Of these, `r article$nb_pat$demo` patients in the PMS_DN had entered at least their demographic information, including `r article$nb_pat$pheno` with phenotypic information (demographic information and at least one of the clinical (`r article$nb_pat$clin` patients) or developmental (`r article$nb_pat$dev` patients) questionnaires), and `r article$nb_pat$all_gen` provided genetic test results, including `r article$nb_pat$term_del` with terminal deletions or point mutations (`r article$nb_pat$mut_sel` patients) within *SHANK3*.
 Deletion sizes ranged from `r prettyNum(article$genetics$range["Min."]/10^3, digits = 2)` kb to `r prettyNum(article$genetics$range["Max."]/10^6, digits = 2)` Mb, with a median deletion size of `r prettyNum(article$genetics$range["Median"]/10^6, digits = 2)` Mb.
 
 To analyse phenotypes, we selected `r article$nb_pat$included` patients who both carried terminal deletions of chromosome 22 or point mutations within *SHANK3* and had entered phenotypic information.
@@ -216,7 +216,7 @@ bushy eyebrows (`r pvalue("Bushy eyebrows")`),
 large fleshy hands (`r pvalue("Large fleshy hands")`),
 sacral dimple (`r pvalue("Sacral dimple")`),
 and dysplastic toenails (`r pvalue("Dysplastic or unusual toenails")`) and fingernails (`r pvalue("Dysplastic or unusual fingernails")`).
-Patients with the largest deletions also showed swelling of the extremities, particularly the lower limbs (`r result_for_group("Swelling")`).
+Patients with the largest deletions also showed swelling of the extremities, particularly the lower limbs (`r result_for_group("Lymphatic-related conditions")`).
 
 All renal conditions (`r result_for_group("Renal conditions")`) were strongly associated with deletion size, with the most severely affected patients carrying the largest deletions (Figure 2).
 While persistent fevers related to the recurrent urinary tract infections were associated with deletion size, other renal symptoms were not.
@@ -232,9 +232,9 @@ poor reflexes (`r pvalue("Poor reflexes")`),
 and feeding problems (`r pvalue("Feeding problems")`).
 
 Feeding difficulties were negatively associated with deletion size, the greater the deletion, the lesser the difficulty.
-These symptoms included `r result_for_group("Feeding difficulties")`, as well as the need for naso-gastric tubes (`r pvalue("Nasogastric (NG) tube")`) and difficulties are not explained by feeding disorders (e.g. PICA (`r pvalue("Pica")`)).
+These symptoms included `r result_for_group("Feeding difficulties")`, as well as the need for naso-gastric tubes (`r pvalue("Nasogastric tube")`) and difficulties are not explained by feeding disorders (e.g. PICA (`r pvalue("Pica")`)).
 
-In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (`r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (`r pvalue("Patent Ductus Arteriosus")`) could be used in the analysis, were associated with larger deletions.
+In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (`r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (`r pvalue("Patent ductus arteriosus")`) could be used in the analysis, were associated with larger deletions.
 
 Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
 
@@ -256,8 +256,8 @@ These included, `r result_for_group("Cognitive development", quotes = '"')`.
 
 We observed that basic communication milestones (`r result_for_group("Communication milestones")`) were delayed in patients with larger deletions.
 Primitive non-verbal skills, including `r result_for_group("Communication – Non-verbal skills")` were rarer.
-At the same time, verbal speech (`r result_for_group("Verbal speech")`) was heavily impaired for patients, even those with even small deletions.
-However, syndromic etiologies (`r result_for_group("Communication-related symptoms")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
+At the same time, verbal speech (`r result_for_group("Verbal communication")`) was heavily impaired for patients, even those with even small deletions.
+However, syndromic etiologies (`r result_for_group("Communication – Non-verbal skills")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
 Hearing problems (apart from the installation of ear tubes (`r pvalue("Ear tubes")`) were not associated with the genetic status.
 
 We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"')`).
