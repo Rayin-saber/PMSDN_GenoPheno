@@ -341,14 +341,13 @@ More likely, a pathological allele for an autosomal recessive trait might be pre
 This is supported by the inconsistency of patients with very large terminal deletions not exhibiting some of the phenotypes that we found to be associated with greater deletion sizes.
 
 For those phenotypes not associated with greater deletion sizes, we suggest that they may not be actually associated with PMS.
-This is evidenced by the fact that their prevalence in our cohort is similar to that in the general population (for example, pain urinating, night terrors, enuresis, or congenital heart disease).
-An alternative explanation is that these phenotypes are part of the core PMS caused by the defects of *SHANK3*, and are present in nearly all of the patients in the sample.
+This would apply to phenotypes with a prevalence in our cohort similar to that in the general population and is the case for most of the phenotypes (for example, pain urinating, night terrors, enuresis, or congenital heart disease).
+Phenotypes present in nearly all patients could be part of the core PMS caused by the defects of *SHANK3*.
 This holds for intellectual disability, teeth grinding, joint laxity, or high pain tolerance level.
 
 One *caveat* is that, when used as a predictor for binomial outcomes—such as the occurrence of a clearly defined somatic phenotype—deletions can only act as a proxy for the contribution of chromosomal regions of interest and hint at potential locations for breakpoints.
 We suggest that one could make comparisons between individual genes to help narrow down the ranges of true genetic contributors to phenotype.
-
-To do this, however, we would need a specific model developments as gene statuses inferred from this data would generate strong collinearity between contiguous genes affected in the same deletion ranges.
+However, the genetic anomalies studied here being continuous deletions, there exists a strong correlation in the deletion of contiguous genes and would necessitate specific model developments.
 
 We also note that some of the patients diagnosed with PMS as caused by 22q13.33 deletions, are tested solely for genetic defects on chromosome 22, specifically using array CGH and providing ranges of deletions.
 This possibly creates a bias in the data, ignoring possible additional chromosomal aberrations for which no testing has been done.
