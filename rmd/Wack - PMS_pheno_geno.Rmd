@@ -204,6 +204,7 @@ Each patient's status is represented on one line, with patients with the most ex
 Duplicated regions are represented as blue boxes; deleted regions as red boxes; and mutations of *SHANK3* as asterisks.
 The range of the *SHANK3* gene is represented as a grey vertical box across the figure.
 For patients with multiple, different chromosomal anomalies, we linked them with horizontal black lines.
+The detail of all the genetic defects found in those patients is presented in table 2.
 
 We tested `r article$PRO$incl` phenotypes expressed by `r article$nb_pat$included` patients in relation to their chromosomal deletion sizes, using the models described in Methods.
 We found that `r article$results_ranges %>% mutate(p.adj = p.adj %>% as.numeric) %>% filter(p.adj < 0.05) %>% nrow` phenotypes were significantly associated with larger genetic deletions, validating previous reports in the literature.
@@ -238,7 +239,7 @@ In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmu
 
 Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
 
-All phenotypes positively associated with deletion sizes, and related analyses, are presented in Table 2.
+All phenotypes positively associated with deletion sizes, and related analyses, are presented in Table 3.
 Because the presence of these features/symptoms is associated with greater deletion sizes, we assert they are likely due to the deletion of an upstream gene(s) on chromosome 22.
 
 > TODO :
@@ -264,7 +265,7 @@ We observed delays in socio-emotional development, in all activities related to 
 
 Sleep disturbances (`r result_for_group("Sleep disturbances")`) are all less frequent in patients with greater deletions.
 
-The details of all phenotypes significantly associated with negative effect sizes are presented in Table 3.
+The details of all phenotypes significantly associated with negative effect sizes are presented in Table 4.
 The absence of these features, behaviors, or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene(s) on chromosome 22.
 
 > TODO:
@@ -406,8 +407,27 @@ pander(article$table1,
        missing = "")
 ```
 
-
 ```{r table2}
+print("Table 2. /SHANK3/ variants in the sample")
+tribble(~`Genetic defect`, ~`N (333 individuals)`, ~Mosaic,
+        "Deletion", "303 (91.0%)", NA,
+        "  Terminal deletion", "296 (97.7%)", 10,
+        "    Simple deletion", "55 (18.6%)", 1,
+        "    Unbalanced translocation", "35 (11.8%)", NA,
+        "    Ring chromosome", "27 (9.1%)", 1,
+        "    Other rearrangements ^a^", "6 (2.0%)", 2,
+        "    Unknown ^b^", "173 (58.4%)", 6,
+        "  Interstitial deletion including /SHANK3/", "7 (2.3%)", 1,
+        "/SHANK3/ sequence variant", "30 (9.0%)", NA,
+        "  Frameshift", "22 (73.3%)", NA,
+        "  Nonsense", "4 (13.3%)", NA,
+        "  Missense", "3 (10.0%)", NA,
+        "  Splice", "1 (3.3%)", NA) %>%
+  pander(caption = " ^a^ Other rearrangements included 2 satellited choromosomes 22, 1 pseudodicentric chromosome, 1 unbalanced inversion, and 2 uncharacterized rearrangements.\n
+^b^ Patients with deletions identified with chromosomal microarray but without a karyotype to exclude the presence of a ring chromosome were classified as unknown.")
+```
+
+```{r table3}
 article$results_ranges %>%
   rename(Phenotype = text) %>%
   filter(or > 1,
@@ -422,7 +442,7 @@ article$results_ranges %>%
 ```
 
 
-```{r table3}
+```{r table4}
 article$results_ranges %>%
   rename(Phenotype = text) %>%
   filter(or < 1,
