@@ -91,16 +91,16 @@ opts_chunk$set(echo = F,
 
 Phelan-McDermid Syndrome (PMS, OMIM 606232) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], also called 22q13.3 deletion syndrome, is a rare genetic condition.[@phelan_22q13.3_2012]
 Approximately 2,255 cases have been diagnosed worldwide (917 in the US) and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
-No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
+No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has been used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
 
 Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94% of patients.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
-An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the Autism Diagnostic Observation Schedule and the Autism Diagnostic Interview, Revised, gold standard instruments of autism diagnosis.[@soorya_prospective_2013]
-Nearly 100% of patients suffer global developmental delay/ intellectual disability (ID)[@phelan_22q13.3_2012 ; @phelan_deletion_2008] with delayed or absent speech.[@phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @soorya_prospective_2013 ; @phelan_deletion_2008 ; @durand_mutations_2007 ; @leblond_meta-analysis_2014]
+An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the gold standard instruments of diagnosis (the Autism Diagnostic Observation Schedule and the Autism Diagnostic Interview, Revised).[@soorya_prospective_2013]
+Nearly 100% of patients suffer global developmental delay / intellectual disability (ID)[@phelan_22q13.3_2012 ; @phelan_deletion_2008] with delayed or absent speech.[@phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @soorya_prospective_2013 ; @phelan_deletion_2008 ; @durand_mutations_2007 ; @leblond_meta-analysis_2014]
 Overall, PMS accounts for an estimated 0.5% of ASD cases [@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @leblond_meta-analysis_2014 ; @gong_high_2012 ; @betancur_shank3_2013] and up to 2% of ID cases,[@leblond_meta-analysis_2014 ; @gong_high_2012] with an equal number of affected males and females.[@costales_phelanmcdermid_2015 ; @phelan_deletion_2008]
 In addition, PMS patients also exhibit other behavioral features, such as chewing non-food items (80-90%), teeth grinding (~25%), and aggressive behavior (10-15%), as well as clinical features such as hypotonia, minor dysmorphic features, seizures, and various malformations.[@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @phelan_deletion_2008 ; @sarasua_clinical_2014]
 
 From a genetic perspective, PMS is caused by deletions of varying sizes in the distal long arm of chromosome 22.
-These remove a gene, called *SHANK3*—for SH3 and multiple ankyrin repeat domain3—which is located at the chromosome's end.
+These remove a gene called *SHANK3*—for SH3 and multiple ankyrin repeat domain3—which is located at the chromosome's end.
 The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.33 (with involvment of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
 A potential treatment, IGF1, as been shown to restore the *SHANK3* pathway.[@shcheglovitov_shank3_2013, @costales_therapeutic_2016]
 
@@ -116,7 +116,7 @@ Previous studies have shown a gradient in the severity of cognitive impairments.
 These are associated with the size of the deletions and linked to the presence of other phenotypic features.[@soorya_prospective_2013 ; @sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
 
 At the same time, a growing number of cases involve symptoms consistent with a diagnosis of 22q13 deletion syndrome (severe developmental delays, hypotonia with feeding difficulties, overgrowth, speech impairments, seizures, abnormal neuroimaging, …) but in patients lacking a classical terminal 22q deletion.
-More intriguing, the non-classical cases present interstitial deletions as small as 0.72Mb beyond the locus of *SHANK3*.
+More intriguing, the non-classical cases present interstitial deletions as small as 0.72Mb upstream of *SHANK3*.
 This suggests that a subset of features of PMS are not caused solely by *SHANK3* haploinsufficiency.[@fujita_girl_2000 ; @wilson_interstitial_2008 ; @simenson_patient_2014 ; @vittoria_disciglio_interstitial_2014 ; @maitz_expanding_2008]
 
 To explore this phenomenon more closely, we utilized the PMS International Registry (PMSIR),[@PMSIR_phelan-mcdermid_2011] a patient/family-driven registry, founded by the relatives of PMS patients and launched in 2011 by the PMSF.
