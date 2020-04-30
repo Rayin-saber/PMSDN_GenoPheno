@@ -46,11 +46,14 @@ or <- function(var)
     pull(or)
 }
 
-phenotypes <- function(text, quotes = "", collapse = ", ")
+phenotypes <- function(text, quotes = "")
 {
-  text %>%
-    str_to_lower %>%
-    str_c(quotes, ., quotes, collapse = collapse)
+  paste0(quotes,
+         paste0(text[-length(text)],
+                collapse = paste0(",", quotes, " ", quotes)),
+         ",", quotes, " and ", quotes,
+         text[length(text)],
+         quotes)
 }
 
 range_p_or <- function(p_or)
@@ -61,14 +64,14 @@ range_p_or <- function(p_or)
     str_c(collapse = " to ")
 }
 
-result_for_group <- function(group, quotes = "", collapse = ", ")
+result_for_group <- function(group, quotes = "")
 {
   article$results_ranges %>%
     filter(Group == group,
            p.adj < .05) %>%
   arrange(p.adj) -> res
 
-  str_c(phenotypes(res$text, quotes, collapse),
+  str_c(phenotypes(res$text, quotes),
         " (*p values* from ",
         range_p_or(res$p.adj),
         ", *ORs* from ",
@@ -219,7 +222,7 @@ All renal conditions (`r result_for_group("Renal conditions")`) were strongly as
 While persistent fevers related to the recurrent urinary tract infections were associated with deletion size, other renal symptoms were not.
 
 Major delays in nearly all gross motor milestones were strongly and linearly associated with greater deletion sizes.
-These included `r result_for_group("Gross motor milestones", quotes = '"', collapse = " ")` (Figure 3).
+These included `r result_for_group("Gross motor milestones", quotes = '"')` (Figure 3).
 These delays were accompanied by a range of conditions related to muscular tone: hypotonia (`r pvalue("Hypotonia")`),
 hypo-reflexia (`r pvalue("Hypo-reflexia")`),
 apnea (`r pvalue("Apnea")`),
@@ -247,9 +250,9 @@ Because the presence of these features/symptoms is associated with greater delet
 > Febrile seizures (`r pvalue("Febrile seizures")`).
 
 In terms of behavior, we found that some anxiety disorders were negatively associated with the size of deletion, namerly `r result_for_group("Anxiety disorders")`.
-Attention disorder symptoms were also less prevalent in patients with greater deletion sizes: specifically, `r result_for_group("Attention disorder", quotes = '"', collapse = " ")`.
+Attention disorder symptoms were also less prevalent in patients with greater deletion sizes: specifically, `r result_for_group("Attention disorder", quotes = '"')`.
 Nearly all cognitive development milestones surveyed showed significant impairment proportional to the size of the deletion.
-These included, `r result_for_group("Cognitive development", quotes = '"', collapse = " ")`.
+These included, `r result_for_group("Cognitive development", quotes = '"')`.
 
 We observed that basic communication milestones (`r result_for_group("Communication milestones")`) were delayed in patients with larger deletions.
 Primitive non-verbal skills, including `r result_for_group("Communication – Non-verbal skills")` were rarer.
@@ -257,7 +260,7 @@ At the same time, verbal speech (`r result_for_group("Verbal speech")`) was heav
 However, syndromic etiologies (`r result_for_group("Communication-related symptoms")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
 Hearing problems (apart from the installation of ear tubes (`r pvalue("Ear tubes")`) were not associated with the genetic status.
 
-We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"', collapse = " ")`).
+We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"')`).
 
 Sleep disturbances (`r result_for_group("Sleep disturbances")`) are all less frequent in patients with greater deletions.
 
