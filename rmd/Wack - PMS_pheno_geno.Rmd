@@ -400,7 +400,7 @@ All the code for ETL and analysis is openly available on github (https://github.
 # Tables
 
 ```{r table1}
-pander(article$table1,
+desctable:::pander.desctable(article$table1,
        justify = c("left", rep("center", 9), "right"),
        caption = "Sample characteristics and comparison with the excluded patients",
        missing = "")
