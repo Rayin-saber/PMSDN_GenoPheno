@@ -175,7 +175,7 @@ Odds ratios (and their 95% confidence intervals) are given for every million del
 Statistical analyses were conducted using R version `r str_c(version$major, version$minor, sep = ".")`.
 Age was compared using the non-parametric Mann & Whitney test, while gender and race were compared using the Fisher test.
 The proportional odds logistic regression used the "clm" function from the "ordinal" package.
-The project was approved by Harvard Medical School Institutional Review Board (HMS IRB14-2161).
+The project was approved by Harvard Medical School Institutional Review Board (HMS IRB14-2161). The PMSIR is receiving continuing review approval by the Advarra (formerly Chesapeake) IRB as of Jan 21st 2020 (CR00182785).
 All the data was treated anonymously, from the integration into i2b2/transmart to the analysis.
 
 # Results
