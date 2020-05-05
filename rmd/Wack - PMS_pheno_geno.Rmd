@@ -90,10 +90,10 @@ opts_chunk$set(echo = F,
 # Introduction
 
 Phelan-McDermid Syndrome (PMS, OMIM 606232) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], also called 22q13.3 deletion syndrome, is a rare genetic condition.[@phelan_22q13.3_2012]
-Approximately 2,255 cases have been diagnosed worldwide (917 in the US) and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
+Approximately 2,255 cases worldwide (917 in the US) have been diagnosed and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
 No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has been used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
 
-Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94% of patients.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
+Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
 An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the gold standard instruments of diagnosis (the Autism Diagnostic Observation Schedule and the Autism Diagnostic Interview, Revised).[@soorya_prospective_2013]
 Nearly 100% of patients suffer global developmental delay / intellectual disability (ID)[@phelan_22q13.3_2012 ; @phelan_deletion_2008] with delayed or absent speech.[@phelan_22q13.3_2012 ; @kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @soorya_prospective_2013 ; @phelan_deletion_2008 ; @durand_mutations_2007 ; @leblond_meta-analysis_2014]
 Overall, PMS accounts for an estimated 0.5% of ASD cases [@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015 ; @leblond_meta-analysis_2014 ; @gong_high_2012 ; @betancur_shank3_2013] and up to 2% of ID cases,[@leblond_meta-analysis_2014 ; @gong_high_2012] with an equal number of affected males and females.[@costales_phelanmcdermid_2015 ; @phelan_deletion_2008]
@@ -233,33 +233,34 @@ poor reflexes (`r pvalue("Poor reflexes")`),
 and feeding problems (`r pvalue("Feeding problems")`).
 
 Feeding difficulties were negatively associated with deletion size, the greater the deletion, the lesser the difficulty.
-These symptoms included `r result_for_group("Feeding difficulties")`, as well as the need for naso-gastric tubes (`r pvalue("Nasogastric tube")`) and difficulties are not explained by feeding disorders (e.g. PICA (`r pvalue("Pica")`)).
+These symptoms included `r result_for_group("Feeding difficulties")`, as well as the need for naso-gastric tubes (`r pvalue("Nasogastric tube")`) and difficulties are not explained by feeding disorders (e.g. PICA (`r pvalue("Pica")`, OR = `r or("Pica")`).
 
 In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (`r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (`r pvalue("Patent ductus arteriosus")`) could be used in the analysis, were associated with larger deletions.
 
 Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
 
+> Brain imaging
+> Febrile seizures (`r pvalue("Febrile seizures")`).
+> Febrile seizures (`r pvalue("Tonic-clonic seizures")`).
+
 All phenotypes positively associated with deletion sizes, and related analyses, are presented in Table 3.
 Because the presence of these features/symptoms is associated with greater deletion sizes, we assert they are likely due to the deletion of an upstream gene(s) on chromosome 22.
-
-> TODO :
-> Abnormal Cranial CT scan (`r pvalue("Abnormal Cranial CAT scan")`),
-> Abnormal MRI (`r pvalue("Abnormal MRI")`),
-> Irregular Ventricles (`r pvalue("Irregular Ventricles")`),
-> Decreased Grey Matter (`r pvalue("Decreased Grey Matter")`),
-> and
-> Febrile seizures (`r pvalue("Febrile seizures")`).
 
 In terms of behavior, we found that some anxiety disorders were negatively associated with the size of deletion, namerly `r result_for_group("Anxiety disorders")`.
 Attention disorder symptoms were also less prevalent in patients with greater deletion sizes: specifically, `r result_for_group("Attention disorder", quotes = '"')`.
 Nearly all cognitive development milestones surveyed showed significant impairment proportional to the size of the deletion.
 These included, `r result_for_group("Cognitive development", quotes = '"')`.
 
+> Aggressive behavior
+
 We observed that basic communication milestones (`r result_for_group("Communication milestones")`) were delayed in patients with larger deletions.
 Primitive non-verbal skills, including `r result_for_group("Communication – Non-verbal skills")` were rarer.
 At the same time, verbal speech (`r result_for_group("Verbal communication")`) was heavily impaired for patients, even those with even small deletions.
 However, syndromic etiologies (`r result_for_group("Communication – Non-verbal skills")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
 Hearing problems (apart from the installation of ear tubes (`r pvalue("Ear tubes")`) were not associated with the genetic status.
+
+> Speech disorders
+> learning disabilities
 
 We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"')`).
 
