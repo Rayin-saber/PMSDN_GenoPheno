@@ -55,7 +55,7 @@ delAnalysis <- function(var, data)
       model <- lm(x ~ size + Gender, data = data)
     else
       model <- lm(x ~ size, data = data)
-    
+
     p <- summary(model)$coefficients["size","Pr(>|t|)"]
     icl <- ((confint(model) %>% exp) ** 1e6)["size", 1]
     or <- (coef(model)[["size"]] %>% exp) ** 1e6
@@ -101,12 +101,10 @@ delPlotGroup <- function(plotdata, delplot)
     max -> max_text_length
 
   delplot +
-    ggtitle(unique(plotdata$Group)) +
-    theme(plot.title = element_text(size = 36, margin = margin(b = max_text_length * 7, t = 10, l = 10))) -> delplot
-
-  delplot +
     groupplot +
-    plot_layout(widths = c(1, 5))
+    plot_layout(widths = c(1, 5)) +
+    plot_annotation(title = unique(plotdata$Group),
+                    theme = theme(plot.title = element_text(size = 36)))
 }
 
 delPlotOne <- function(plotdata)
