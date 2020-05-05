@@ -34,6 +34,66 @@ read_csv("data/clinical.csv") %>%
             ~ str_replace_all(., fixed(" (by imputation)"), "") %>%
               factor(levels = c("No", "Yes"))) -> Clinical
 
+# Merge excessive hair growth in lower limb (thighs, lower legs and calves), and upper limb (forearms and upper arms)
+Clinical %>%
+  mutate(`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Upper.limbs_ currently` =
+           ((`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Upper.arms_ currently` == "Yes") |
+              (`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Forearms_ currently` == "Yes")) %>%
+           factor(labels = c("No", "Yes")),
+         `Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Lower.limbs_ currently` =
+           ((`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Thighs_ currently` == "Yes") |
+              (`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Lower.leg.and.calves_ currently` == "Yes")) %>%
+           factor(labels = c("No", "Yes"))) %>%
+  select(-`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Upper.arms_ currently`,
+         -`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Forearms_ currently`,
+         -`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Thighs_ currently`,
+         -`Does.the.patient.have.excessive.hair.growth?.Please.indicate.which.part.of.the.body._Lower.leg.and.calves_ currently`) -> Clinical
+
+# Merge lymphatic-related conditions : swelling in left+right bodypart
+Clinical %>%
+  mutate(`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Arms` =
+           ((`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.elbow` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.shoulder` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.other` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.elbow` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.shoulder` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.other` == "Yes")) %>%
+           factor(labels = c("No", "Yes"))) %>%
+  select(-`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.elbow`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.to.shoulder`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.arm.other`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.elbow`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.to.shoulder`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.arm.other`) %>%
+  mutate(`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Legs` =
+           ((`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.ankle` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.knee` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.Hip` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.ankle` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.knee` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.hip` == "Yes")) %>%
+           factor(labels = c("No", "Yes"))) %>%
+  select(-`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.ankle`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.knee`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Left.leg.to.Hip`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.ankle`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.knee`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.arms.and.legs?_Right.leg.to.hip`) %>%
+  mutate(`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?` =
+           ((`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.hand` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.hand` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Fingers.only` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.foot` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.foot` == "Yes") |
+              (`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Toes.only` == "Yes")) %>%
+           factor(labels = c("No", "Yes"))) %>%
+  select(-`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.hand`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.hand`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Fingers.only`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Left.foot`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Right.foot`,
+         -`Has.the.patient.ever.had.persistent.swelling.of.the.hands.and.feet?_Toes.only`) -> Clinical
+
 # ==== Developmental ====
 # Variables
 read_csv("dev_vars.csv") -> Dev_vars
