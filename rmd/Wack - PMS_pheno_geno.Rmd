@@ -91,7 +91,7 @@ opts_chunk$set(echo = F,
 
 Phelan-McDermid Syndrome (PMS, OMIM 606232) [@phelan_phelan-mcdermid_1993 ; @phelan_22q13.3_2012], also called 22q13.3 deletion syndrome, is a rare genetic condition.[@phelan_22q13.3_2012]
 Approximately 2,255 cases worldwide (917 in the US) have been diagnosed and registered with the Phelan-McDermid Syndrome Foundation (PMSF).
-No treatment are yet available, although one drug candidate, IGF1 (Insuline-like Growth Factor 1), has been used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
+No treatment are yet available, although one drug candidate, IGF1 (Insulin-like Growth Factor 1), has been used successfully in a phase 2 randomized controlled trial.[@kolevzon_pilot_2014]
 
 Clinically, PMS patients present with autistic features and autism spectrum disorder (ASD) or autistic-like behavior at a rate ranging from 44% to 94.[@kolevzon_phelan-mcdermid_2014 ; @costales_phelanmcdermid_2015]
 An estimated 84% of cases meet the criteria for autism spectrum disorder (ASD), based on the gold standard instruments of diagnosis (the Autism Diagnostic Observation Schedule and the Autism Diagnostic Interview, Revised).[@soorya_prospective_2013]
@@ -101,14 +101,14 @@ In addition, PMS patients also exhibit other behavioral features, such as chewin
 
 From a genetic perspective, PMS is caused by deletions of varying sizes in the distal long arm of chromosome 22.
 These remove a gene called *SHANK3*—for SH3 and multiple ankyrin repeat domain3—which is located at the chromosome's end.
-The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.33 (with involvment of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
+The disease is diagnosed by genetic testing, which identifies either a heterozygous deletion at chromosome 22q13.33 (with involvement of at least part of *SHANK3*) or a heterozygous pathogenic variant in *SHANK3*.
 A potential treatment, IGF1, as been shown to restore the *SHANK3* pathway.[@shcheglovitov_shank3_2013, @costales_therapeutic_2016]
 
 *SHANK3* encodes a post-synaptic scaffolding protein that binds to several different neurotransmitter receptors.
-It is thought to be play a critical role in the assembly and plasticity of the postsynaptic density in brain synapses.[ref]
+It is thought to be play a critical role in the assembly and plasticity of the postsynaptic density in brain synapses.[@Yi_heterozygous_2016]
 
-Haploinsufficiency (deletion or loss of function of a single copy) of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003 ; @durand_mutations_2007] in both patient cases and murine models with *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
-PMS patients with *SHANK3* sequence variants or single-gene deletions show global developmental delay, major speech delay or severely impaired speech, moderate to profound ID, autistic behavior, hypotonia, and minor dysmorphic features (dolichocephaly, epicanthic folds).[ref]
+Haploinsufficiency (deletion or loss of function of a single copy) of *SHANK3* has been shown to be sufficient to cause the disease,[@wilson_molecular_2003 ; @durand_mutations_2007] in both patient cases and murine models with *de novo* point mutations or interstitial deletions that exclusively disrupt *SHANK3*.
+PMS patients with *SHANK3* sequence variants or single-gene deletions show global developmental delay, major speech delay or severely impaired speech, moderate to profound ID, autistic behavior, hypotonia, and minor dysmorphic features (dolichocephaly, epicanthic folds).[@durand_mutations_2007 ; @moessner_contribution_2007 ; @bozdagi_haploinsufficiency_2010 ; @macedoni-luksic_deletion_2013 ; @bonaglia_disruption_2001 ; @delahaye_chromosome_2009]
 
 PMS patients exhibit heterogeneous chromosomal abnormalities in the 22q13.33 region, including terminal deletions, interstitial deletions, sequence variants, translocations, inversions, and ring chromosome.
 These result in an overall population of patients with deletions ranging in size from 10 kb to over 9 Mb.
@@ -121,7 +121,7 @@ This suggests that a subset of features of PMS are not caused solely by *SHANK3*
 
 To explore this phenomenon more closely, we utilized the PMS International Registry (PMSIR),[@PMSIR_phelan-mcdermid_2011] a patient/family-driven registry, founded by the relatives of PMS patients and launched in 2011 by the PMSF.
 The only international registry for PMS, the registry today includes 1,353 of the 2,255 patients registered with the PMSF.
-Its phenotypic and genotypic information is annotated by the patient families.
+Its phenotypic and genetic information is annotated by the patient families.
 
 We hypothesized that while retrospective and not recorded in the context of a clinic, still patient-reported data (including genetic test results obtained from the PMSIR)[@PMSIR_phelan-mcdermid_2011] could be used to conduct deletion analyses and uncover phenotypes and comorbidities significantly linked to genes other than *SHANK3*.
 Our results have implications not only for PMS but also for those interested in using patient-reported data to shed new light on other rare diseases.
@@ -137,7 +137,7 @@ The registry is comprised of 1,300 patient-reported outcome (PRO) items over thr
 Patient families can retake the surveys any number of times, allowing for longitudinal analysis and ensuring the most complete and accurate information.
 
 Alongside phenotypic data, the registry also contains curated genetic testing of chromosomal abnormalities from karyotypes, fluorescent *in situ* hybridization (FISH), chromosomal microarrays, or *SHANK3* sequencing, represented using ISCN Standard Nomenclature.[@international_standing_committee_on_human_cytogenetic_nomenclature_iscn_2013]
-The scanned paper reports of genetic test results are uploaded by families onto the platform, then manually curated by a team of trained genetic counselors and clinicans, who fill structured fields documenting genetic abnormalities.
+The scanned paper reports of genetic test results are uploaded by families onto the platform, then manually curated by a team of trained genetic counselors and clinicians, who fill structured fields documenting genetic abnormalities.
 
 To facilitate the continuous updating of the PMS registry, all phenotypic and genetic data were integrated in the i2b2/tranSMART[@athey_transmart:_2013 ; @canuel_translational_2015 ; @murphy_serving_2010] data warehouse.
 In addition, a PMS ontology was created to tag and organize the registry data elements in a controlled vocabulary.
@@ -186,7 +186,7 @@ Based on the most recent date of registry data export (November 11, 2018), 849 f
 Of these, `r article$nb_pat$demo` patients in the PMS_DN had entered at least their demographic information, including `r article$nb_pat$pheno` with phenotypic information (demographic information and at least one of the clinical (`r article$nb_pat$clin` patients) or developmental (`r article$nb_pat$dev` patients) questionnaires), and `r article$nb_pat$all_gen` provided genetic test results, including `r article$nb_pat$term_del` with terminal deletions or point mutations (`r article$nb_pat$mut_sel` patients) within *SHANK3*.
 Deletion sizes ranged from `r prettyNum(article$genetics$range["Min."]/10^3, digits = 2)` kb to `r prettyNum(article$genetics$range["Max."]/10^6, digits = 2)` Mb, with a median deletion size of `r prettyNum(article$genetics$range["Median"]/10^6, digits = 2)` Mb.
 
-To analyse phenotypes, we selected `r article$nb_pat$included` patients who both carried terminal deletions of chromosome 22 or point mutations within *SHANK3* and had entered phenotypic information.
+To analyze phenotypes, we selected `r article$nb_pat$included` patients who both carried terminal deletions of chromosome 22 or point mutations within *SHANK3* and had entered phenotypic information.
 
 Upon analysis of their demographic information (Table 1), we found that our selected population was significantly younger and less diverse than the larger PMS_DN cohort.
 The majority of patients studied was Caucasian, a likely result of the socio-economic factors involved in the referral for genetic testing patients with ASD/ID.
@@ -237,30 +237,32 @@ These symptoms included `r result_for_group("Feeding difficulties")`, as well as
 
 In terms of cardiac problems, presence of a heart murmur (`r pvalue("Heart murmur")`) and the broad category of congenital heart diseases (`r pvalue("Congenital heart disease")`), of which only the patent ductus arteriosus (`r pvalue("Patent ductus arteriosus")`) could be used in the analysis, were associated with larger deletions.
 
-Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
+On the neurological side, abnormal brain MRI (`r pvalue("Abnormal brain MRI result")`)
+and CT scans (`r pvalue("Abnormal cranial CT scan result")`)
+in general, as well as the presence of specific features such as
+irregular brain ventricles (`r pvalue("Irregular brain ventricles")`), and
+decreased gray matter (`r pvalue("Decreased grey matter")`)
+and myelination (`r pvalue("Decreased myelination")`) were more likely to be found in patients with larger deletions. This translated to more febrile (`r pvalue("Febrile seizures")`) and tonic-clonic (`r pvalue("Tonic-clonic seizures")`) seizures, but not in other neurological signs and symptoms that are recorded by the PMSIR.
 
-> Brain imaging
-> Febrile seizures (`r pvalue("Febrile seizures")`).
-> Febrile seizures (`r pvalue("Tonic-clonic seizures")`).
+Some behaviors such as daytime teeth grinding (`r pvalue("Daytime teeth grinding")`) were associated with larger deletions.
 
 All phenotypes positively associated with deletion sizes, and related analyses, are presented in Table 3.
 Because the presence of these features/symptoms is associated with greater deletion sizes, we assert they are likely due to the deletion of an upstream gene(s) on chromosome 22.
 
-In terms of behavior, we found that some anxiety disorders were negatively associated with the size of deletion, namerly `r result_for_group("Anxiety disorders")`.
+In terms of behavior, we found that some anxiety disorders were negatively associated with the size of deletion, namely `r result_for_group("Anxiety disorders")`.
 Attention disorder symptoms were also less prevalent in patients with greater deletion sizes: specifically, `r result_for_group("Attention disorder", quotes = '"')`.
 Nearly all cognitive development milestones surveyed showed significant impairment proportional to the size of the deletion.
 These included, `r result_for_group("Cognitive development", quotes = '"')`.
 
-> Aggressive behavior
+A range of concurrent psychiatric diagnoses (`r result_for_group("Psychiatric conditions")`) were negatively associated with deletion size
 
 We observed that basic communication milestones (`r result_for_group("Communication milestones")`) were delayed in patients with larger deletions.
 Primitive non-verbal skills, including `r result_for_group("Communication – Non-verbal skills")` were rarer.
-At the same time, verbal speech (`r result_for_group("Verbal communication")`) was heavily impaired for patients, even those with even small deletions.
+At the same time, verbal speech (`r result_for_group("Verbal communication")`) was heavily impaired for patients, even those with small deletions.
+Some speech disorders (`r result_for_group("Speech disorders")`)
+were more diagnosed in patients with shorter deletions.
 However, syndromic etiologies (`r result_for_group("Communication – Non-verbal skills")`) or auditory processing disorder (`r pvalue("Auditory processing disorder")`) cannot explain the negative associations of these communication development delays with deletion sizes.
 Hearing problems (apart from the installation of ear tubes (`r pvalue("Ear tubes")`) were not associated with the genetic status.
-
-> Speech disorders
-> learning disabilities
 
 We observed delays in socio-emotional development, in all activities related to socialization (`r result_for_group("Socio-emotional development", quotes = '"')`).
 
@@ -269,25 +271,10 @@ Sleep disturbances (`r result_for_group("Sleep disturbances")`) are all less fre
 The details of all phenotypes significantly associated with negative effect sizes are presented in Table 4.
 The absence of these features, behaviors, or abilities is associated with greater deletion sizes amongst the patients, and so are likely due to the deletion of some upstream gene(s) on chromosome 22.
 
-> TODO:
-> and differential diagnoses:
-> ADHD (`r pvalue("ADHD")`),
-> Pervasive Developmental Disorder (`r pvalue("Pervasive Developmental Disorder")`),
-> and
-> Autism (`r pvalue("Autism")`)
-> and
-> Autistic-like features (`r pvalue("Autistic-like features")`).
-
 There were no associations with any neurological, orthopedic, nose and throat, thyroid, or allergy-related conditions.
 Apart from a mild association of deletion size with chronic constipation (`r pvalue("Chronic constipation")`, OR = `r or("Chronic constipation")`) and aspiration (`r pvalue("Aspiration")`), no gastrointestinal conditions or symptoms were associated with the genetic defects.
 Responses to sounds, movement, touch, oral input, or temperature variations were not associated with greater deletions.
 Tolerance to pain was not associated, nor was pain levels in the presence of anesthesia.
-
-# TODO
-> Abdominal bloating
-> C-section
-> learning disabilities
-> ?Other classical dysmorphic features in PMS were not found associated with deletion size, and only mild forms of aggressive behavior.
 
 # Discussion
 
@@ -296,7 +283,7 @@ We further replicated findings of previous association studies.
 We also confirmed the discovery of novel findings concerning renal malformations and gross motor development.
 
 This is the largest study of its kind in PMS and the first using the PMSIR.
-Access to the PMSIR allowed us to recruit the largest sample size (`r article$nb_pat$included` patients) for a genotype-phenotype association analysis for PMS (32 patients,[@soorya_prospective_2013] 70 patients,[@sarasua_22q13.2q13.32_2014] 71 patients,[@sarasua_association_2011] 201 patients [@sarasua_clinical_2014]).
+Access to the PMSIR allowed us to recruit the largest sample size (`r article$nb_pat$included` patients) for a genotype-phenotype association analysis for PMS (32 patients,[@soorya_prospective_2013] 34 patients,[@samogy_brazilian_2019] 70 patients,[@sarasua_22q13.2q13.32_2014] 71 patients,[@sarasua_association_2011] 201 patients [@sarasua_clinical_2014]).
 The data provided by this patient/family-driven network differs from that obtained from medical records.
 Patient-driven data is rich in information that only caregivers and families can provide and because it is being reported by the parents themselves, as a proxy for the patients, the approach allows a greater volume and specificity of registry items in all domains.
 Such a repository would be very difficult and costly to amass through a conventional academic-institution-led prospective study.
@@ -315,17 +302,17 @@ Greater deletion sizes are consistently and proportionally associated with more 
 Some of these findings had been independently discovered previously.[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014]
 However, previous studies merely captured "age at walk"[@sarasua_clinical_2014 ; @sarasua_22q13.2q13.32_2014] or "age at walk and crawl",[@sarasua_association_2011] and therefore did not capture positive associations in a consistent manner for each gross motor milestone.
 Some of these features were found in patients with interstitial deletions not affecting *SHANK3*.[@wilson_interstitial_2008 ; @vittoria_disciglio_interstitial_2014]
-Such features were also found to be present to a lesser extent and severity in PMS patients with isolated *SHANK3* mutations.[ref]
+Such features were also found to be present to a lesser extent and severity in PMS patients with isolated *SHANK3* mutations.[@bonaglia_disruption_2001; @delahaye_chromosome_2009]
 The fact that all these tone-related conditions appeared even in patients with the smallest deletions, and that the severity of features increased proportionally to deletion size, suggests a cumulative role of multiple genes on the long arm of chromosome 22, including *SHANK3.*
 Another non obvious contributors to the muscle tone severity gradient might be gastrointestinal aspiration symptoms and apnea, which we discovered for the first time as associated with deletion size.
 
 Our results also confirmed previous studies showing deletion size association with large fleshy hands and dysplastic toenails,[@sarasua_clinical_2014 ; @sarasua_association_2011 ; @sarasua_22q13.2q13.32_2014] as well as aggressive behaviors,[@sarasua_22q13.2q13.32_2014] increased prevalence of lymphedema and swelling of extremities.[@soorya_prospective_2013]
 
 We found that patients with greater deletion sizes were less likely to present common concurrent diagnoses of ADHD and ASD, as well as behavioral features of both these disorders.
-As previously suggested,[@sarasua_22q13.2q13.32_2014] this phenomenon might be due to the depth of the disabilities due to the greater deletion size "masking" autostic symptoms.
+As previously suggested,[@sarasua_22q13.2q13.32_2014] this phenomenon might be due to the depth of the disabilities due to the greater deletion size "masking" autistic symptoms.
 In fact, the negative association between ADHD and hyperactivity symptoms might further be linked to the spectrum of low muscle tone severity and its association with greater deletion size.
 
-Also associated with greater deletion sizes, were abnormal MRI and CT scans, which are well-documented in PMS patients [@soorya_prospective_2013] as with reports of abnormal ventricles and decreased grey matter.
+Also associated with greater deletion sizes, were abnormal MRI and CT scans, which are well-documented in PMS patients [@soorya_prospective_2013] as with reports of abnormal ventricles and decreased gray matter.
 No other neurological morphological abnormalities or symptoms were associated with greater deletion sizes (such as the presence of an arachnoid cyst or sensitivity to light).
 
 Social, cognitive and communication development, which represented the depth and breadth of intellectual disability,[@leblond_meta-analysis_2014 ; @wilson_interstitial_2008] were inversely associated with deletion size.
@@ -335,7 +322,7 @@ Our method had previously been used as a proxy for the number of deleted genes, 
 It also appears in this work to indicate the participation of other genes upstream of *SHANK3*.
 However, our approach cannot ascertain the identity of such genetic contributors or discard unknown phenotypic contribution by *SHANK3*.
 The proportional association between deletion size and developmental delays and depth of cognitive or social disabilities suggests a cumulative effect of multiple gene alterations.
-Specifically, the consistency of associations between deletion size and stricly gross motor milestones delays, as opposed to cardiovascular, endocrine, or other symptoms indicates that a number of genes spanning the 9Mb region at the end of chromosome 22 could be responsible for gross motor functions and muscle tone.
+Specifically, the consistency of associations between deletion size and strictly gross motor milestones delays, as opposed to cardiovascular, endocrine, or other symptoms indicates that a number of genes spanning the 9Mb region at the end of chromosome 22 could be responsible for gross motor functions and muscle tone.
 
 In terms of mechanism, haploinsufficiency, as with *SHANK3* and PMS, may cause these phenotypes.
 More likely, a pathological allele for an autosomal recessive trait might be present that "unmasks" the phenotype.
@@ -401,30 +388,34 @@ All the code for ETL and analysis is openly available on github (https://github.
 # Tables
 
 ```{r table1}
-desctable:::pander.desctable(article$table1,
-       justify = c("left", rep("center", 9), "right"),
+article$table1 %>%
+  as.data.frame %>%
+  pander(justify = c("left", rep("center", 9), "right"),
        caption = "Sample characteristics and comparison with the excluded patients",
-       missing = "")
+       missing = "",
+       split.table = Inf)
 ```
 
 ```{r table2}
 print("Table 2. /SHANK3/ variants in the sample")
 tribble(~`Genetic defect`, ~`N (333 individuals)`, ~Mosaic,
         "Deletion", "303 (91.0%)", NA,
-        "  Terminal deletion", "296 (97.7%)", 10,
-        "    Simple deletion", "55 (18.6%)", 1,
-        "    Unbalanced translocation", "35 (11.8%)", NA,
-        "    Ring chromosome", "27 (9.1%)", 1,
-        "    Other rearrangements ^a^", "6 (2.0%)", 2,
-        "    Unknown ^b^", "173 (58.4%)", 6,
-        "  Interstitial deletion including /SHANK3/", "7 (2.3%)", 1,
+        "  Terminal deletion", "296 (97.7%)", 10,
+        "    Simple deletion", "55 (18.6%)", 1,
+        "    Unbalanced translocation", "35 (11.8%)", NA,
+        "    Ring chromosome", "27 (9.1%)", 1,
+        "    Other rearrangements ^a^", "6 (2.0%)", 2,
+        "    Unknown ^b^", "173 (58.4%)", 6,
+        "  Interstitial deletion including /SHANK3/", "7 (2.3%)", 1,
         "/SHANK3/ sequence variant", "30 (9.0%)", NA,
-        "  Frameshift", "22 (73.3%)", NA,
-        "  Nonsense", "4 (13.3%)", NA,
-        "  Missense", "3 (10.0%)", NA,
-        "  Splice", "1 (3.3%)", NA) %>%
+        "  Frameshift", "22 (73.3%)", NA,
+        "  Nonsense", "4 (13.3%)", NA,
+        "  Missense", "3 (10.0%)", NA,
+        "  Splice", "1 (3.3%)", NA) %>%
   pander(caption = " ^a^ Other rearrangements included 2 satellited choromosomes 22, 1 pseudodicentric chromosome, 1 unbalanced inversion, and 2 uncharacterized rearrangements.\n
-^b^ Patients with deletions identified with chromosomal microarray but without a karyotype to exclude the presence of a ring chromosome were classified as unknown.")
+^b^ Patients with deletions identified with chromosomal microarray but without a karyotype to exclude the presence of a ring chromosome were classified as unknown.",
+missing = "",
+justify = c("left", "center", "right"))
 ```
 
 ```{r table3}
@@ -434,7 +425,7 @@ article$results_ranges %>%
          p.adj < 0.05) %>%
   arrange(desc(or)) %>%
   select(Phenotype, p, p.adj, or, IC_OR) %>%
-  mutate_all(funs(prettyNum(., digits = 3))) %>%
+  mutate_all(~prettyNum(., digits = 3)) %>%
   as.data.frame %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest positive effect sizes",
@@ -449,7 +440,7 @@ article$results_ranges %>%
          p.adj < 0.05) %>%
   arrange(or) %>%
   select(Phenotype, p, p.adj, or, IC_OR) %>%
-  mutate_each(funs(prettyNum(., digits = 3))) %>%
+  mutate_each(~prettyNum(., digits = 3)) %>%
   as.data.frame %>%
   pander(split.table = Inf,
          caption = "Significantly associated phenotypes with largest negative effect sizes",
