@@ -2,10 +2,6 @@
 title: "Identification of genotype-phenotype associations in Phelan-McDermid syndrome using patient/family-sourced data from an international registry"
 keep_md: true
 output:
-  pdf_document:
-    template: template.tex
-    keep_tex: true
-    latex_engine: xelatex
   word_document:
     reference_docx: template.docx
 bibliography: PMS_DN_biblatex.bib
