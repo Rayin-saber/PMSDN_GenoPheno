@@ -21,8 +21,8 @@ rbind(Clin_vars, Dev_vars) -> vars
 article$PRO$sel <- nrow(vars)
 article$nb_pat$pheno <- nrow(data)
 
-rm(Clinical, Developmental)
-rm(Clin_vars, Dev_vars)
+#rm(Clinical, Developmental)
+#rm(Clin_vars, Dev_vars)
 
 article$nb_pat$all_gen <- Genetics_ranges %>% distinct(Patient.ID) %>% nrow
 article$genetics$all <- nrow(Genetics_ranges)
@@ -30,6 +30,8 @@ article$genetics$all <- nrow(Genetics_ranges)
 # Manage Genetics_ranges -------------------------------------------------------
 Genetics_ranges %>%
   mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) -> Genetics_ranges
+Genetics_ranges$Start <- as.numeric(Genetics_ranges$Start)
+#Genetics_ranges$min <- as.numeric(Genetics_ranges$min)
 
 article$genetics$X22$del <- Genetics_ranges %>% filter(Gain_Loss == "Loss") %>% nrow
 article$genetics$X22$dup <- Genetics_ranges %>% filter(Gain_Loss == "Gain") %>% nrow
@@ -187,9 +189,9 @@ data %>%
   left_join(results_ranges, by = c("var" = "Variable")) -> dataplot
 
 # Plots-------------------------------------------------------------------------
-dataplot %>%
-  filter(Group == "Mouth conditions") %>%
-  delPlotGroup(article$DEL_plot)
+# dataplot %>%
+#   filter(Group == "Mouth conditions") %>%
+#   delPlotGroup(article$DEL_plot)
 
 dataplot %>%
   group_split(Group) %>%
@@ -209,6 +211,8 @@ article$results_ranges %>%
   write_excel_csv("resultats/resultats.csv")
 
 saveRDS(article, "article.rds")
+
+
 
 ## ROC curves--------------------------------------------------------------------
 ## Keep only the maximum extent of deletion for each patient
