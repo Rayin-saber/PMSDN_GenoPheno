@@ -8,6 +8,7 @@ read_csv("data/demographics.csv") %>%
 # Variables
 read_csv("clin_vars.csv") -> Clin_vars
 
+
 # Data
 read_csv("data/clinical.csv") %>%
 # Variable selection
@@ -137,14 +138,26 @@ read_csv("data/developmental.csv") %>%
               factor(levels = c("No", "Yes"))) -> Developmental
 
 # ==== Genetics ====
-read_csv("data/genetic_hg38.csv") %>%
+read_csv("data/genetic_hg38.csv") %>% 
+  distinct() -> genetic
+
+genetic <- genetic[-which(genetic$Patient.ID=='2844'), ] #delete row Patient ID = '2844'
+
+genetic <- genetic[-which(genetic$Patient.ID=='10194'), ] #delete row Patient ID = '10194'
+genetic <- genetic[-which(genetic$Patient.ID=='3631'), ] #delete row Patient ID = '3631'
+genetic <- genetic[-which(genetic$Patient.ID=='2713'), ] #delete row Patient ID = '2713'
+genetic <- genetic[-which(genetic$Patient.ID=='3243'), ] #delete row Patient ID = '3243'
+genetic <- genetic[-which(genetic$Patient.ID=='3526'), ] #delete row Patient ID = '3526'
+genetic <- genetic[-which(genetic$Patient.ID=='10517'), ] #delete row Patient ID = '10517'
+
+genetic %>%
   select(Patient.ID,
          Result.type,
          Gain_Loss = Array.Type,
-         Start = Array.Start.latest,
-         End = Array.End.latest) %>%
-  mutate(Start = ifelse(Result.type == "Sequencing",  50674642, Start),
-         End = ifelse(Result.type == "Sequencing", 50733210, End)) %>%
+         Start = Array.Start.latest,  #change it to Array.Start 
+         End = Array.End.latest) %>%  #change it to Array.End 
+  mutate(Start = ifelse(Result.type == "Sequencing",  50674642, Start), 
+         End = ifelse(Result.type == "Sequencing", 50733210, End)) %>% 
   filter(! Start %>% is.na) %>%
   mutate(Result.type = Result.type %>% fct_recode("coordinates" = "Array",
                                                   "mutation" = "Sequencing")) -> Genetics_ranges
