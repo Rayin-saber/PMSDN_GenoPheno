@@ -35,9 +35,9 @@ cnvPlot <- function(Genetics_ranges)
              xmax = 2 + Genetics_ranges %>% distinct(Patient.ID) %>% nrow,
              alpha = .3,
              fill = "black") +
-    annotate("segment", x = nrow(Genetics_ranges %>% distinct(Patient.ID)), xend = 1, y = 52, yend = 52, arrow = arrow(type = "closed", angle = 20)) +
-    annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 51.95, label = "Patients", angle = 90, hjust = .5, vjust = 0) +
-    annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 52.05, label = "Decreasing deletion size", angle = 90, hjust = .5, vjust = 1)
+    #annotate("segment", x = nrow(Genetics_ranges %>% distinct(Patient.ID)), xend = 1, y = 52, yend = 52, arrow = arrow(type = "closed", angle = 20)) +
+    #annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 51.95, label = "Patients", angle = 90, hjust = .5, vjust = 0) +
+    #annotate("text", x = nrow(Genetics_ranges %>% distinct(Patient.ID))/2, y = 52.05, label = "Decreasing deletion size", angle = 90, hjust = .5, vjust = 1)
 }
 
 delAnalysis <- function(var, data)
@@ -104,41 +104,51 @@ delPlotGroup <- function(plotdata, delplot)
     groupplot +
     plot_layout(widths = c(1, 5)) +
     plot_annotation(title = unique(plotdata$Group),
-                    theme = theme(plot.title = element_text(size = 36)))
-}
+                    theme = theme(plot.title = element_text(size = 24)))  #change the size of title
+ }
 
 delPlotOne <- function(plotdata)
 {
   plotdata$p.adj %>%
     unique %>%
-    prettyNum(digits = 2) %>%
+    prettyNum(digits = 3) %>%
     str_c("p = ", .) -> pvalue
 
   plotdata %>%
     distinct(text, .keep_all = T) %>%
-    mutate_at(vars(or, icl, icu), ~prettyNum(., digits = 2)) %>%
+    mutate_at(vars(or, icl, icu), ~prettyNum(., digits = 3)) %>%
     transmute(OR = str_c("OR = ", or, " [", icl, "-", icu, "]")) %>%
     pull -> OR
 
-  str_c(pvalue, OR, sep = "\n") -> xtitle
-
+  str_c(pvalue, OR, sep = "\n") -> p_value
+  
   plotdata$text %>%
     unique -> titre
+  titre -> xtitle
+
+  #levels(xtitle) <- gsub(" ", "\n", levels(xtitle))
+  
+  xtitle <- str_wrap(plotdata$text, width = 20)
+  
+  #xtitle <- function(variable, value) {
+  #  lapply(strwrap(as.character(value), width=10, simplify=FALSE), 
+  #         paste, collapse="\n")
+  #}
 
   plotdata %>%
     mutate(Patient.ID = Patient.ID %>% as.character) %>%
 
     ggplot() +
     aes(x = Patient.ID, ymin = 0, ymax = 1, color = value) +
-    labs(title = titre,
+    labs(title = format(p_value, scientific = TRUE),
          x = NULL,
          y = xtitle) +
     geom_linerange(size = 1) +
     scale_x_discrete(labels = NULL, limits = unique(plotdata$Patient.ID[order(desc(plotdata$min))])) +
     scale_y_continuous(labels = NULL) +
     scale_color_grey(start = .9, end = .2, na.value = "white") +
-    theme(plot.title = element_text(angle = 90, hjust = 0, vjust = 0.5),
-          axis.title.x = element_text(size = 9),
+    theme(plot.title = element_text(angle = 0, hjust = 0.5, vjust = 0.5, size = 8),  #change the size of plot title
+          axis.title.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5, size = 8), #change the size of x_text
           axis.ticks = element_blank(),
           panel.grid = element_blank(),
           panel.background = element_blank(),
