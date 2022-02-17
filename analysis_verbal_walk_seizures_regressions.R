@@ -73,7 +73,7 @@ vars %>%
 Genetics_ranges %<>%
   filter(Chr_Gene == "22",
          Gain_Loss == "Loss",
-         End > 50674641) %>% # shank3 : 50674641
+         End > 50674641) %>% # shank3: 50674641
   mutate(Patient.ID = as.character(Patient.ID)) %>%
   mutate(Gain_Loss = ifelse(Result.type == "mutation", "Mutation", Gain_Loss)) %>%
   select(-Result.type, -Chr_Gene)
