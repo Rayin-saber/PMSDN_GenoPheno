@@ -196,11 +196,11 @@ genetic %>%
   write_csv("data/genetic_hg38.csv")
 
 
-# Plot check
-genetic %>%
-  filter(Result.type == "Array") %>%
-  mutate(Patient.ID = Patient.ID %>% factor %>% fct_reorder(Array.Start.latest, min)) %>%
-  ggplot() +
-  aes(x = Patient.ID, ymin = Array.Start.latest, ymax = Array.End.latest, color = Array.Type) +
-  geom_linerange() +
-  coord_flip()
+# # Plot check
+# genetic %>%
+#   filter(Result.type == "Array") %>%
+#   mutate(Patient.ID = Patient.ID %>% factor %>% fct_reorder(Array.Start, min)) %>%
+#   ggplot() +
+#   aes(x = Patient.ID, ymin = Array.Start, ymax = Array.End, color = Array.Type) +
+#   geom_linerange() +
+#   coord_flip()
